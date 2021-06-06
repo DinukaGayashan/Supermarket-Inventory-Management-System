@@ -3,7 +3,7 @@
 bool isInt(string str)
 {
 	int size = str.length();
-	if (str == "-0" || size == 0)
+	if (str == "-0" || str=="-" || size == 0)
 		return false;
 
 	for (int i = (str[0] == '-' ? 1 : 0); i < size; i++)
