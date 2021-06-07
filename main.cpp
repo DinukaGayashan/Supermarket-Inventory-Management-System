@@ -1,14 +1,14 @@
 #include <iostream>
 #include <vector>
 #include "Stock.h"
-#include "ErorCheck.h"
+#include "Error_check.h"
 
 using namespace std;
 
 int main() 
 {
 
-	cout << intCheck();
+	cout << int_check();
 
 	
 }

@@ -1,6 +1,6 @@
-#include "ErorCheck.h"
+#include "Error_check.h"
 
-bool isInt(string str)
+bool is_int(string str)
 {
 	int size = str.length();
 	if (str == "-0" || str=="-" || size == 0)
@@ -13,7 +13,7 @@ bool isInt(string str)
 	return true;
 }
 
-int intCheck()
+int int_check()
 {
 	int value(0);
 	string input;
@@ -22,7 +22,7 @@ int intCheck()
 		cout << "Enter Number\t: ";
 		getline(cin, input);
 
-		if (isInt(input))
+		if (is_int(input))
 		{
 			if (input.size() > 10)
 			{

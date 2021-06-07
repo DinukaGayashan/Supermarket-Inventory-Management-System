@@ -21,7 +21,7 @@
     <ClCompile Include="Stock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ErrorCheckInt.cpp">
+    <ClCompile Include="Error_check_int.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="Stock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ErorCheck.h">
+    <ClInclude Include="Error_check.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

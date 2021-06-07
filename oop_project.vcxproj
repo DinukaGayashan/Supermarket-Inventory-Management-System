@@ -139,12 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ErrorCheckInt.cpp" />
+    <ClCompile Include="Error_check_int.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Stock.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ErorCheck.h" />
+    <ClInclude Include="Error_check.h" />
     <ClInclude Include="Stock.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

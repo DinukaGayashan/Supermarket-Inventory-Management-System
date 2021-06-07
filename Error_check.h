@@ -8,8 +8,8 @@
 using namespace std;
 
 
-int intCheck();
-bool isInt(string str);
+int int_check();
+bool is_int(string str);
 
 
 #endif
