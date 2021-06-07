@@ -12,7 +12,7 @@ int int_check();
 bool is_int(string str);
 
 bool is_double(string str);
-double rupees_check()
+double rupees_check();
 
 
 #endif
