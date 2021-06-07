@@ -44,6 +44,17 @@ int int_check(string str)
 	return value;
 }
 
+/*int int_check_catagory(int integer)
+{
+	int_check("integer");
+
+	while (integer > 10)
+	{
+		cout << "Error 010 : Value must be smaller than 10\n";
+		continue;
+	}
+
+}*/
 
 bool is_double(string str)
 {

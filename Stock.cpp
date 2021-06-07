@@ -20,7 +20,7 @@ Stock::Stock(string itm_nme, string msr_unt , string brnd_nme , string spply_typ
 	cout << "Supply Type\n";
 	cout << "-----------------------\n";
 	cout << "1. Local\n";
-	cout << "2. Imported\n\n";
+	cout << "2. Imported\n\n\n";
 
 	int category = int_check("Enter the category");
 
@@ -48,7 +48,7 @@ Stock::Stock(string itm_nme, string msr_unt , string brnd_nme , string spply_typ
 
 void Stock::show_data()
 {
-	cout << "\n";
+	cout << "\n\nItem Details\n-----------------------\n";
 	cout << "Item name\t\t\t: " << item_name << endl;
 	cout << "Retail price\t\t\t: " << retail_price  << "/=" << endl;
 	cout << "Number of items availabe\t: " << number_of_items << endl;
