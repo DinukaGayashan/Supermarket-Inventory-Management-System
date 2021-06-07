@@ -4,21 +4,31 @@
 Stock::Stock(string itm_nme, string msr_unt , string brnd_nme , string spply_type , int nmbr_itms , double rprc , int dscnt )
 :item_name(itm_nme), measure_unit(msr_unt), brand_name(brnd_nme), supply_type(spply_type), number_of_items(nmbr_itms), retail_price(rprc), discount(dscnt)
 {
-	cout << "Select Category\n";
-	cout << "===============\n";
+	cout << "Categories\n";
+	cout << "-----------------------\n";
+	cout << "1. Produce\n";
+	cout << "2. Meat & Seafood\n";
+	cout << "3. Grains\n";
+	cout << "4. Bakery products\n";
+	cout << "5. Frozen foods\n";
+	cout << "6. Dairy products\n";
+	cout << "7. Snacks & Sweets\n";
+	cout << "8. Beverages\n";
+	cout << "9. Health & Beauty\n";
+	cout << "10. Condiments & Spices\n\n";
 
-	//need to add the menu 
-	// produce is number 1
-	// meat is number 2
-	cout << "1.----\n";
+	cout << "Supply Type\n";
+	cout << "-----------------------\n";
+	cout << "1. Local\n";
+	cout << "2. Imported\n\n";
 
 	int category = int_check("Enter the category");
 
-	cout << "Enter item name\t:";
+	cout << "Enter item name\t\t: ";
 	getline(cin, itm_nme);
 
 	if (category > 2) {
-		cout << "Enter brand name\t:";
+		cout << "Enter brand name\t: ";
 		getline(cin, brnd_nme);
 
 		spply_type = (supply_type_check() == 1 ? "local" : "imported");
@@ -42,8 +52,10 @@ void Stock::show_data()
 	cout << "Item name\t\t\t: " << item_name << endl;
 	cout << "Retail price\t\t\t: " << retail_price  << "/=" << endl;
 	cout << "Number of items availabe\t: " << number_of_items << endl;
-	cout << "Brand name\t\t\t: " << brand_name << endl;
-	cout << "Supply type\t\t\t: " << supply_type << endl;
+	if (brand_name.length()>0) {
+		cout << "Brand name\t\t\t: " << brand_name << endl;
+		cout << "Supply type\t\t\t: " << supply_type << endl;
+	}
 
 }
 

@@ -19,7 +19,7 @@ int int_check(string str)
 	string input;
 	while (true)
 	{
-		cout << str << "\t:";
+		cout << str << "\t: ";
 		getline(cin, input);
 
 		if (is_int(input))
@@ -71,7 +71,7 @@ double rupees_check(string str)
 	string input;
 	while (true)
 	{
-		cout << str << "\t:";
+		cout << str << "\t: ";
 		getline(cin, input);
 
 		if (is_double(input))
@@ -113,7 +113,7 @@ int supply_type_check()
 	int value;
 	while (true) 
 	{
-		cout << "Enter supply type (1.local & 2.import)\t:";
+		cout << "Enter supply type\t: ";
 		getline(cin, str);
 		
 		if (str.size()==1) 
@@ -121,7 +121,7 @@ int supply_type_check()
 			value = stoi(str);
 			if (value != 1 && value != 2) 
 			{
-				cout << "Error 009 : invalid input, input must be either 1 or 2\n";
+				cout << "Error 009 : Invalid input, input must be either 1 or 2\n";
 				continue;
 			}
 			break;
