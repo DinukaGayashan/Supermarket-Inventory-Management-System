@@ -8,7 +8,7 @@ using namespace std;
 int main() 
 {
 
-	cout << int_check();
+	int_check("Enter item price");
 
 	
 }

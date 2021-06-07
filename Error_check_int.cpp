@@ -2,7 +2,7 @@
 
 bool is_int(string str)
 {
-	int size = str.length();
+	size_t size = str.length();
 	if (str == "-0" || str=="-" || size == 0)
 		return false;
 
@@ -13,13 +13,13 @@ bool is_int(string str)
 	return true;
 }
 
-int int_check()
+int int_check(string str)
 {
 	int value(0);
 	string input;
 	while (true)
 	{
-		cout << "Enter Number\t: ";
+		cout << str << "\t:";
 		getline(cin, input);
 
 		if (is_int(input))
@@ -47,7 +47,7 @@ int int_check()
 
 bool is_double(string str)
 {
-	int size = str.length();
+	size_t size = str.length();
 	if (str == "-0" || str == "-." || str == "-" || str[0] == '.' || size == 0)
 		return false;
 
@@ -65,19 +65,19 @@ bool is_double(string str)
 	return true;
 }
 
-double rupees_check()
+double rupees_check(string str)
 {
 	double value(0);
 	string input;
 	while (true)
 	{
-		cout << "Enter Number\t: ";
+		cout << str << "\t:";
 		getline(cin, input);
 
 		if (is_double(input))
 		{
 			bool flag = false;
-			int str_length = input.length();
+			size_t str_length = input.length();
 			for (int i = 0; i < str_length; i++) {
 				if (input[i] == '.' && i < str_length - 3)
 				{
