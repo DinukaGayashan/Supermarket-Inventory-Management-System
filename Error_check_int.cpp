@@ -44,17 +44,6 @@ int int_check(string str)
 	return value;
 }
 
-/*int int_check_catagory(int integer)
-{
-	int_check("integer");
-
-	while (integer > 10)
-	{
-		cout << "Error 010 : Value must be smaller than 10\n";
-		continue;
-	}
-
-}*/
 
 bool is_double(string str)
 {
@@ -120,26 +109,33 @@ double rupees_check(string str)
 
 int supply_type_check()
 {
-	string str;
-	int value;
-	while (true) 
-	{
-		cout << "Enter supply type\t: ";
-		getline(cin, str);
-		
-		if (str.size()==1) 
-		{
-			value = stoi(str);
-			if (value != 1 && value != 2) 
-			{
-				cout << "Error 009 : Invalid input, input must be either 1 or 2\n";
-				continue;
-			}
-			break;
+	int type;
+
+	while (true) {
+		type = int_check("Enter supply type");
+
+		if (type != 1 && type != 2) {
+			cout << "Error Supply value must be either 1 or 2\n";
+			continue;
 		}
-
-		cout << "Error 001 : Invalid input (Input must be a single number)\n";
-
+		break;
 	}
-	return value;
+
+	return type;
+}
+
+int category_check() {
+	int ctgry;
+
+	while (true) {
+		ctgry = int_check("Enter Category type");
+
+		if (ctgry > 10 || ctgry < 1) {
+			cout << "Error category must be between 1 - 10\n";
+			continue;
+		}
+		break;
+	}
+
+	return ctgry;
 }

@@ -22,7 +22,7 @@ Stock::Stock(string itm_nme, string msr_unt , string brnd_nme , string spply_typ
 	cout << "1. Local\n";
 	cout << "2. Imported\n\n\n";
 
-	int category = int_check("Enter the category");
+	int category = category_check();
 
 	cout << "Enter item name\t\t: ";
 	getline(cin, itm_nme);
