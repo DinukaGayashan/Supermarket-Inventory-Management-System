@@ -8,7 +8,9 @@ using namespace std;
 int main() 
 {
 
-	int_check("Enter item price");
+	Stock test;
+
+	test.show_data();
 
 	
 }

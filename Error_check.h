@@ -14,5 +14,7 @@ bool is_int(string str);
 bool is_double(string str);
 double rupees_check(string str);
 
+int supply_type_check();
+
 
 #endif

@@ -106,3 +106,29 @@ double rupees_check(string str)
 
 	return value;
 }
+
+int supply_type_check()
+{
+	string str;
+	int value;
+	while (true) 
+	{
+		cout << "Enter supply type (1.local & 2.import)\t:";
+		getline(cin, str);
+		
+		if (str.size()==1) 
+		{
+			value = stoi(str);
+			if (value != 1 && value != 2) 
+			{
+				cout << "Error 009 : invalid input, input must be either 1 or 2\n";
+				continue;
+			}
+			break;
+		}
+
+		cout << "Error 001 : Invalid input (Input must be a single number)\n";
+
+	}
+	return value;
+}
