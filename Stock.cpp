@@ -4,7 +4,7 @@
 
 void Stock::show_data()
 {
-	cout << "\n\nItem Details\n-----------------------\n";
+	cout << "\nItem Details\n-----------------------\n";
 	cout << "Item name\t\t\t: " << item_name << endl;
 	cout << "Retail price\t\t\t: " << retail_price  << "/=" << endl;
 	cout << "Number of items availabe\t: " << number_of_items << endl;
@@ -50,21 +50,22 @@ void Stock::getdata()
 	number_of_items = int_check("Enter number of items");
 	retail_price = rupees_check("Enter the retail price");
 
-	cout << "Press Enter to save\n";
+	//cout << "Press Enter to save\n";
 	//get keystroke
 
 }
 
-/*
+
 void Stock::write_data()
 {
 	ofstream write_file;
 
-	write_file.open("item_data.txt", ios::app | ios::binary);
+	write_file.open("data.txt", ios::app | ios::binary);
 	write_file.write((char*)this, sizeof(*this));
 
 }
 
+/*
 void Stock::read_data()
 {
 	ifstream read_file;

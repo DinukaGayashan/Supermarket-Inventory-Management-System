@@ -11,17 +11,18 @@ int main()
 	vector<Stock> items;
 
 	Stock temp;
+	//temp.getdata();
+	//temp.write_data();
+	
 
 	ifstream read_file;
 
-	read_file.open("item_data.txt", ios::binary);
+	read_file.open("data.txt", ios::binary);
 	read_file.read((char*)&temp, sizeof(temp));
 
 	temp.show_data();
 
-	//ofstream fout;
-	//fout.open("data.txt", ios::app | ios::binary);
-	//fout.write((char*)&temp, sizeof(temp));
+	
 
 	
 

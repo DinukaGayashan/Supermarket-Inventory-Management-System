@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -24,7 +25,7 @@ public:
 		
 	void show_data();
 	void getdata();
-	//void write_data();
+	void write_data();
 	//void read_data();
 
 
