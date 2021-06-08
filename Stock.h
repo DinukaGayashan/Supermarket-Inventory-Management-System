@@ -28,7 +28,6 @@ public:
 	void getdata();
 	void write_data();
 	static vector<Stock> read_data(int n);
-	//void read_data();
 
 
 };

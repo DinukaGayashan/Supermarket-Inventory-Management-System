@@ -85,14 +85,5 @@ vector<Stock> Stock::read_data(int n)
 	return items;
 }
 
-/*
-void Stock::read_data()
-{
-	ifstream read_file;
 
-	read_file.open("item_data.txt", ios::binary);
-	read_file.read((char*)this, sizeof(*this));
-
-}
-*/
 
