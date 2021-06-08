@@ -20,18 +20,7 @@ int main()
 		test[i].show_data(); cout << endl;
 	}
 
-	/*
-	23
-1
-0
-Orange
-nounit
-nobrand
-notype
-3
-2
-1
-0*/
+
 
 	
 }

@@ -134,16 +134,12 @@ void Stock::edit_item()
 	{
 		if (ctgry_dt[i].item_name == itm_nm) {
 			ctgry_dt[i].input_data();
-
 			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
 			string file_name = file_names[--ctgry];
 			remove(file_name.c_str());
 
-			ofstream write_file;
-			write_file.open(file_name, ios::app);
-
 			for (int j = 0; j < size; j++) {
-				ctgry_dt[j].write_data(ctgry);
+				ctgry_dt[j].write_data(ctgry+1);
 			}
 
 			return ;
