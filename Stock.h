@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
 	void show_data();
 	void getdata();
 	void write_data();
+	static vector<Stock> read_data(int n);
 	//void read_data();
 
 

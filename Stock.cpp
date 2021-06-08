@@ -65,6 +65,26 @@ void Stock::write_data()
 
 }
 
+vector<Stock> Stock::read_data(int n)
+{
+	Stock temp;
+	const vector<string> file_names{ "produce.txt","meat_seafood.txt","grains.txt","bakery_products.txt","frozen_foods.txt", "dairy_products.txt","snacks_sweet.txt","beverages.txt","health_beauty.txt","condiments_spices.txt" };
+	ifstream read_file;
+	read_file.open(file_names[--n], ios::binary);
+	vector<Stock> items;
+
+	read_file.seekg(0);
+	read_file.read(reinterpret_cast<char*>(&temp), sizeof(temp));
+	while (!read_file.eof()) {
+
+		items.emplace_back(temp);
+		read_file.read(reinterpret_cast<char*>(&temp), sizeof(temp));
+
+	}
+
+	return items;
+}
+
 /*
 void Stock::read_data()
 {
