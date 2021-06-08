@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+
 using namespace std;
 
 class Stock
@@ -14,13 +15,18 @@ private:
 	string supply_type;			
 	int number_of_items;
 	double retail_price;
+	int item_category;
 	int discount;
 	double final_price = retail_price * (1 - (discount / 100.0));
 
 public:
-	Stock(string itm_nme = "", string msr_unt = "", string brnd_nme = "", string spply_type = "", int nmbr_itms = 0, double rprc = 0, int dscnt = 0);
+	Stock(string itm_nme = "", string msr_unt = "", string brnd_nme = "", string spply_type = "", int nmbr_itms = 0, double rprc = 0, int dscnt = 0,int itm_ctgry=0);
 		
 	void show_data();
+	void getdata();
+	//void write_data();
+	//void read_data();
+
 
 };
 

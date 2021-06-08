@@ -1,8 +1,21 @@
 #include "Stock.h"
 #include "Error_check.h"
 
-Stock::Stock(string itm_nme, string msr_unt , string brnd_nme , string spply_type , int nmbr_itms , double rprc , int dscnt )
-:item_name(itm_nme), measure_unit(msr_unt), brand_name(brnd_nme), supply_type(spply_type), number_of_items(nmbr_itms), retail_price(rprc), discount(dscnt)
+
+void Stock::show_data()
+{
+	cout << "\n\nItem Details\n-----------------------\n";
+	cout << "Item name\t\t\t: " << item_name << endl;
+	cout << "Retail price\t\t\t: " << retail_price  << "/=" << endl;
+	cout << "Number of items availabe\t: " << number_of_items << endl;
+	if (brand_name.length()>0) {
+		cout << "Brand name\t\t\t: " << brand_name << endl;
+		cout << "Supply type\t\t\t: " << supply_type << endl;
+	}
+
+}
+
+void Stock::getdata()
 {
 	cout << "Categories\n";
 	cout << "-----------------------\n";
@@ -22,40 +35,43 @@ Stock::Stock(string itm_nme, string msr_unt , string brnd_nme , string spply_typ
 	cout << "1. Local\n";
 	cout << "2. Imported\n\n\n";
 
-	int category = category_check();
+	item_category = category_check();
 
 	cout << "Enter item name\t\t: ";
-	getline(cin, itm_nme);
+	getline(cin, item_name);
 
-	if (category > 2) {
+	if (item_category > 2) {
 		cout << "Enter brand name\t: ";
-		getline(cin, brnd_nme);
+		getline(cin, brand_name);
 
-		spply_type = (supply_type_check() == 1 ? "local" : "imported");
+		supply_type = (supply_type_check() == 1 ? "local" : "imported");
 	}
 
-	nmbr_itms = int_check("Enter number of items");
-	rprc = rupees_check("Enter the retail price");
+	number_of_items = int_check("Enter number of items");
+	retail_price = rupees_check("Enter the retail price");
 
-	item_name = itm_nme;
-	brand_name = brnd_nme;
-	supply_type = spply_type;
-	number_of_items = nmbr_itms;
-	retail_price = rprc;
+	cout << "Press Enter to save\n";
+	//get keystroke
 
 }
 
-
-void Stock::show_data()
+/*
+void Stock::write_data()
 {
-	cout << "\n\nItem Details\n-----------------------\n";
-	cout << "Item name\t\t\t: " << item_name << endl;
-	cout << "Retail price\t\t\t: " << retail_price  << "/=" << endl;
-	cout << "Number of items availabe\t: " << number_of_items << endl;
-	if (brand_name.length()>0) {
-		cout << "Brand name\t\t\t: " << brand_name << endl;
-		cout << "Supply type\t\t\t: " << supply_type << endl;
-	}
+	ofstream write_file;
+
+	write_file.open("item_data.txt", ios::app | ios::binary);
+	write_file.write((char*)this, sizeof(*this));
 
 }
+
+void Stock::read_data()
+{
+	ifstream read_file;
+
+	read_file.open("item_data.txt", ios::binary);
+	read_file.read((char*)this, sizeof(*this));
+
+}
+*/
 
