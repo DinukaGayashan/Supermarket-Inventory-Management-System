@@ -8,6 +8,8 @@ using namespace std;
 
 int main() 
 {
+	ifstream read_file;
+	read_file.open("data.txt", ios::binary);
 	vector<Stock> items;
 
 	Stock temp;
@@ -15,12 +17,19 @@ int main()
 	//temp.write_data();
 	
 
-	ifstream read_file;
+	read_file.seekg(0);
+	read_file.read(reinterpret_cast<char*>(&temp), sizeof(temp));
+	while (!read_file.eof()) {
+		
+		items.push_back(temp);
+		read_file.read(reinterpret_cast<char*>(&temp), sizeof(temp));
+		
+	}
+	
 
-	read_file.open("data.txt", ios::binary);
-	read_file.read((char*)&temp, sizeof(temp));
-
-	temp.show_data();
+	for(int i=0;i<items.size();i++)
+		items[i].show_data();
+	
 
 	
 
