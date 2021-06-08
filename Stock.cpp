@@ -66,6 +66,7 @@ void Stock::write_data(int file_index)
 
 }
 
+
 void Stock::read_data(int file_index,int n)
 {
 
