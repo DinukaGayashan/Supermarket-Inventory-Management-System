@@ -9,12 +9,29 @@ using namespace std;
 
 int main() 
 {
-	Stock stock;
-	//stock.input_data();
-	//stock.write_data(stock.get_item_category());
+	//Stock stock;
+	//stock.input_data(); stock.write_data(stock.get_item_category());
+	
+	Stock::edit_item();
+	
+	vector<Stock> test = Stock::read_data(1);
+	
+	for (int i = 0; i < test.size(); i++) {
+		test[i].show_data(); cout << endl;
+	}
 
-	//Stock::edit_item();
-	stock.read_data(1, 0);
-	stock.show_data();
+	/*
+	23
+1
+0
+Orange
+nounit
+nobrand
+notype
+3
+2
+1
+0*/
 
+	
 }

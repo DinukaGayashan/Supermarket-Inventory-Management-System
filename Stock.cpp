@@ -56,30 +56,60 @@ void Stock::input_data()
 }
 
 
+ostream& operator<<(ostream& out, const Stock& obj)
+{
+	out << obj.item_name << "\n" << obj.measure_unit << "\n" << obj.brand_name << "\n" << obj.supply_type << "\n" << obj.number_of_items << "\n" << obj.retail_price << "\n"
+		<< obj.item_category << "\n" << obj.discount << endl;
+	return out;
+}
+
+istream& operator >> (istream& in, Stock& obj)
+{
+	in >> obj.item_name;
+	in >> obj.measure_unit;
+	in >> obj.brand_name;
+	in >> obj.supply_type;
+	in >> obj.number_of_items;
+	in >> obj.retail_price;
+	in >> obj.item_category;
+	in >> obj.discount;
+	return in;
+}
+
+
 void Stock::write_data(int file_index)
 {
-	const vector<string> file_names{ "Stock_data\\produce.txt","meat_seafood.txt","grains.txt","bakery_products.txt","frozen_foods.txt", "dairy_products.txt","snacks_sweet.txt","beverages.txt","health_beauty.txt","condiments_spices.txt" };
+	const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
 	ofstream write_file;
 
-	write_file.open(file_names[--file_index], ios::app | ios::binary);
-	write_file.write((char*)this, sizeof(*this));
+	write_file.open(file_names[--file_index], ios::app);
+	
+	write_file << *this;
 
 }
 
-
-void Stock::read_data(int file_index,int n)
+vector<Stock> Stock::read_data(int file_index)
 {
-
-	const vector<string> file_names{ "Stock_data\\produce.txt","meat_seafood.txt","grains.txt","bakery_products.txt","frozen_foods.txt", "dairy_products.txt","snacks_sweet.txt","beverages.txt","health_beauty.txt","condiments_spices.txt" };
-	string file_name = file_names[--file_index];
+	vector<Stock> items;
+	const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
 
 	ifstream read_file;
-	read_file.open(file_name, ios::binary);
 
-	read_file.seekg(n*sizeof(Stock));
-	read_file.read((char*)this, sizeof(*this));
+	read_file.open(file_names[--file_index]);
 
+	Stock obj;
+	
+	while (!read_file.eof())
+	{
+		read_file >> obj;
+		items.emplace_back(obj);
+		
+	}
+	return items;
 }
+
+
+
 
 int Stock::get_item_category()
 {
@@ -93,12 +123,7 @@ void Stock::edit_item()
 	Stock temp;
 
 	int ctgry = int_check("Enter category");
-	vector<Stock> ctgry_dt;
-
-	for (int i = 0; i < 1; i++) {
-		temp.read_data(ctgry, i);
-		ctgry_dt.emplace_back(temp);
-	}
+	vector<Stock> ctgry_dt = read_data(ctgry);
 
 	string itm_nm;
 	cout << "Enter item name :";
@@ -110,15 +135,15 @@ void Stock::edit_item()
 		if (ctgry_dt[i].item_name == itm_nm) {
 			ctgry_dt[i].input_data();
 
-			const vector<string> file_names{ "Stock_data\\produce.txt","meat_seafood.txt","grains.txt","bakery_products.txt","frozen_foods.txt", "dairy_products.txt","snacks_sweet.txt","beverages.txt","health_beauty.txt","condiments_spices.txt" };
+			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
 			string file_name = file_names[--ctgry];
 			remove(file_name.c_str());
 
 			ofstream write_file;
-			write_file.open(file_name, ios::app | ios::binary);
+			write_file.open(file_name, ios::app);
 
 			for (int j = 0; j < size; j++) {
-				write_file.write((char*)&ctgry_dt[j], sizeof(ctgry_dt[j]));
+				ctgry_dt[j].write_data(ctgry);
 			}
 
 			return ;
@@ -126,7 +151,6 @@ void Stock::edit_item()
 	}
 
 	cerr << "No such item exists\n";
-
 
 }
 
