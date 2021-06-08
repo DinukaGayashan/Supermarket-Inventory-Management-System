@@ -12,7 +12,7 @@ int main()
 	//Stock stock;
 	//stock.input_data(); stock.write_data(stock.get_item_category());
 	
-	Stock::edit_item();
+	Stock::delete_item();
 	
 	vector<Stock> test = Stock::read_data(1);
 	
