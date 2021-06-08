@@ -20,7 +20,7 @@ private:
 	double final_price = retail_price * (1 - (discount / 100.0));
 
 public:
-	Stock(string itm_nme = "", string msr_unt = "", string brnd_nme = "", string spply_type = "", int nmbr_itms = 0, double rprc = 0, int dscnt = 0,int itm_ctgry=0);
+	Stock(string itm_nme = "", string msr_unt = "", string brnd_nme = "", string spply_type = "", int nmbr_itms = 0, double rprc = 0, int dscnt = 0, int itm_ctgry = 0) {};
 		
 	void show_data();
 	void getdata();
