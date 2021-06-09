@@ -5,6 +5,7 @@
 #include "Stock.h"
 #include "Error_check.h"
 #include "User_interface.h"
+#include "Staff.h"
 
 using namespace std;
 

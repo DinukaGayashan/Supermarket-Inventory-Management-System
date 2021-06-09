@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClCompile Include="Error_check_int.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="User_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Error_check.h" />
+    <ClInclude Include="Staff.h" />
     <ClInclude Include="Stock.h" />
     <ClInclude Include="User_interface.h" />
   </ItemGroup>
