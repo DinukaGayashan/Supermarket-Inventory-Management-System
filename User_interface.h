@@ -1,5 +1,5 @@
-#ifndef USER_H
-#define USER_H
+#ifndef CLI_H
+#define CLI_H
 
 #include <iostream>
 #include <vector>
@@ -9,6 +9,9 @@
 #include "Stock.h"
 
 using namespace std;
+
+//forward declaration
+class Stock;
 
 void console_size(int w, int h);
 void console_position(int x, int y);

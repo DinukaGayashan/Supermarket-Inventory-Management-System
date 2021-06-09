@@ -121,6 +121,7 @@ int Stock::get_number_of_items()
 	return number_of_items;
 }
 
+
 double Stock::get_retail_price()
 {
 	return retail_price;

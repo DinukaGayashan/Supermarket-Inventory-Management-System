@@ -1,5 +1,7 @@
 #include "User_interface.h"
 
+
+
 void console_position(int x, int y)
 {
 	HWND consoleWindow = GetConsoleWindow();
@@ -111,7 +113,8 @@ void display_error_discription(string error)
 
 void display_stock_table(vector <Stock> stock)
 {
-	int max_name = 9, max_brand_name = 10, size = stock.size();
+	size_t max_name = 9, max_brand_name = 10;
+	size_t size = stock.size();
 	double total = 0;
 
 	for (int i = 0; i < size; i++)
