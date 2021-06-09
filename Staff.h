@@ -24,6 +24,7 @@ public:
 	friend ostream& operator << (ostream& out, const Staff& obj);
 	friend istream& operator >> (istream& in, Staff& obj);
 
+	//need to complete
 	void get_data();
 	void show_data();
 
