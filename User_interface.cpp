@@ -152,15 +152,10 @@ void display_stock_table(vector <Stock> stock)
 	cout << "|";
 
 	cout << "  " << "Supply Type" << "  |";
-
 	cout << "  " << " Quantity " << "  |";
-
 	cout << " " << " Retail Price " << " |";
-
 	cout << " " << "Discount" << " |";
-
 	cout << " " << " Final Price " << " |";
-
 	cout << "    " << " Stock Value " << "    |";
 
 	cout << endl;
@@ -193,9 +188,7 @@ void display_stock_table(vector <Stock> stock)
 		cout << fixed << setprecision(0);
 
 		cout << stock[i].get_retail_price() << "/=\t\t";
-
 		cout << stock[i].get_discount() << "%\t    ";
-
 		cout << stock[i].get_final_price() << "/=\t\t";
 
 		total = total + stock[i].get_retail_price() * stock[i].get_number_of_items();
