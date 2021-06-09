@@ -112,6 +112,7 @@ void display_error_discription(string error)
 void display_stock_table(vector <Stock> stock)
 {
 	int max_name = 9, max_brand_name = 10, size = stock.size();
+	double total = 0;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -126,10 +127,11 @@ void display_stock_table(vector <Stock> stock)
 	}
 
 	cout << "\n";
-	for (int i = 0; i < (max_name + max_brand_name + 95) / 2; i++)
+	for (int i = 0; i < (max_name + max_brand_name + 116) / 2; i++)
 		cout << " ";
 	cout << "Stock Table\n";
-	for (int i = 0; i < max_name + max_brand_name + 108; i++)
+
+	for (int i = 0; i < max_name + max_brand_name + 130; i++)
 		cout << "-";
 
 	cout << "\n|   " << "Item Catagory" << "   |";
@@ -158,9 +160,11 @@ void display_stock_table(vector <Stock> stock)
 
 	cout << " " << " Final Price " << " |";
 
+	cout << "    " << " Stock Value " << "    |";
+
 	cout << endl;
 
-	for (int i = 0; i < max_name + max_brand_name + 108; i++)
+	for (int i = 0; i < max_name + max_brand_name + 130; i++)
 		cout << "-";
 
 	for (int i = 0; i < size; i++)
@@ -179,7 +183,7 @@ void display_stock_table(vector <Stock> stock)
 		cout << "\t";
 
 		cout << stock[i].get_item_supply_type() << "\t";
-
+		
 		if (stock[i].get_item_category() == 1 || stock[i].get_item_category() == 2 || stock[i].get_item_category() == 3)
 			cout << fixed << setprecision(3) << "\t" << stock[i].get_number_of_items() / 1000.0 << " kg\t";
 		else
@@ -191,13 +195,21 @@ void display_stock_table(vector <Stock> stock)
 
 		cout << stock[i].get_discount() << "%\t    ";
 
-		cout << stock[i].get_final_price() << "/=";
+		cout << stock[i].get_final_price() << "/=\t\t";
+
+		total = total + stock[i].get_retail_price() * stock[i].get_number_of_items();
+		cout << stock[i].get_retail_price() * stock[i].get_number_of_items() << "/=";
 	}
 
 	cout << endl;
 
-	for (int i = 0; i < max_name + max_brand_name + 108; i++)
+	for (int i = 0; i < max_name + max_brand_name + 130; i++)
 		cout << "-";
+
+	cout << endl;
+	for (int i = 0; i < (max_name + max_brand_name + 92); i++)
+		cout << " ";
+	cout << "Total Stock value = Rs\t" << total << "/=";
 
 	cout << endl;
 }
