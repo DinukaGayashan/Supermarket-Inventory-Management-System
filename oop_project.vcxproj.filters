@@ -24,12 +24,18 @@
     <ClCompile Include="Error_check_int.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="User_interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Error_check.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User_interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
