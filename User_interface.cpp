@@ -1,11 +1,9 @@
 #include "User_interface.h"
 
-
-
 void console_position(int x, int y)
 {
-	HWND consoleWindow = GetConsoleWindow();
-	SetWindowPos(consoleWindow, 0, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+	HWND console_window = GetConsoleWindow();
+	SetWindowPos(console_window, 0, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 }
 
 void console_size(int w, int h)
