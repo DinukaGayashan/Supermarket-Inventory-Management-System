@@ -22,15 +22,21 @@ int main()
 		test[i].show_data(); cout << endl;
 	}
 	*/
-
-	console_position(0, 0);
-	console_size(1920, 1080);
+	/*
+	set_console_position(0, 0);
+	set_console_size(1920, 1080);
 
 	Stock s1, s2("vghfjchgfv", "nfghjxfg", "chgjhhjd", "notape", 20, 43355, 20, 3);
 	vector < Stock > stock = { s1, s2 };
 
 	display_stock_table(stock);
+	*/
 
+	
+	Stock s;
+	s.input_data();
+
+	
 
 	return 0;
 }

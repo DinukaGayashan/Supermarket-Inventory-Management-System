@@ -21,7 +21,7 @@
     <ClCompile Include="Stock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Error_check_int.cpp">
+    <ClCompile Include="Error_check.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="User_interface.cpp">

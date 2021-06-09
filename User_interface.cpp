@@ -1,17 +1,17 @@
 #include "User_interface.h"
 
-void console_position(int x, int y)
+void set_console_position(int x, int y)
 {
 	HWND console_window = GetConsoleWindow();
 	SetWindowPos(console_window, 0, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 }
 
-void console_size(int w, int h)
+void set_console_size(int w, int h)
 {
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r);
-	MoveWindow(console, r.left, r.top, w, h, TRUE);
+	MoveWindow(console, r.left, r.top, w, h, true);
 }
 
 void display_category(int n)
@@ -45,7 +45,7 @@ void display_category(int n)
 
 void display_categories()
 {
-	cout << "Categories\n";
+	cout << "\nCategories\n";
 	cout << "-----------------------\n";
 	cout << "1. Produce\n";
 	cout << "2. Meat & Seafood\n";
@@ -56,15 +56,24 @@ void display_categories()
 	cout << "7. Snacks & Sweets\n";
 	cout << "8. Beverages\n";
 	cout << "9. Health & Beauty\n";
-	cout << "10. Condiments & Spices\n\n";
+	cout << "10. Condiments & Spices\n";
 }
 
 void display_supply_type()
 {
-	cout << "Supply Type\n";
+	cout << "\nSupply Type\n";
 	cout << "-----------------------\n";
 	cout << "1. Local\n";
-	cout << "2. Imported\n\n";
+	cout << "2. Imported\n";
+}
+
+void display_staff_positions()
+{
+	cout << "\nStaff Positions\n";
+	cout << "-----------------------\n";
+	cout << "1. Manager\n";
+	cout << "2. Cashier\n";
+	cout << "3. Floor worker\n";
 }
 
 void display_error(string error)
@@ -74,7 +83,7 @@ void display_error(string error)
 	if (error == "II02")
 		cerr << "error II02: Input must be larger than zero.\n";
 	if (error == "II03")
-		cerr << "error II03: Input must be in the range.\n";
+		cerr << "error II03: Input must be in the range (limit exceeded).\n";
 	if (error == "II04")
 		cerr << "error II04: Input must be in the range of 1 to 10.\n";
 	if (error == "II05")
@@ -87,7 +96,7 @@ void display_error(string error)
 	if (error == "ID03")
 		cerr << "error ID03: Input must be larger than zero.\n";
 	if (error == "ID04")
-		cerr << "error ID04: Input must be in the range.\n";
+		cerr << "error ID04: Input must be in the range (limit exceeded).\n";
 
 	if (error == "IB01")
 		cerr << "error IB01: Input must be either 1 or 0.\n";

@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Error_check_int.cpp" />
+    <ClCompile Include="Error_check.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Stock.cpp" />

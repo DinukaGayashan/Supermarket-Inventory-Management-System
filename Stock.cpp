@@ -6,22 +6,22 @@ void Stock::show_data()
 {
 	final_price = retail_price * (1 - (discount / 100.0));
 	cout << "\nItem Details\n-----------------------\n";
-	cout << "Item name\t\t\t: " << item_name << endl;
-	cout << "Retail price\t\t\t: " << retail_price  << "/=" << endl;
-	cout << "Final price\t\t\t: " << final_price << "/=" << endl;
-	cout << "Number of items availabe\t: " << number_of_items << endl;
+	cout << "Item name\t\t: " << item_name << endl;
+	cout << "Retail price\t\t: " << retail_price  << "/=" << endl;
+	cout << "Final price\t\t: " << final_price << "/=" << endl;
+	cout << "Available quantity\t: " << number_of_items << endl;
 	if (brand_name != "nobrand") {
-		cout << "Brand name\t\t\t: " << brand_name << endl;
-		cout << "Supply type\t\t\t: " << supply_type << endl;
+		cout << "Brand name\t\t: " << brand_name << endl;
+		cout << "Supply type\t\t: " << supply_type << endl;
 	}
-
-
 }
 
 void Stock::input_data()
 {
 	void display_categories();
 	void display_supply_type();
+
+	cout << "\nAdd New Item\n-----------------------\n";
 
 	item_category = category_check();
 

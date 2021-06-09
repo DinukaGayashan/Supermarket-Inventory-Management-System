@@ -1,4 +1,5 @@
 #include "Error_check.h"
+#include "User_interface.h"
 
 bool is_int(string str)
 {
@@ -26,19 +27,18 @@ int int_check(string str)
 		{
 			if (input.size() > 10)
 			{
-				cout << "Error 003 : Value limit exceeded\n";
+				display_error("II04");
 				continue;
 			}
 			value = stoi(input);
 			if (value < 0)
 			{
-				cout << "Error 002 : Value must be larger than 0\n";
+				display_error("II02");
 				continue;
 			}
 			break;
 		}
-
-		cout << "Error 001 : Invalid input (Input must be an integer)\n";
+		display_error("II01");
 	}
 
 	return value;
@@ -81,7 +81,7 @@ double rupees_check(string str)
 			for (int i = 0; i < str_length; i++) {
 				if (input[i] == '.' && i < str_length - 3)
 				{
-					cout << "Error 004 : Cannot have more than two decimal values\n";
+					display_error("ID02");
 					flag = true;
 				}
 			}
@@ -89,19 +89,19 @@ double rupees_check(string str)
 				continue;
 			if (input.length() > 10)
 			{
-				cout << "Error 003 : Value limit exceeded\n";
+				display_error("ID04");
 				continue;
 			}
 			value = stof(input);
 			if (value < 0)
 			{
-				cout << "Error 002 : Value must be larger than or equal to 0\n";
+				display_error("ID03");
 				continue;
 			}
 			break;
 		}
 
-		cout << "Error 001 : Invalid input (Input must be a double)\n";
+		display_error("ID01");
 	}
 
 	return value;
@@ -115,7 +115,7 @@ int supply_type_check()
 		type = int_check("Enter supply type");
 
 		if (type != 1 && type != 2) {
-			cout << "Error Supply value must be either 1 or 2\n";
+			display_error("II05");
 			continue;
 		}
 		break;
@@ -131,7 +131,7 @@ int category_check() {
 		ctgry = int_check("Enter Category type");
 
 		if (ctgry > 10 || ctgry < 1) {
-			cout << "Error category must be between 1 - 10\n";
+			display_error("II04");
 			continue;
 		}
 		break;
