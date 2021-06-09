@@ -27,6 +27,7 @@ public:
 	void get_data();
 	void show_data();
 
+
 	string get_user_name();
 	string get_password();
 	string get_full_name();
