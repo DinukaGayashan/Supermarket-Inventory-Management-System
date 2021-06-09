@@ -14,7 +14,7 @@ void console_size(int w, int h)
 	MoveWindow(console, r.left, r.top, w, h, TRUE);
 }
 
-void category(int n)
+void display_category(int n)
 {
 	switch (n)
 	{
@@ -43,7 +43,7 @@ void category(int n)
 	}
 }
 
-void categories()
+void display_categories()
 {
 	cout << "Categories\n";
 	cout << "-----------------------\n";
@@ -59,7 +59,7 @@ void categories()
 	cout << "10. Condiments & Spices\n\n";
 }
 
-void supply_type()
+void display_supply_type()
 {
 	cout << "Supply Type\n";
 	cout << "-----------------------\n";
@@ -67,7 +67,7 @@ void supply_type()
 	cout << "2. Imported\n\n";
 }
 
-void error(string error)
+void display_error(string error)
 {
 	if (error == "II01")
 		cerr << "error II01: Input must be a counting number.\n";
@@ -96,7 +96,7 @@ void error(string error)
 
 }
 
-void error_discription(string error)
+void display_error_discription(string error)
 {
 	cout << "Error Coding\n";
 	cout << "-----------------------\n";
@@ -109,7 +109,7 @@ void error_discription(string error)
 
 }
 
-void stock_table(vector <Stock> stock)
+void display_stock_table(vector <Stock> stock)
 {
 	int max_name = 9, max_brand_name = 10, size = stock.size();
 
@@ -166,7 +166,7 @@ void stock_table(vector <Stock> stock)
 	for (int i = 0; i < size; i++)
 	{
 		cout << endl;
-		category(stock[i].get_item_category());
+		display_category(stock[i].get_item_category());
 
 		cout << stock[i].get_item_name();
 		for (int j = 0; j < (max_name - stock[i].get_item_name().length()); j++)

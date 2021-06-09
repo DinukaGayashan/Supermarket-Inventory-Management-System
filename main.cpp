@@ -28,7 +28,7 @@ int main()
 	Stock s1, s2("vghfjchgfv", "nfghjxfg", "chgjhhjd", "notape", 20, 43355, 20, 3);
 	vector < Stock > stock = { s1, s2 };
 
-	stock_table(stock);
+	display_stock_table(stock);
 
 
 	return 0;

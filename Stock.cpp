@@ -20,23 +20,8 @@ void Stock::show_data()
 
 void Stock::input_data()
 {
-	cout << "Categories\n";
-	cout << "-----------------------\n";
-	cout << "1. Produce\n";
-	cout << "2. Meat & Seafood\n";
-	cout << "3. Grains\n";
-	cout << "4. Bakery products\n";
-	cout << "5. Frozen foods\n";
-	cout << "6. Dairy products\n";
-	cout << "7. Snacks & Sweets\n";
-	cout << "8. Beverages\n";
-	cout << "9. Health & Beauty\n";
-	cout << "10. Condiments & Spices\n\n";
-
-	cout << "Supply Type\n";
-	cout << "-----------------------\n";
-	cout << "1. Local\n";
-	cout << "2. Imported\n\n\n";
+	void display_categories();
+	void display_supply_type();
 
 	item_category = category_check();
 
