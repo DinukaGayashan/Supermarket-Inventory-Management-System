@@ -15,6 +15,7 @@ class Stock;
 
 void set_console_size(int w, int h);
 void set_console_position(int x, int y);
+void set_font_size(int a, int b);
 void display_category(int n);
 void display_categories();
 void display_supply_type();

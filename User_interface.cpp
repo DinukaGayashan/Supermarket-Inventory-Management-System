@@ -14,6 +14,16 @@ void set_console_size(int w, int h)
 	MoveWindow(console, r.left, r.top, w, h, true);
 }
 
+void set_font_size(int a, int b) 
+{
+	PCONSOLE_FONT_INFOEX lp_console_current_font_ex = new CONSOLE_FONT_INFOEX();
+	lp_console_current_font_ex->cbSize = sizeof(CONSOLE_FONT_INFOEX);
+	GetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, lp_console_current_font_ex);
+	lp_console_current_font_ex->dwFontSize.X = a;
+	lp_console_current_font_ex->dwFontSize.Y = b;
+	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, lp_console_current_font_ex);
+}
+
 void display_category(int n)
 {
 	switch (n)
