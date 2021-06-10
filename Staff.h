@@ -26,7 +26,7 @@ private:
 	Date join_date;
 
 public:
-	Staff():username("default"), password("0000"), full_name("default"), position(1,"none"), join_date(0,0,0) {};
+	Staff():username("default"), password("0000"), full_name("default"), position(1,"none"), join_date(0,0,0) {}
 	
 	friend ostream& operator << (ostream& out, const Staff& obj);
 	friend istream& operator >> (istream& in, Staff& obj);
