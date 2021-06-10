@@ -125,6 +125,7 @@ void display_stock_table(vector <Stock> stock)
 	size_t max_name = 9, max_brand_name = 10;
 	size_t size = stock.size();
 	double total = 0;
+	int length = 144;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -139,16 +140,16 @@ void display_stock_table(vector <Stock> stock)
 	}
 
 	cout << "\n";
-	for (int i = 0; i < (max_name + max_brand_name + 116) / 2; i++)
+	for (int i = 0; i < (max_name + max_brand_name + length-16) / 2; i++)
 		cout << " ";
 	cout << "Stock Table\n";
 
-	for (int i = 0; i < max_name + max_brand_name + 130; i++)
+	for (int i = 0; i < max_name + max_brand_name + length; i++)
 		cout << "-";
 
-	cout << "\n|  " << "Item ID" << "  |";
+	cout << "\n|   " << "Item ID" << "   |";
 
-	cout << "\n|   " << "Item Catagory" << "   |";
+	cout << "    " << "Item Catagory" << "    |";
 
 	for (int i = 0; i < (max_name - 5) / 2; i++)
 		cout << " ";
@@ -165,7 +166,7 @@ void display_stock_table(vector <Stock> stock)
 	cout << "|";
 
 	cout << "  " << "Supply Type" << "  |";
-	cout << "  " << " Quantity " << "  |";
+	cout << "  " << "Quantity" << "  |";
 	cout << " " << " Retail Price " << " |";
 	cout << " " << "Discount" << " |";
 	cout << " " << " Final Price " << " |";
@@ -173,14 +174,15 @@ void display_stock_table(vector <Stock> stock)
 
 	cout << endl;
 
-	for (int i = 0; i < max_name + max_brand_name + 130; i++)
+	for (int i = 0; i < max_name + max_brand_name + length; i++)
 		cout << "-";
 
 	for (int i = 0; i < size; i++)
 	{
-		cout << "  " << stock[i].get_item_id() << "   ";
-
 		cout << endl;
+
+		cout << "   " << stock[i].get_item_id() << "\t";
+
 		display_category(stock[i].get_item_category());
 
 		cout << stock[i].get_item_name();
@@ -212,13 +214,13 @@ void display_stock_table(vector <Stock> stock)
 
 	cout << endl;
 
-	for (int i = 0; i < max_name + max_brand_name + 130; i++)
+	for (int i = 0; i < max_name + max_brand_name + length; i++)
 		cout << "-";
 
 	cout << endl;
-	for (int i = 0; i < (max_name + max_brand_name + 92); i++)
+	for (int i = 0; i < (max_name + max_brand_name + length-40); i++)
 		cout << " ";
-	cout << "Total Stock value = Rs\t" << total << "/=";
+	cout << "Total Stock value : Rs\t" << total << "/=";
 
 	cout << endl;
 }

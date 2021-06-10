@@ -13,8 +13,8 @@ using namespace std;
 
 int main() 
 {
-	Stock stock;
-	stock.input_data(); 
+	//Stock stock;
+	//stock.input_data(); 
 	//stock.write_data(stock.get_item_category());
 	
 	//Stock::delete_item();
