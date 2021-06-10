@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include <tuple>
+#include "Staff.h"
+
+struct Date;
 
 
 using namespace std;
@@ -21,6 +24,8 @@ int category_check();
 int check_position();
 bool is_name(const string name);
 string check_name(const string input_str);
+bool is_date(const Date date);
+Date check_date(const string input_str);
 
 
 

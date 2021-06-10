@@ -142,16 +142,16 @@ int category_check() {
 
 bool is_name(const string name) {
 	for (char i : name)
-		if ((i < 'a' || i > 'z') && (i < 'A' || i > 'Z'))
+		if ((i < 'a' || i > 'z') && (i < 'A' || i > 'Z') && i!=' ')
 			return false;
 
 	return true;
 }
 
-bool is_date(const tuple <int, int, int> date) {
-	const int day = get<0>(date);
-	const int month = get<1>(date);
-	const int year = get<2>(date);
+bool is_date(const Date date) {
+	const int day = date.day;
+	const int month = date.month;
+	const int year = date.year;
 
 	if (day < 1 || day > 31)		return false;
 	if (month < 1 || month > 12)	return false;
@@ -201,17 +201,17 @@ string check_name(const string input_str) {
 }
 
 
-tuple<int,int,int> check_date(const string input_str) {
+Date check_date(const string input_str) {
 
-	tuple<int, int, int> date;
+	Date date;
 	while (true) {
-		cout << input_str << " :";
-		get<0>(date) = int_check("Enter day");
-		get<1>(date) = int_check("Enter month");
-		get<2>(date) = int_check("Enter year");
+		cout << input_str <<endl;
+		date.day = int_check("Enter day");
+		date.month = int_check("Enter month");
+		date.year = int_check("Enter year");
 
 		if (is_date(date) == false) {
-			cout << "Error";
+			cout << "Error\n";
 			continue;
 		}
 		break;

@@ -3,22 +3,30 @@
 
 #include <iostream>
 #include <string>
+#include <tuple>
 #include <utility>
 #include "User_interface.h"
 
+
 using namespace std;
+struct Date
+{
+	int day=0, month=0, year=0;	
+};
 
 class Staff
 {
 private:
+	
 	string username;
 	string password;
 	string full_name;
 	pair<int,string> position;
-	string join_date;
+	Date join_date;
 
 public:
-	Staff(string usr_nm = "default", string psswrd = "0000", string fll_nm = "default", pair<int, string > pstn = make_pair(0, "default"), string jn_dt = "0")
+	Staff() {};
+	Staff(Date jn_dt,string usr_nm = "default", string psswrd = "0000", string fll_nm = "default", pair<int, string > pstn = make_pair(0, "default"))
 		:username(usr_nm), password(psswrd), full_name(fll_nm), position(pstn), join_date(jn_dt) {};
 	
 
@@ -35,9 +43,11 @@ public:
 	string get_password();
 	string get_full_name();
 	pair<int,string> get_position();
-	string get_join_date();
+	Date get_join_date();
 
 };
+
+
 
 
 #endif 

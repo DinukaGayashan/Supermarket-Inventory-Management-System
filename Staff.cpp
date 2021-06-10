@@ -4,7 +4,8 @@
 
 ostream& operator<<(ostream& out, const Staff& obj)
 {
-	out << obj.username << "\n" << obj.password << "\n" << obj.full_name << "\n" << obj.position.first << "\n" << obj.position.second << "\n" << obj.join_date << endl;
+	out << obj.username << "\n" << obj.password << "\n" << obj.full_name << "\n" << obj.position.first << "\n" << obj.position.second << "\n" << obj.join_date.day << "\n" 
+	<< obj.join_date.month << "\n" << obj.join_date.year << "\n" << endl;
 	return out;
 }
 
@@ -15,7 +16,9 @@ istream& operator >> (istream& in, Staff& obj)
 	in >> obj.full_name;
 	in >> obj.position.first;
 	in >> obj.position.second;
-	in >> obj.join_date;
+	in >> obj.join_date.day;
+	in >> obj.join_date.month;
+	in >> obj.join_date.year;
 	
 	return in;
 }
@@ -35,7 +38,7 @@ void Staff::add_user()
 	const string positions[4] = { "owner","manager","cashier","floor" };
 	position.second = positions[position.first];
 
-	cout << "Enter join date\t\t: ";
+	join_date = check_date("Enter join date");
 		//date function
 }
 
@@ -45,7 +48,8 @@ void Staff::show_data()
 	cout << "Username\t: " << username << endl;
 	cout << "Full Name\t: " << full_name  << endl;
 	cout << "Position\t: " << position.second <<  endl;
-	cout << "Joined Date\t: " << join_date << endl;
+	//need to add support
+	//cout << "Joined Date\t: " << join_date << endl;
 }
 
 string Staff::get_user_name()
@@ -68,7 +72,7 @@ pair<int, string> Staff::get_position()
 	return position;
 }
 
-string Staff::get_join_date()
+Date Staff::get_join_date()
 {
 	return join_date;
 }

@@ -7,6 +7,8 @@
 #include "User_interface.h"
 #include "Staff.h"
 
+
+
 using namespace std;
 
 int main() 
@@ -33,8 +35,9 @@ int main()
 	*/
 
 	
-	Stock s;
-	s.input_data();
+	Staff s;
+	s.add_user();
+	s.show_data();
 
 	
 
