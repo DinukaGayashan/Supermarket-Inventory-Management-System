@@ -1,5 +1,6 @@
 #include "User_interface.h"
 
+
 void set_console_position(int x, int y)
 {
 	HWND console_window = GetConsoleWindow();

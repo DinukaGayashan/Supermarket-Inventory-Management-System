@@ -13,6 +13,7 @@ using namespace std;
 //forward declaration
 class Stock;
 
+
 void set_console_size(int w, int h);
 void set_console_position(int x, int y);
 void set_font_size(int a, int b);
