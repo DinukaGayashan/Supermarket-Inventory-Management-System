@@ -34,7 +34,7 @@ int main()
 	display_stock_table(stock);
 	*/
 
-	
+	display_categories();
 	Staff s;
 	s.add_user();
 	s.show_data();

@@ -30,16 +30,16 @@ void Staff::add_user()
 	
 	cout << "\nAdd New User\n-----------------------\n";
 	
-	full_name = check_name("Enter full name");	//name check
+	full_name = check_name("Enter full name");
 	
-	username = check_name("Enter user name");		//username check
+	username = check_name("Enter user name");
 	
 	position.first = check_position();
 	const string positions[4] = { "owner","manager","cashier","floor" };
 	position.second = positions[position.first];
 
 	join_date = check_date("Enter join date");
-		//date function
+
 }
 
 void Staff::show_data()

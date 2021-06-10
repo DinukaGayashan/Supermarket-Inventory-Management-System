@@ -27,7 +27,7 @@ int int_check(const string str)
 		{
 			if (input.size() > 10)
 			{
-				display_error("II04");
+				display_error("II03");
 				continue;
 			}
 			value = stoi(input);
@@ -81,7 +81,7 @@ double rupees_check(const string str)
 			for (int i = 0; i < str_length; i++) {
 				if (input[i] == '.' && i < str_length - 3)
 				{
-					display_error("ID02");
+					display_error("ID01");//check
 					flag = true;
 				}
 			}
@@ -89,13 +89,13 @@ double rupees_check(const string str)
 				continue;
 			if (input.length() > 10)
 			{
-				display_error("ID04");
+				display_error("ID03");
 				continue;
 			}
 			value = stof(input);
 			if (value < 0)
 			{
-				display_error("ID03");
+				display_error("ID02");
 				continue;
 			}
 			break;
@@ -173,7 +173,7 @@ int check_position() {
 		position = int_check("Enter position");
 
 		if (position > 3 || position < 0) {
-			display_error("II04");
+			display_error("II06");
 			continue;
 		}
 		break;
@@ -190,8 +190,7 @@ string check_name(const string input_str) {
 		getline(cin, name);
 
 		if (is_name(name)==false) {
-			//new error : name can only contain alpha numeric characters
-			display_error("II04");
+			display_error("IS01");
 			continue;
 		}
 		break;
@@ -211,7 +210,7 @@ Date check_date(const string input_str) {
 		date.year = int_check("Enter year");
 
 		if (is_date(date) == false) {
-			cout << "Error\n";
+			display_error("IA01");
 			continue;
 		}
 		break;

@@ -88,31 +88,22 @@ void display_staff_positions()
 
 void display_error(string error)
 {
-	if (error == "II01")
-		cerr << "error II01: Input must be a counting number.\n";
-	if (error == "II02")
-		cerr << "error II02: Input must be larger than zero.\n";
-	if (error == "II03")
-		cerr << "error II03: Input must be in the range (limit exceeded).\n";
-	if (error == "II04")
-		cerr << "error II04: Input must be in the range of 1 to 10.\n";
-	if (error == "II05")
-		cerr << "error II05: Input must be either 1 or 2.\n";
+	if (error == "II01")		cerr << "error II01: Input must be a counting number.\n";
+	else if (error == "II02")	cerr << "error II02: Input must be larger than zero.\n";
+	else if (error == "II03")	cerr << "error II03: Input must be in the range (limit exceeded).\n";
+	else if (error == "II04")	cerr << "error II04: Input must be in the range of 1 to 10.\n";
+	else if (error == "II05")	cerr << "error II05: Input must be either 1 or 2.\n";
+	else if (error == "II06")	cerr << "error II06: Input must be in the range of 1 to 3.\n";
 
-	if (error == "ID01")
-		cerr << "error ID01: Input must be a value with two decimal points.\n";
-	if (error == "ID02")
-		cerr << "error ID02: Input must contain only two decimal points.\n";
-	if (error == "ID03")
-		cerr << "error ID03: Input must be larger than zero.\n";
-	if (error == "ID04")
-		cerr << "error ID04: Input must be in the range (limit exceeded).\n";
+	else if (error == "ID01")	cerr << "error ID01: Input must be a value with two decimal points.\n";
+	else if (error == "ID02")	cerr << "error ID02: Input must be larger than zero.\n";
+	else if (error == "ID03")	cerr << "error ID03: Input must be in the range (limit exceeded).\n";
 
-	if (error == "IB01")
-		cerr << "error IB01: Input must be either 1 or 0.\n";
+	else if (error == "IB01")	cerr << "error IB01: Input must be either 1 or 0.\n";
 
+	else if (error == "IS01")	cerr << "error IS01: Input must be a phrase with letters.\n";
 
-
+	else if (error == "IA01")	cerr << "error IA01: Input must be a valid date.\n";
 }
 
 void display_error_discription(string error)
