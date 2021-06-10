@@ -11,7 +11,8 @@
 using namespace std;
 struct Date
 {
-	int day=0, month=0, year=0;	
+	int day, month, year;
+	Date(int d = 0,int m=0,int y=0):day(d), month(m), year(y){}
 };
 
 class Staff
@@ -25,11 +26,8 @@ private:
 	Date join_date;
 
 public:
-	Staff() {};
-	Staff(Date jn_dt,string usr_nm = "default", string psswrd = "0000", string fll_nm = "default", pair<int, string > pstn = make_pair(0, "default"))
-		:username(usr_nm), password(psswrd), full_name(fll_nm), position(pstn), join_date(jn_dt) {};
+	Staff():username("default"), password("0000"), full_name("default"), position(1,"none"), join_date(0,0,0) {};
 	
-
 	friend ostream& operator << (ostream& out, const Staff& obj);
 	friend istream& operator >> (istream& in, Staff& obj);
 
