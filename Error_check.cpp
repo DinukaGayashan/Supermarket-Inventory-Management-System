@@ -1,7 +1,7 @@
 #include "Error_check.h"
 #include "User_interface.h"
 
-bool is_int(string str)
+bool is_int(const string str)
 {
 	size_t size = str.length();
 	if (str == "-0" || str=="-" || size == 0)
@@ -14,7 +14,7 @@ bool is_int(string str)
 	return true;
 }
 
-int int_check(string str)
+int int_check(const string str)
 {
 	int value(0);
 	string input;
@@ -45,7 +45,7 @@ int int_check(string str)
 }
 
 
-bool is_double(string str)
+bool is_double(const string str)
 {
 	size_t size = str.length();
 	if (str == "-0" || str == "-." || str == "-" || str[0] == '.' || size == 0)
@@ -65,7 +65,7 @@ bool is_double(string str)
 	return true;
 }
 
-double rupees_check(string str)
+double rupees_check(const string str)
 {
 	double value(0);
 	string input;
@@ -138,4 +138,84 @@ int category_check() {
 	}
 
 	return ctgry;
+}
+
+bool is_name(const string name) {
+	for (char i : name)
+		if ((i < 'a' || i > 'z') && (i < 'A' || i > 'Z'))
+			return false;
+
+	return true;
+}
+
+bool is_date(const tuple <int, int, int> date) {
+	const int day = get<0>(date);
+	const int month = get<1>(date);
+	const int year = get<2>(date);
+
+	if (day < 1 || day > 31)		return false;
+	if (month < 1 || month > 12)	return false;
+	if (year < 2000 || year > 2050) return false;
+
+	if (!(month % 2 == 1 || month == 8) && day > 30)	return false;
+
+	//leap years were not concerned
+	if (month == 2 && day > 29)	return false;
+
+	return true;
+
+}
+
+int check_position() {
+	int position;
+
+	while (true) {
+		position = int_check("Enter position");
+
+		if (position > 3 || position < 0) {
+			display_error("II04");
+			continue;
+		}
+		break;
+	}
+
+	return position;
+}
+
+string check_name(const string input_str) {
+	string name;
+
+	while (true) {
+		cout << input_str << ": ";
+		getline(cin, name);
+
+		if (is_name(name)==false) {
+			//new error : name can only contain alpha numeric characters
+			display_error("II04");
+			continue;
+		}
+		break;
+	}
+
+	return name;
+}
+
+
+tuple<int,int,int> check_date(const string input_str) {
+
+	tuple<int, int, int> date;
+	while (true) {
+		cout << input_str << " :";
+		get<0>(date) = int_check("Enter day");
+		get<1>(date) = int_check("Enter month");
+		get<2>(date) = int_check("Enter year");
+
+		if (is_date(date) == false) {
+			cout << "Error";
+			continue;
+		}
+		break;
+	}
+
+	return date;
 }

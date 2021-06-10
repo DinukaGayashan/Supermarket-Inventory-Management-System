@@ -1,4 +1,5 @@
 #include "Staff.h"
+#include "Error_check.h"
 
 
 ostream& operator<<(ostream& out, const Staff& obj)
@@ -26,14 +27,13 @@ void Staff::add_user()
 	
 	cout << "\nAdd New User\n-----------------------\n";
 	
-	cout << "Enter full name\t\t: ";
-	getline(cin, full_name);	//name check
+	full_name = check_name("Enter full name");	//name check
 	
-	cout << "Enter username\t\t: ";
-	getline(cin, username);		//username check
+	username = check_name("Enter user name");		//username check
 	
-	cout << "Enter position number\t: ";
-	cin>> position.first;		//4.owner 1-manager,2-cashier,3-floor
+	position.first = check_position();
+	const string positions[4] = { "owner","manager","cashier","floor" };
+	position.second = positions[position.first];
 
 	cout << "Enter join date\t\t: ";
 		//date function

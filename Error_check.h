@@ -3,19 +3,25 @@
 
 #include <iostream>
 #include <string>
+#include <tuple>
 
 
 using namespace std;
 
 
-int int_check(string str);
-bool is_int(string str);
+int int_check(const string str);
+bool is_int(const string str);
 
-bool is_double(string str);
-double rupees_check(string str);
+bool is_double(const string str);
+double rupees_check(const string str);
 
 int supply_type_check();
 int category_check();
+
+int check_position();
+bool is_name(const string name);
+string check_name(const string input_str);
+
 
 
 #endif
