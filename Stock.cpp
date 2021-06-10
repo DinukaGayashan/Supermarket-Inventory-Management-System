@@ -18,8 +18,8 @@ void Stock::show_data()
 
 void Stock::input_data()
 {
-	void display_categories();
-	void display_supply_type();
+	display_categories();
+	display_supply_type();
 
 	cout << "\nAdd New Item\n-----------------------\n";
 
