@@ -1,11 +1,11 @@
 #include "Stock.h"
-#include "Error_check.h"
 
 
 void Stock::show_data()
 {
 	final_price = retail_price * (1 - (discount / 100.0));
 	cout << "\nItem Details\n-----------------------\n";
+	cout << "Item id\t\t: " << generate_item_id << endl;
 	cout << "Item name\t\t: " << item_name << endl;
 	cout << "Retail price\t\t: " << retail_price  << "/=" << endl;
 	cout << "Final price\t\t: " << final_price << "/=" << endl;
@@ -39,6 +39,8 @@ void Stock::input_data()
 	retail_price = rupees_check("Enter the retail price");
 	discount = int_check("Enter the discount percentage"); 
 	final_price = retail_price * (1 - (discount / 100.0));
+
+	cout << "Item id\t\t\t: " << generate_item_id(item_name, brand_name, item_category);
 
 	//cout << "Press Enter to save\n";
 	//get keystroke
@@ -95,6 +97,10 @@ vector<Stock> Stock::read_data(int file_index)
 	return items;
 }
 
+string Stock::get_item_id()
+{
+	return item_id;
+}
 
 int Stock::get_item_category()
 {
@@ -139,9 +145,11 @@ int Stock::get_discount()
 
 void Stock::edit_item()
 {
-	//print categories
+	display_categories();
 
 	Stock temp;
+
+	//item_id check
 
 	int ctgry = int_check("Enter category");
 	vector<Stock> ctgry_dt = read_data(ctgry);
@@ -186,6 +194,9 @@ void Stock::delete_item()
 {
 	Stock temp;
 
+	//item_id check
+
+
 	int ctgry = int_check("Enter category");
 	vector<Stock> ctgry_dt = read_data(ctgry);
 
@@ -216,5 +227,49 @@ void Stock::delete_item()
 
 }
 
+string Stock::generate_item_id(string item_name_in, string brand_name_in, int category_in)
+{
+	string id = "";
 
+	size_t number_length = 5;
+	char b = brand_name_in[0];
+	char i = item_name_in[0];
+
+	category_in += 64;
+	char c = category_in;
+	id += c;
+
+	//if first letter is lower case making it up to upper case
+	if (i >= 'a' && i <= 'z') {
+		i = i - 32;
+	}
+	id += i;
+
+	if (b >= 'a') {
+		b = b - 32;
+	}
+	id += b;
+
+	//generating the number
+	int sum = 0;
+	int index = 1;
+	for (char i : brand_name_in) {
+		sum += index++ * (int)i;
+	}
+
+	index = 1;
+	for (char i : item_name_in) {
+		sum += index++ * (int)i;
+	}
+
+	string number = to_string(sum);
+	string front = "";
+	for (size_t i = 0; i < number_length - number.length(); i++) {
+		front += '0';
+	}
+
+	front += number;
+	id += front;
+	return id;
+}
 

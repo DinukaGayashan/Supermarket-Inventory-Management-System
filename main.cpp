@@ -25,15 +25,15 @@ int main()
 		test[i].show_data(); cout << endl;
 	}
 	*/
-	/*
+	
 	set_console_position(0, 0);
 	set_console_size(1920, 1080);
 
-	Stock s1, s2("vghfjchgfv", "nfghjxfg", "chgjhhjd", "notape", 20, 43355, 20, 3);
+	Stock s1, s2("defsdd","vghfjchgfv", "nfghjxfg", "chgjhhjd", "notape", 20, 43355, 20, 3);
 	vector < Stock > stock = { s1, s2 };
 
 	display_stock_table(stock);
-	*/
+	
 
 	//display_categories();
 	//Staff s;

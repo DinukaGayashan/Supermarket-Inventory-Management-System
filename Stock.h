@@ -6,6 +6,7 @@
 #include <fstream>
 #include <vector>
 #include "User_interface.h"
+#include "Error_check.h"
 
 using namespace std;
 
@@ -14,10 +15,11 @@ using namespace std;
 class Stock
 {
 private:
+	string item_id;
 	string item_name;
 	string measure_unit;
 	string brand_name;
-	string supply_type;			
+	string supply_type;	
 	int number_of_items;
 	double retail_price;
 	int item_category;
@@ -25,8 +27,8 @@ private:
 	double final_price ;
 
 public:
-	Stock(string itm_nme = "", string msr_unt = "nounit", string brnd_nme = "nobrand", string spply_type = "notype", int nmbr_itms = 0, double rprc = 0, int dscnt = 0, int itm_ctgry = 0): 
-	item_name(itm_nme), measure_unit(msr_unt), brand_name(brnd_nme), supply_type(spply_type), number_of_items(nmbr_itms), retail_price(rprc), item_category(itm_ctgry), discount(dscnt),final_price(rprc){};
+	Stock(string itm_id="default", string itm_nme = "", string msr_unt = "nounit", string brnd_nme = "nobrand", string spply_type = "notype", int nmbr_itms = 0, double rprc = 0, int dscnt = 0, int itm_ctgry = 0) :
+	item_id(itm_id),item_name(itm_nme), measure_unit(msr_unt), brand_name(brnd_nme), supply_type(spply_type), number_of_items(nmbr_itms), retail_price(rprc), item_category(itm_ctgry), discount(dscnt),final_price(rprc){};
 		
 
 	friend ostream& operator << (ostream& out, const Stock& obj);
@@ -39,8 +41,10 @@ public:
 	static vector<Stock> read_data(int file_index);
 	static void edit_item();
 	static void delete_item();
+	string generate_item_id(string item_name_in, string brand_name_in, int category_in);
 
 	//access data
+	string get_item_id();
 	string get_item_name();
 	string get_item_brand_name();
 	string get_item_supply_type();

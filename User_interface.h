@@ -21,7 +21,7 @@ void display_categories();
 void display_supply_type();
 void display_staff_positions();
 void display_error(string error);
-void display_error_discription(string error);
+void display_help(string error);
 void display_stock_table(vector <Stock> stock);
 
 #endif

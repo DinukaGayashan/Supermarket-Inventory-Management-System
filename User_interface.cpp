@@ -106,7 +106,7 @@ void display_error(string error)
 	else if (error == "IA01")	cerr << "error IA01: Input must be a valid date.\n";
 }
 
-void display_error_discription(string error)
+void display_help(string error)
 {
 	cout << "Error Coding\n";
 	cout << "-----------------------\n";
@@ -145,6 +145,8 @@ void display_stock_table(vector <Stock> stock)
 	for (int i = 0; i < max_name + max_brand_name + 130; i++)
 		cout << "-";
 
+	cout << "\n|  " << "Item ID" << "  |";
+
 	cout << "\n|   " << "Item Catagory" << "   |";
 
 	for (int i = 0; i < (max_name - 5) / 2; i++)
@@ -175,6 +177,8 @@ void display_stock_table(vector <Stock> stock)
 
 	for (int i = 0; i < size; i++)
 	{
+		cout << "  " << stock[i].get_item_id() << "   ";
+
 		cout << endl;
 		display_category(stock[i].get_item_category());
 
