@@ -5,7 +5,7 @@ void Stock::show_data()
 {
 	final_price = retail_price * (1 - (discount / 100.0));
 	cout << "\nItem Details\n-----------------------\n";
-	cout << "Item id\t\t: " << generate_item_id << endl;
+	cout << "Item id\t\t: " << item_id << endl;
 	cout << "Item name\t\t: " << item_name << endl;
 	cout << "Retail price\t\t: " << retail_price  << "/=" << endl;
 	cout << "Final price\t\t: " << final_price << "/=" << endl;
