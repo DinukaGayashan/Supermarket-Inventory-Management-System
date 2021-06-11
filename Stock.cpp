@@ -50,13 +50,14 @@ void Stock::input_data()
 
 ostream& operator<<(ostream& out, const Stock& obj)
 {
-	out << obj.item_name << "\n" << obj.measure_unit << "\n" << obj.brand_name << "\n" << obj.supply_type << "\n" << obj.number_of_items << "\n" << obj.retail_price << "\n"
+	out <<obj.item_id << "\n"<< obj.item_name << "\n" << obj.measure_unit << "\n" << obj.brand_name << "\n" << obj.supply_type << "\n" << obj.number_of_items << "\n" << obj.retail_price << "\n"
 		<<obj.final_price << "\n" << obj.item_category << "\n" << obj.discount << endl;
 	return out;
 }
 
 istream& operator >> (istream& in, Stock& obj)
 {
+	in >> obj.item_id;
 	in >> obj.item_name;
 	in >> obj.measure_unit;
 	in >> obj.brand_name;
