@@ -246,7 +246,7 @@ void Stock::delete_item()
 
 }
 
-string Stock::generate_item_id(string item_name_in, string brand_name_in, int category_in)
+string Stock::generate_item_id(const string& item_name_in, const string& brand_name_in,const int& category_in)
 {
 	string id = "";
 
@@ -254,12 +254,11 @@ string Stock::generate_item_id(string item_name_in, string brand_name_in, int ca
 	char b = brand_name_in[0];
 	char i = item_name_in[0];
 
-	category_in += 64;
-	char c = category_in;
-	id += c;
+	
+	id += (category_in+64);
 
 	//if first letter is lower case making it up to upper case
-	if (i >= 'a' && i <= 'z') {
+	if (i >= 'a') {
 		i = i - 32;
 	}
 	id += i;
@@ -273,12 +272,12 @@ string Stock::generate_item_id(string item_name_in, string brand_name_in, int ca
 	int sum = 0;
 	int index = 1;
 	for (char i : brand_name_in) {
-		sum += index++ * (int)i;
+		sum += index++ *(int) ( i >='a' ? i-32:i);
 	}
 
 	index = 1;
 	for (char i : item_name_in) {
-		sum += index++ * (int)i;
+		sum += index++ * (int)(i >= 'a' ? i - 32 : i);
 	}
 
 	string number = to_string(sum);

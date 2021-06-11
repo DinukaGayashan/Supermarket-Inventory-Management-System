@@ -42,7 +42,7 @@ public:
 	static vector<Stock> find_item(const string& item);
 	static void edit_item();
 	static void delete_item();
-	string generate_item_id(string item_name_in, string brand_name_in, int category_in);
+	string generate_item_id(const string& item_name_in, const string& brand_name_in, const int& category_in);
 
 	//access data
 	string get_item_id();

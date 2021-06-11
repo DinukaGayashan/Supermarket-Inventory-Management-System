@@ -24,9 +24,9 @@ int main()
 	}
 	*/
 	
-	set_console_position(0, 0);
-	set_console_size(1920, 1080);
-	set_font_size(24,24);
+	//set_console_position(0, 0);
+	//set_console_size(1920, 1080);
+	//set_font_size(24,24);
 
 	////Stock s1, s2("defsdd","vghfjchgfv", "nfghjxfg", "chgjhhjd", "notape", 20, 43355, 20, 3);
 	//vector < Stock > stock = { s1, s2 };
@@ -47,8 +47,15 @@ int main()
 	//stock2.write_data(stock2.get_item_category());
 
 	//cout << "NOOOOOOOb";
-	vector<Stock> r = Stock::read_data(1);
-	display_stock_table(r);
+	//vector<Stock> r = Stock::read_data(1);
+	//display_stock_table(r);
+
+	string name = "apPLe";
+	string name2 = "AppLE";
+	Stock s;
+
+	cout << s.generate_item_id(name, "lAnka", 1) << endl;
+	cout << s.generate_item_id(name2, "lanKA", 1) << endl;
 	
 	return 0;
 }
