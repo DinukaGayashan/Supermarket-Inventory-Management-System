@@ -146,22 +146,21 @@ int Stock::get_discount()
 }
 
 
-vector<Stock> Stock::find_item(const string& item)
+vector<Stock> Stock::find_item(const string& item,bool name)
 {
-	
 	vector<Stock> items;
 
 	for (int i = 1; i < 11; i++) {
 		vector<Stock> temp = read_data(i);
 		for (auto j : temp)
-			if(j.item_name == item)
+			if((name==1 ? j.item_name: j.brand_name) == item)
 				items.emplace_back(j);
 		
 	}
-
 	return items;
-	
 }
+
+
 void Stock::edit_item()
 {
 	display_categories();
