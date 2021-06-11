@@ -7,8 +7,6 @@
 #include "User_interface.h"
 #include "Staff.h"
 
-
-
 using namespace std;
 
 int main() 
@@ -26,8 +24,9 @@ int main()
 	}
 	*/
 	
-	//set_console_position(0, 0);
-	//set_console_size(1920, 1080);
+	set_console_position(0, 0);
+	set_console_size(1920, 1080);
+	set_font_size(24,24);
 
 	////Stock s1, s2("defsdd","vghfjchgfv", "nfghjxfg", "chgjhhjd", "notape", 20, 43355, 20, 3);
 	//vector < Stock > stock = { s1, s2 };
@@ -47,7 +46,9 @@ int main()
 	//stock2.input_data();
 	//stock2.write_data(stock2.get_item_category());
 
-	vector<Stock> r = Stock::find_item("Apple");
+	//cout << "NOOOOOOOb";
+	vector<Stock> r = Stock::read_data(1);
+	display_stock_table(r);
 	
 	return 0;
 }

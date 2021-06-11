@@ -90,11 +90,9 @@ vector<Stock> Stock::read_data(int file_index)
 	read_file.open(file_names[--file_index]);
 
 	Stock obj;
-	while (!read_file.eof())
+	while (read_file >> obj)
 	{
-		read_file >> obj;
 		items.emplace_back(obj);
-		
 	}
 	return items;
 }
