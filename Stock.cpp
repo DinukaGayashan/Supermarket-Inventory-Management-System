@@ -245,37 +245,50 @@ void Stock::edit_item()
 void Stock::delete_item()
 {
 	Stock temp;
+	vector<Stock> itm;
+	while (true) {
+		string itm_nm;
+		cout << "Enter item name :";
+		getline(cin, itm_nm);
 
-	//item_id check
+		itm = find_item(itm_nm);
 
-
-	int ctgry = int_check("Enter category");
-	vector<Stock> ctgry_dt = read_data(ctgry);
-
-	string itm_nm;
-	cout << "Enter item name :";
-	getline(cin, itm_nm);
-
-	size_t size = ctgry_dt.size();
-	for (int i = 0; i < size; i++)
-	{
-		if (ctgry_dt[i].item_name == itm_nm) {
-			
-			ctgry_dt.erase(ctgry_dt.begin() + i);
-
-			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
-			string file_name = file_names[--ctgry];
-			remove(file_name.c_str());
-
-			for (int j = 0; j < size-1; j++) {
-				ctgry_dt[j].write_data(ctgry + 1);
-			}
-
-			return;
-		}
+		if (itm.size() == 0)
+			cerr << "No such item exists\n";
+		else
+			break;
 	}
 
-	cerr << "No such item exists\n";
+	display_stock_table(itm);
+
+	while (true) {
+		bool error = false;
+		string id;
+		cout << "Enter id : ";
+		getline(cin, id);
+		temp = find_by_id(id, itm, error);
+
+		if (error == false)
+			break;
+
+		cerr << "invalid id\n";
+	}
+
+	int ctgry = temp.item_category;
+	int index(0);
+	for (int i = 0; i<int(itm.size()); i++)
+		if (itm[i].item_id == temp.item_id)
+			index = i;
+
+	itm.erase(itm.begin() + index);
+
+	const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
+	string file_name = file_names[--ctgry];
+	remove(file_name.c_str());
+
+	for (int j = 0; j <int(itm.size()); j++) {
+		itm[j].write_data(ctgry + 1);
+	}
 
 }
 
