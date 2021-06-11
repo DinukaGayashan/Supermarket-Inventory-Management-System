@@ -118,6 +118,8 @@ string Stock::get_item_brand_name()
 	return brand_name;
 }
 
+
+
 string Stock::get_item_supply_type()
 {
 	return supply_type;
@@ -144,6 +146,20 @@ int Stock::get_discount()
 	return discount;
 }
 
+
+vector<Stock> Stock::find_item(const string& item)
+{
+	
+	vector<Stock> items;
+
+	for (int i = 1; i < 11; i++) {
+		vector<Stock> temp = read_data(i);
+		copy(temp.begin(), temp.end(), items);
+	}
+
+	return items;
+	
+}
 void Stock::edit_item()
 {
 	display_categories();

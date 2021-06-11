@@ -39,6 +39,7 @@ public:
 	void input_data();
 	void write_data(int file_index);
 	static vector<Stock> read_data(int file_index);
+	static vector<Stock> find_item(const string& item);
 	static void edit_item();
 	static void delete_item();
 	string generate_item_id(string item_name_in, string brand_name_in, int category_in);
