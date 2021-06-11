@@ -26,13 +26,13 @@ int main()
 	}
 	*/
 	
-	set_console_position(0, 0);
-	set_console_size(1920, 1080);
+	//set_console_position(0, 0);
+	//set_console_size(1920, 1080);
 
-	Stock s1, s2("defsdd","vghfjchgfv", "nfghjxfg", "chgjhhjd", "notape", 20, 43355, 20, 3);
-	vector < Stock > stock = { s1, s2 };
+	////Stock s1, s2("defsdd","vghfjchgfv", "nfghjxfg", "chgjhhjd", "notape", 20, 43355, 20, 3);
+	//vector < Stock > stock = { s1, s2 };
 
-	display_stock_table(stock);
+	//display_stock_table(stock);
 	
 
 	//display_categories();
@@ -40,7 +40,14 @@ int main()
 	//s.add_user();
 	//s.show_data();
 
-	
+	//Stock stock1, stock2;
+	//stock1.input_data();
+	//stock1.write_data(stock1.get_item_category());
+	//
+	//stock2.input_data();
+	//stock2.write_data(stock2.get_item_category());
 
+	vector<Stock> r = Stock::find_item("Apple");
+	
 	return 0;
 }

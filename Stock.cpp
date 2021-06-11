@@ -40,7 +40,9 @@ void Stock::input_data()
 	discount = int_check("Enter the discount percentage"); 
 	final_price = retail_price * (1 - (discount / 100.0));
 
-	cout << "Item id\t\t\t: " << generate_item_id(item_name, brand_name, item_category);
+	item_id = generate_item_id(item_name, brand_name, item_category);
+
+	cout << "Item id\t\t\t: " << item_id;
 
 	//cout << "Press Enter to save\n";
 	//get keystroke
@@ -94,7 +96,6 @@ vector<Stock> Stock::read_data(int file_index)
 		items.emplace_back(obj);
 		
 	}
-	items.pop_back();
 	return items;
 }
 
@@ -154,7 +155,10 @@ vector<Stock> Stock::find_item(const string& item)
 
 	for (int i = 1; i < 11; i++) {
 		vector<Stock> temp = read_data(i);
-		copy(temp.begin(), temp.end(), items);
+		for (auto j : temp)
+			if(j.item_name == item)
+				items.emplace_back(j);
+		
 	}
 
 	return items;
