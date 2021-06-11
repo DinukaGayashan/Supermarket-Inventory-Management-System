@@ -129,6 +129,13 @@ int Stock::get_number_of_items()
 	return number_of_items;
 }
 
+void Stock::promotion(int promotion_percentage,int promotion_type)
+{
+	if (promotion_type == 1) {
+
+	}
+}
+
 
 double Stock::get_retail_price()
 {
@@ -158,6 +165,16 @@ vector<Stock> Stock::find_item(const string& item,bool name)
 		
 	}
 	return items;
+}
+
+Stock Stock::find_by_id(const string& id, const vector<Stock>& items, bool& error ) {
+	
+	for (auto i : items) {
+		if (i.item_id == id)
+			return i;
+	}
+	
+	error = true;
 }
 
 
