@@ -169,59 +169,76 @@ vector<Stock> Stock::find_item(const string& item,bool name)
 
 Stock Stock::find_by_id(const string& id, const vector<Stock>& items, bool& error ) {
 	
+	Stock t;
 	for (auto i : items) {
 		if (i.item_id == id)
 			return i;
 	}
 	
 	error = true;
+	return t;
 }
+
 
 
 void Stock::edit_item()
 {
-	display_categories();
-
 	Stock temp;
+	vector<Stock> itm;
+	while (true) {
+		string itm_nm;
+		cout << "Enter item name :";
+		getline(cin, itm_nm);
 
-	//item_id check
+		itm = find_item(itm_nm);
 
-	int ctgry = int_check("Enter category");
-	vector<Stock> ctgry_dt = read_data(ctgry);
+		if (itm.size() == 0)
+			cerr << "No such item exists\n";
+		else
+			break;
+	}
+	
+	display_stock_table(itm);
 
-	string itm_nm;
-	cout << "Enter item name :";
-	getline(cin, itm_nm);
+	while (true) {
+		bool error = false;
+		string id;
+		cout << "Enter id : ";
+		getline(cin, id);
+		temp = find_by_id(id, itm, error);
 
-	size_t size = ctgry_dt.size();
-	for (int i = 0; i < size; i++)
-	{
-		if (ctgry_dt[i].item_name == itm_nm) {
-			if (ctgry_dt[i].item_category > 2) {
-
-				cout << "Enter brand name\t: ";
-				getline(cin, ctgry_dt[i].brand_name);
-
-				ctgry_dt[i].supply_type = (supply_type_check() == 1 ? "local" : "imported");
-			}
-
-			ctgry_dt[i].number_of_items = int_check("Enter number of items");
-			ctgry_dt[i].retail_price = rupees_check("Enter the retail price");
-			ctgry_dt[i].discount = int_check("Enter the discount percentage");
-			
-			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
-			string file_name = file_names[--ctgry];
-			remove(file_name.c_str());
-
-			for (int j = 0; j < size; j++) {
-				ctgry_dt[j].write_data(ctgry+1);
-			}
-
-			return ;
-		}
+		if (error == false) 
+			break;
+		
+		cerr << "invalid id\n";
 	}
 
-	cerr << "No such item exists\n";
+	int ctgry = temp.item_category;
+	
+	if (temp.item_category > 2) {
+
+		cout << "Enter brand name\t: ";
+		getline(cin, temp.brand_name);
+
+		temp.supply_type = (supply_type_check() == 1 ? "local" : "imported");
+	}
+
+	temp.number_of_items = int_check("Enter number of items");
+	temp.retail_price = rupees_check("Enter the retail price");
+	temp.discount = int_check("Enter the discount percentage");
+	
+	itm = read_data(ctgry);
+
+	for (auto i : itm)
+		if (i.item_id == temp.item_id)
+			i = temp;
+
+	const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
+	string file_name = file_names[--ctgry];
+	remove(file_name.c_str());
+
+	for (int j = 0; j < int(itm.size()); j++)
+		itm[j].write_data(ctgry+1);
 
 }
 
