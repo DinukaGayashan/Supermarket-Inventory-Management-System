@@ -281,19 +281,7 @@ void Stock::edit_item()
 	temp.discount = int_check("Enter the discount percentage");
 	temp.final_price = temp.retail_price * (1 - (temp.discount / 100.0));
 
-	vector<Stock> itms = read_data(ctgry);
-
-	for (int i=0;i<(int)itms.size();i++)
-		if (itms[i].item_id == temp.item_id)
-			itms[i] = temp;
-
-	const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
-	string file_name = file_names[--ctgry];
-	remove(file_name.c_str());
-
-	for (int j = 0; j < int(itms.size()); j++)
-		itms[j].write_data(ctgry+1);
-
+	write_all_data(temp);
 }
 
 void Stock::delete_item()
