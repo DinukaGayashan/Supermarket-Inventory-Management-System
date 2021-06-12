@@ -131,10 +131,32 @@ int Stock::get_number_of_items()
 void Stock::promotion(int promotion_type)
 {
 	vector<Stock> items;
+	vector<Stock> dis;
 	//for an item item name or code ???
 	if (promotion_type == 1) {
 		Stock temp;
-		find_and_display(temp, items);
+		find_and_display(temp, items,false);
+		int t = discount_check();
+		for (int i = 0; i < (int)items.size(); i++) {
+			items[i].discount = t;
+			items[i].final_price = items[i].retail_price * (1 - (items[i].discount) / 100.0f);
+			int ctgry = items[i].item_category;
+			vector<Stock> itms = read_data(ctgry);
+
+			for (int k = 0; k < (int)itms.size(); k++)
+				if (itms[k].item_id == items[i].item_id)
+					itms[k] = items[i];
+			
+			dis.emplace_back(items[i]);
+			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
+			string file_name = file_names[--ctgry];
+			remove(file_name.c_str());
+
+			for (int j = 0; j < int(itms.size()); j++)
+				itms[j].write_data(ctgry + 1);
+		}
+
+		display_stock_table(dis);
 	}
 
 	//for a brand
@@ -149,14 +171,14 @@ void Stock::promotion(int promotion_type)
 
 		for (int i = 0; i < (int)items.size(); i++) {
 			items[i].discount = t;
-			items[i].final_price = items[i].retail_price*(1 - (items[i].discount) / 100.0f);
+			items[i].final_price = items[i].retail_price*(1 - (items[i].discount)/ 100.0f);
 			int ctgry = items[i].item_category;
 			vector<Stock> itms = read_data(ctgry);
 
 			for (int k = 0; k < (int)itms.size(); k++)
 				if (itms[k].item_id == items[i].item_id)
 					itms[k] = items[i];
-
+			dis.emplace_back(items[i]);
 			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
 			string file_name = file_names[--ctgry];
 			remove(file_name.c_str());
@@ -164,17 +186,40 @@ void Stock::promotion(int promotion_type)
 			for (int j = 0; j < int(itms.size()); j++)
 				itms[j].write_data(ctgry + 1);
 		}
-
+		display_stock_table(dis);
 	}
 
 	if (promotion_type == 3) {
 		int ctgry = category_check();
+		items = read_data(ctgry);
+		display_stock_table(items);
+
+		int t = discount_check();
+
+		for (int i = 0; i < (int)items.size(); i++) {
+			items[i].discount = t;
+			items[i].final_price = items[i].retail_price * (1 - (items[i].discount) / 100.0f);
+			int ctgry = items[i].item_category;
+			vector<Stock> itms = read_data(ctgry);
+
+			for (int k = 0; k < (int)itms.size(); k++)
+				if (itms[k].item_id == items[i].item_id)
+					itms[k] = items[i];
+			dis.emplace_back(items[i]);
+			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
+			string file_name = file_names[--ctgry];
+			remove(file_name.c_str());
+
+			for (int j = 0; j < int(itms.size()); j++)
+				itms[j].write_data(ctgry + 1);
+		}
+		display_stock_table(dis);
 
 	}
 
 }
 
-void Stock::find_and_display(Stock& item, vector<Stock>& items)
+void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 {
 	while (true) {
 		string itm_nm;
@@ -191,7 +236,7 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items)
 
 	display_stock_table(items);
 
-	while (true) {
+	while (id) {
 		bool error = false;
 		string id;
 		cout << "Enter ID : ";

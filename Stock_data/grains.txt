@@ -1,10 +1,20 @@
 CNC03486
-Nadu Rice
+NaduRice
 nounit
 CIC
 local
 1000
 96
-91.2
+0
 3
-5
+100
+HRY03403
+RedBull
+nounit
+Yeti
+imported
+100
+375
+0
+3
+100

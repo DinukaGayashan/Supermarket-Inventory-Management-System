@@ -33,7 +33,6 @@ int main()
 	//vector < Stock > stock = { s1, s2 };
 
 	//display_stock_table(stock);
-	
 
 	//display_categories();
 	//Staff s;
@@ -67,9 +66,6 @@ int main()
 		array[i].write_data(array[i].get_item_category());
 	}*/
 
-
-
-
 	//vector < Stock > stock = Stock::find_item("Toothpaste", 9);
 	//cout << fixed << setprecision(2);
 	//stock[0].show_data();
@@ -78,6 +74,9 @@ int main()
 	
 	//Stock::edit_item();
 	//Stock::delete_item();
+
+	Stock::promotion(3);
+	//Stock::read_data(8);
 
 	return 0;
 }
