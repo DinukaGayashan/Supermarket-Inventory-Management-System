@@ -29,7 +29,7 @@ void Stock::input_data()
 	getline(cin, item_name);
 
 	if (item_category > 2) {
-		cout << "Enter brand name\t: ";
+		cout << "Enter brand name\t\t: ";
 		getline(cin, brand_name);
 
 		supply_type = (supply_type_check() == 1 ? "local" : "imported");
@@ -42,7 +42,7 @@ void Stock::input_data()
 
 	item_id = generate_item_id(item_name, brand_name, item_category);
 
-	cout << "Item id\t\t\t: " << item_id;
+	cout << "Item id\t\t\t\t: " << item_id;
 
 	//cout << "Press Enter to save\n";
 	//get keystroke

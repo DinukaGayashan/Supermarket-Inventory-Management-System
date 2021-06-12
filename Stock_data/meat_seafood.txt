@@ -1,0 +1,10 @@
+BTN02779
+Tuna
+nounit
+nobrand
+notype
+12
+590
+590
+2
+0

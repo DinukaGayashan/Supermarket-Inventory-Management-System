@@ -1,0 +1,10 @@
+CNC03486
+Nadu Rice
+nounit
+CIC
+local
+1000
+96
+91.2
+3
+5

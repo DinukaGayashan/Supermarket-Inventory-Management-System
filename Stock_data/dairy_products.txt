@@ -1,0 +1,10 @@
+FMN02362
+Milo
+nounit
+Nestle
+local
+1000
+60
+60
+6
+0

@@ -49,13 +49,28 @@ int main()
 	//cout << "NOOOOOOOb";
 	//vector<Stock> r = Stock::read_data(1);
 	//display_stock_table(r);
-
+	/*
 	string name = "apPLe";
 	string name2 = "AppLE";
 	Stock s;
 
 	cout << s.generate_item_id(name, "lAnka", 1) << endl;
 	cout << s.generate_item_id(name2, "lanKA", 1) << endl;
+	*/
+	/*
+	Stock array[12];
 	
+	for (int i = 0; i < 12; i++)
+	{
+		array[i].input_data();
+		array[i].write_data(array[i].get_item_category());
+	}*/
+
+	vector < Stock > stock = Stock::find_item("Nestle", 0);
+	display_stock_table(stock);
+	//Stock ::find_by_id("DBB04808", const vector<Stock>&items, bool& error);
+
+
+
 	return 0;
 }

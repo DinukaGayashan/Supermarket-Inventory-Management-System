@@ -1,0 +1,10 @@
+ITC06253
+Toothpaste
+nounit
+Clogard
+local
+500
+105
+102.9
+9
+2
