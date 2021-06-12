@@ -140,20 +140,9 @@ void Stock::promotion(int promotion_type)
 		for (int i = 0; i < (int)items.size(); i++) {
 			items[i].discount = t;
 			items[i].final_price = items[i].retail_price * (1 - (items[i].discount) / 100.0f);
-			int ctgry = items[i].item_category;
-			vector<Stock> itms = read_data(ctgry);
-
-			for (int k = 0; k < (int)itms.size(); k++)
-				if (itms[k].item_id == items[i].item_id)
-					itms[k] = items[i];
 			
+			write_all_data(items[i]);
 			dis.emplace_back(items[i]);
-			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
-			string file_name = file_names[--ctgry];
-			remove(file_name.c_str());
-
-			for (int j = 0; j < int(itms.size()); j++)
-				itms[j].write_data(ctgry + 1);
 		}
 
 		display_stock_table(dis);
@@ -172,19 +161,8 @@ void Stock::promotion(int promotion_type)
 		for (int i = 0; i < (int)items.size(); i++) {
 			items[i].discount = t;
 			items[i].final_price = items[i].retail_price*(1 - (items[i].discount)/ 100.0f);
-			int ctgry = items[i].item_category;
-			vector<Stock> itms = read_data(ctgry);
-
-			for (int k = 0; k < (int)itms.size(); k++)
-				if (itms[k].item_id == items[i].item_id)
-					itms[k] = items[i];
+			write_all_data(items[i]);
 			dis.emplace_back(items[i]);
-			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
-			string file_name = file_names[--ctgry];
-			remove(file_name.c_str());
-
-			for (int j = 0; j < int(itms.size()); j++)
-				itms[j].write_data(ctgry + 1);
 		}
 		display_stock_table(dis);
 	}
@@ -199,19 +177,8 @@ void Stock::promotion(int promotion_type)
 		for (int i = 0; i < (int)items.size(); i++) {
 			items[i].discount = t;
 			items[i].final_price = items[i].retail_price * (1 - (items[i].discount) / 100.0f);
-			int ctgry = items[i].item_category;
-			vector<Stock> itms = read_data(ctgry);
-
-			for (int k = 0; k < (int)itms.size(); k++)
-				if (itms[k].item_id == items[i].item_id)
-					itms[k] = items[i];
+			write_all_data(items[i]);
 			dis.emplace_back(items[i]);
-			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
-			string file_name = file_names[--ctgry];
-			remove(file_name.c_str());
-
-			for (int j = 0; j < int(itms.size()); j++)
-				itms[j].write_data(ctgry + 1);
 		}
 		display_stock_table(dis);
 
@@ -351,6 +318,22 @@ void Stock::delete_item()
 		itm[j].write_data(ctgry + 1);
 	}
 
+}
+
+void Stock::write_all_data(const Stock& temp)
+{
+	int ctgry = temp.item_category;
+	vector<Stock> itms = read_data(ctgry);
+	for (int k = 0; k < (int)itms.size(); k++)
+		if (itms[k].item_id == temp.item_id)
+			itms[k] = temp;
+
+	const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
+	string file_name = file_names[--ctgry];
+	remove(file_name.c_str());
+
+	for (int j = 0; j < int(itms.size()); j++)
+		itms[j].write_data(ctgry + 1);
 }
 
 string Stock::generate_item_id(const string& item_name_in, const string& brand_name_in,const int& category_in)

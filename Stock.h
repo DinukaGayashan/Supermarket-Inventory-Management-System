@@ -45,6 +45,7 @@ public:
 	static void find_and_display(Stock& item, vector<Stock>& items, bool id = true);
 	static void promotion(int promotion_type);
 	static Stock find_by_id(const string& id, const vector<Stock>& items, bool& error);
+	static void write_all_data(const Stock& temp);
 	string generate_item_id(const string& item_name_in, const string& brand_name_in, const int& category_in);
 
 	//access data

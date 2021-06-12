@@ -224,3 +224,14 @@ void display_stock_table(vector <Stock> stock)
 
 	cout << endl;
 }
+
+void to_upper(string& input)
+{
+	size_t len = input.size();
+	for (size_t i = 0; i < len; i++) {
+		if (input[i] == ' ')
+			input[i] = '_';
+		else if (input[i] >= 'a')
+			input[i] = input[i] - 32;
+	}
+}

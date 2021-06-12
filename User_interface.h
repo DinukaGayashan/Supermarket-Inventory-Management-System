@@ -24,5 +24,6 @@ void display_staff_positions();
 void display_error(string error);
 void display_help(string error);
 void display_stock_table(vector <Stock> stock);
+void to_upper(string& input);
 
 #endif

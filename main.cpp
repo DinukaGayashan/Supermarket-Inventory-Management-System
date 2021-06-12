@@ -75,8 +75,12 @@ int main()
 	//Stock::edit_item();
 	//Stock::delete_item();
 
-	Stock::promotion(3);
+	//Stock::promotion(3);
 	//Stock::read_data(8);
+
+	//string test = "my name is Chathurinda 123";
+	//to_upper(test);
+	//cout << test;
 
 	return 0;
 }
