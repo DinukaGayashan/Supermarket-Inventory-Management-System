@@ -8,13 +8,3 @@ notype
 87.3
 1
 12
-AAN04480
-Apple
-nounit
-nobrand
-notype
-55
-55
-87.3
-1
-55
