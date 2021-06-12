@@ -20,7 +20,7 @@ int int_check(const string str)
 	string input;
 	while (true)
 	{
-		cout << str << "\t\t: ";
+		cout << str << "\t: ";
 		getline(cin, input);
 
 		if (is_int(input))
@@ -71,7 +71,7 @@ double rupees_check(const string str)
 	string input;
 	while (true)
 	{
-		cout << str << "\t\t: ";
+		cout << str << "\t: ";
 		getline(cin, input);
 
 		if (is_double(input))

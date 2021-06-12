@@ -187,7 +187,7 @@ void Stock::edit_item()
 	vector<Stock> itm;
 	while (true) {
 		string itm_nm;
-		cout << "Enter item name :";
+		cout << "Enter item name\t\t:";
 		getline(cin, itm_nm);
 
 		itm = find_item(itm_nm);
@@ -203,7 +203,7 @@ void Stock::edit_item()
 	while (true) {
 		bool error = false;
 		string id;
-		cout << "Enter id : ";
+		cout << "Enter ID : ";
 		getline(cin, id);
 		temp = find_by_id(id, itm, error);
 
@@ -217,14 +217,14 @@ void Stock::edit_item()
 	
 	if (temp.item_category > 2) {
 
-		cout << "Enter brand name\t: ";
+		cout << "Enter brand name\t\t: ";
 		getline(cin, temp.brand_name);
 
 		temp.supply_type = (supply_type_check() == 1 ? "local" : "imported");
 	}
 
-	temp.number_of_items = int_check("Enter number of items");
-	temp.retail_price = rupees_check("Enter the retail price");
+	temp.number_of_items = int_check("Enter number of items\t");
+	temp.retail_price = rupees_check("Enter the retail price\t");
 	temp.discount = int_check("Enter the discount percentage");
 	
 	itm = read_data(ctgry);
@@ -264,7 +264,7 @@ void Stock::delete_item()
 	while (true) {
 		bool error = false;
 		string id;
-		cout << "Enter id : ";
+		cout << "Enter ID : ";
 		getline(cin, id);
 		temp = find_by_id(id, itm, error);
 

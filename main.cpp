@@ -66,11 +66,14 @@ int main()
 		array[i].write_data(array[i].get_item_category());
 	}*/
 
-	vector < Stock > stock = Stock::find_item("Nestle", 0);
-	display_stock_table(stock);
-	//Stock ::find_by_id("DBB04808", const vector<Stock>&items, bool& error);
 
 
+
+	//vector < Stock > stock = Stock::find_item("Peanut", 1);
+	//display_stock_table(stock);
+	
+	Stock::edit_item();
+	//Stock::delete_item();
 
 	return 0;
 }
