@@ -140,6 +140,22 @@ int category_check() {
 	return ctgry;
 }
 
+int discount_check() {
+	int dscnt;
+
+	while (true) {
+		dscnt = int_check("Enter Discount");
+
+		if (dscnt > 100 || dscnt < 0) {
+			display_error("II04");
+			continue;
+		}
+		break;
+	}
+
+	return dscnt;
+}
+
 bool is_name(const string name) {
 	for (char i : name)
 		if ((i < 'a' || i > 'z') && (i < 'A' || i > 'Z') && i!=' ')

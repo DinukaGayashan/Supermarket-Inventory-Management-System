@@ -1,10 +1,10 @@
 ITC06253
 Toothpaste
 nounit
-Clogard
+clogard
 local
-500
-105
-102.9
+123
+100.99
+92.9108
 9
-2
+8

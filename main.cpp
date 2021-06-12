@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <iomanip>
 #include "Stock.h"
 #include "Error_check.h"
 #include "User_interface.h"
@@ -69,11 +70,14 @@ int main()
 
 
 
-	//vector < Stock > stock = Stock::find_item("Peanut", 1);
+	//vector < Stock > stock = Stock::find_item("Toothpaste", 9);
+	//cout << fixed << setprecision(2);
+	//stock[0].show_data();
+	//cout << endl << endl;
 	//display_stock_table(stock);
 	
 	//Stock::edit_item();
-	Stock::delete_item();
+	//Stock::delete_item();
 
 	return 0;
 }

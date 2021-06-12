@@ -26,6 +26,7 @@ bool is_name(const string name);
 string check_name(const string input_str);
 bool is_date(const Date date);
 Date check_date(const string input_str);
+int discount_check();
 
 
 

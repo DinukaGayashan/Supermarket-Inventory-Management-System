@@ -3,7 +3,6 @@
 
 void Stock::show_data()
 {
-	final_price = retail_price * (1 - (discount / 100.0));
 	cout << "\nItem Details\n-----------------------\n";
 	cout << "Item id\t\t: " << item_id << endl;
 	cout << "Item name\t\t: " << item_name << endl;
@@ -131,8 +130,78 @@ int Stock::get_number_of_items()
 
 void Stock::promotion(int promotion_percentage,int promotion_type)
 {
+	vector<Stock> items;
+	//for an item item name or code ???
 	if (promotion_type == 1) {
+		Stock temp;
+		find_and_display(temp, items);
+	}
 
+	//for a brand
+	if (promotion_type == 2) {
+		string brandName;
+		cout << "enter brand name :";
+		getline(cin, brandName);
+		items = find_item(brandName, false);
+		display_stock_table(items);
+
+		int t = discount_check();
+
+		for (int i = 0; i < (int)items.size(); i++) {
+			items[i].discount = t;
+			items[i].final_price = items[i].retail_price*(1 - items[i].discount / 100.0f);
+			int ctgry = items[i].item_category;
+			vector<Stock> itms = read_data(ctgry);
+
+			for (int k = 0; k < (int)itms.size(); k++)
+				if (itms[k].item_id == items[i].item_id)
+					itms[k] = items[i];
+
+			const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
+			string file_name = file_names[--ctgry];
+			remove(file_name.c_str());
+
+			for (int j = 0; j < int(itms.size()); j++)
+				itms[j].write_data(ctgry + 1);
+		}
+
+	}
+
+	if (promotion_type == 3) {
+		int ctgry = category_check();
+
+	}
+
+}
+
+void Stock::find_and_display(Stock& item, vector<Stock>& items)
+{
+	while (true) {
+		string itm_nm;
+		cout << "Enter item name\t\t:";
+		getline(cin, itm_nm);
+
+		items = find_item(itm_nm);
+
+		if (items.size() == 0)
+			cerr << "No such item exists\n";
+		else
+			break;
+	}
+
+	display_stock_table(items);
+
+	while (true) {
+		bool error = false;
+		string id;
+		cout << "Enter ID : ";
+		getline(cin, id);
+		item = find_by_id(id, items, error);
+
+		if (error == false)
+			break;
+
+		cerr << "invalid id\n";
 	}
 }
 
@@ -185,33 +254,8 @@ void Stock::edit_item()
 {
 	Stock temp;
 	vector<Stock> itm;
-	while (true) {
-		string itm_nm;
-		cout << "Enter item name\t\t:";
-		getline(cin, itm_nm);
-
-		itm = find_item(itm_nm);
-
-		if (itm.size() == 0)
-			cerr << "No such item exists\n";
-		else
-			break;
-	}
 	
-	display_stock_table(itm);
-
-	while (true) {
-		bool error = false;
-		string id;
-		cout << "Enter ID : ";
-		getline(cin, id);
-		temp = find_by_id(id, itm, error);
-
-		if (error == false) 
-			break;
-		
-		cerr << "invalid id\n";
-	}
+	find_and_display(temp, itm);
 
 	int ctgry = temp.item_category;
 	
@@ -226,7 +270,8 @@ void Stock::edit_item()
 	temp.number_of_items = int_check("Enter number of items\t");
 	temp.retail_price = rupees_check("Enter the retail price\t");
 	temp.discount = int_check("Enter the discount percentage");
-	
+	temp.final_price = temp.retail_price * (1 - (temp.discount / 100.0));
+
 	vector<Stock> itms = read_data(ctgry);
 
 	for (int i=0;i<(int)itms.size();i++)
@@ -246,34 +291,8 @@ void Stock::delete_item()
 {
 	Stock temp;
 	vector<Stock> itm;
-	while (true) {
-		string itm_nm;
-		cout << "Enter item name :";
-		getline(cin, itm_nm);
-
-		itm = find_item(itm_nm);
-
-		if (itm.size() == 0)
-			cerr << "No such item exists\n";
-		else
-			break;
-	}
-
-	display_stock_table(itm);
-
-	while (true) {
-		bool error = false;
-		string id;
-		cout << "Enter ID : ";
-		getline(cin, id);
-		temp = find_by_id(id, itm, error);
-
-		if (error == false)
-			break;
-
-		cerr << "invalid id\n";
-	}
-
+	find_and_display(temp, itm);
+	
 	int ctgry = temp.item_category;
 	int index(0);
 	for (int i = 0; i<int(itm.size()); i++)
