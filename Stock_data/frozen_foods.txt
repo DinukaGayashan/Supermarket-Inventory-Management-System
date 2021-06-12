@@ -1,10 +1,10 @@
-ECC03813
-Cutlet
+ECC04394
+CUTLETS
 nounit
-Cresent
-imported
+CRESENT
+Local
 100
 425
-412.25
+403.75
 5
-3
+5

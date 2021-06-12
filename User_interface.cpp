@@ -56,8 +56,8 @@ void display_category(int n)
 
 void display_categories()
 {
-	cout << "\nCategories\n";
-	cout << "-----------------------\n";
+	cout << "\n\nCategories\n";
+	cout << "-------------------------\n";
 	cout << "1. Produce\n";
 	cout << "2. Meat & Seafood\n";
 	cout << "3. Grains\n";
@@ -73,7 +73,7 @@ void display_categories()
 void display_supply_type()
 {
 	cout << "\nSupply Type\n";
-	cout << "-----------------------\n";
+	cout << "-------------------------\n";
 	cout << "1. Local\n";
 	cout << "2. Imported\n";
 }
@@ -81,7 +81,7 @@ void display_supply_type()
 void display_staff_positions()
 {
 	cout << "\nStaff Positions\n";
-	cout << "-----------------------\n";
+	cout << "---------------------------------------\n";
 	cout << "1. Manager\n";
 	cout << "2. Cashier\n";
 	cout << "3. Floor worker\n";
@@ -89,28 +89,31 @@ void display_staff_positions()
 
 void display_error(string error)
 {
-	if (error == "II01")		cerr << "error II01: Input must be a counting number.\n";
-	else if (error == "II02")	cerr << "error II02: Input must be larger than zero.\n";
-	else if (error == "II03")	cerr << "error II03: Input must be in the range (limit exceeded).\n";
-	else if (error == "II04")	cerr << "error II04: Input must be in the range of 1 to 10.\n";
-	else if (error == "II05")	cerr << "error II05: Input must be either 1 or 2.\n";
-	else if (error == "II06")	cerr << "error II06: Input must be in the range of 1 to 3.\n";
+	if (error == "II01")		cerr << "\a\terror II01: Input must be a counting number.\n";
+	else if (error == "II02")	cerr << "\a\terror II02: Input must be larger than zero.\n";
+	else if (error == "II03")	cerr << "\a\terror II03: Input value limit (xe10) exceeded.\n";
+	else if (error == "II04")	cerr << "\a\terror II04: Input must be in the range of 1 to 10.\n";
+	else if (error == "II05")	cerr << "\a\terror II05: Input must be either 1 or 2.\n";
+	else if (error == "II06")	cerr << "\a\terror II06: Input must be in the range of 1 to 3.\n";
 
-	else if (error == "ID01")	cerr << "error ID01: Input must be a value with two decimal points.\n";
-	else if (error == "ID02")	cerr << "error ID02: Input must be larger than zero.\n";
-	else if (error == "ID03")	cerr << "error ID03: Input must be in the range (limit exceeded).\n";
+	else if (error == "ID01")	cerr << "\a\terror ID01: Input must be a value with two decimal points.\n";
+	else if (error == "ID02")	cerr << "\a\terror ID02: Input must be larger than zero.\n";
+	else if (error == "ID03")	cerr << "\a\terror ID03: Input value limit (Xe10) exceeded.\n";
 
-	else if (error == "IB01")	cerr << "error IB01: Input must be either 1 or 0.\n";
+	else if (error == "IB01")	cerr << "\a\terror IB01: Input must be either 1 or 0.\n";
 
-	else if (error == "IS01")	cerr << "error IS01: Input must be a phrase with letters.\n";
+	else if (error == "IS01")	cerr << "\a\terror IS01: Input must be a phrase with letters.\n";
 
-	else if (error == "IA01")	cerr << "error IA01: Input must be a valid date.\n";
+	else if (error == "IA01")	cerr << "\a\terror IA01: Input must be a valid date.\n";
+
+	else if (error == "ID01")	cerr << "\a\terror ID01: Non-existing item name entered.\n";
+	else if (error == "ID02")	cerr << "\a\terror ID02: Invalid item ID entered.\n";
 }
 
 void display_help(string error)
 {
 	cout << "Error Coding\n";
-	cout << "-----------------------\n";
+	cout << "---------------------------------------\n";
 	cout << "First letter corresponds to the task type (Input, Process)\n";
 	cout << "Second letter corresponds to the data type\n";
 
@@ -125,7 +128,7 @@ void display_stock_table(vector <Stock> stock)
 	size_t max_name = 9, max_brand_name = 10;
 	size_t size = stock.size();
 	double total = 0;
-	int length = 144;
+	int length = 182;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -147,30 +150,30 @@ void display_stock_table(vector <Stock> stock)
 	for (int i = 0; i < max_name + max_brand_name + length; i++)
 		cout << "-";
 
-	cout << "\n|   " << "Item ID" << "   |";
+	cout << "\n|    " << "Item ID" << "    |";
 
-	cout << "    " << "Item Catagory" << "    |";
+	cout << "        " << "Item Catagory" << "        |";
 
-	for (int i = 0; i < (max_name - 5) / 2; i++)
+	for (int i = 0; i < (max_name ) / 2; i++)
 		cout << " ";
-	cout << "Item Name";
-	for (int i = 0; i < (max_name - 5) / 2; i++)
-		cout << " ";
-	cout << "|";
-
-	for (int i = 0; i < (max_brand_name - 4) / 2; i++)
-		cout << " ";
-	cout << "Brand Name";
-	for (int i = 0; i < (max_brand_name - 4) / 2; i++)
+	cout << "   Item Name   ";
+	for (int i = 0; i < (max_name ) / 2; i++)
 		cout << " ";
 	cout << "|";
 
-	cout << "  " << "Supply Type" << "  |";
-	cout << "  " << "Quantity" << "  |";
+	for (int i = 0; i < (max_brand_name ) / 2; i++)
+		cout << " ";
+	cout << "  Brand Name  ";
+	for (int i = 0; i < (max_brand_name ) / 2; i++)
+		cout << " ";
+	cout << "|";
+
+	cout << "    " << "Supply Type" << "    |";
+	cout << "     " << "Quantity" << "     |";
 	cout << " " << " Retail Price " << " |";
 	cout << " " << "Discount" << " |";
 	cout << " " << " Final Price " << " |";
-	cout << "    " << " Stock Value " << "    |";
+	cout << "     " << "Stock Value" << "     |";
 
 	cout << endl;
 
@@ -181,35 +184,44 @@ void display_stock_table(vector <Stock> stock)
 	{
 		cout << endl;
 
-		cout << "   " << stock[i].get_item_id() << "\t";
+		cout << "    " << stock[i].get_item_id() << "\t\t";
 
 		display_category(stock[i].get_item_category());
+		cout << "\t";
 
+		//to_upper(stock[i].get_item_name(), 0);
+		
 		cout << stock[i].get_item_name();
 		for (int j = 0; j < (max_name - stock[i].get_item_name().length()); j++)
 			cout << " ";
-		cout << "\t";
+		cout << "\t\t";
 
+		//to_upper(stock[i].get_item_brand_name(), 0);
 		cout << stock[i].get_item_brand_name();
 		for (int j = 0; j < (max_brand_name - stock[i].get_item_brand_name().length()); j++)
 			cout << " ";
-		cout << "\t";
+		cout << "\t\t";
 
-		cout << stock[i].get_item_supply_type() << "\t";
+		cout << stock[i].get_item_supply_type();
+		if (stock[i].get_item_supply_type() == "Local")
+			cout << "   ";
+		else if (stock[i].get_item_supply_type() == "notype")
+			cout << "   ";
+		cout << "\t";
 		
 		if (stock[i].get_item_category() == 1 || stock[i].get_item_category() == 2 || stock[i].get_item_category() == 3)
-			cout << fixed << setprecision(3) << "\t" << stock[i].get_number_of_items() / 1000.0 << " kg\t";
+			cout << fixed << setprecision(3) << "\t" << stock[i].get_quantity() / 1000.0 << " kg\t";
 		else
-			cout << fixed << setprecision(0) << "\t" << stock[i].get_number_of_items() << "\t\t";
+			cout << fixed << setprecision(0) << "\t" << stock[i].get_quantity() << "\t\t";
 
-		cout << fixed << setprecision(0);
+		cout << fixed << setprecision(2);
 
-		cout << stock[i].get_retail_price() << "/=\t\t";
+		cout << stock[i].get_retail_price() << "\t\t";
 		cout << stock[i].get_discount() << "%\t    ";
-		cout << stock[i].get_final_price() << "/=\t\t";
+		cout << stock[i].get_final_price() << "\t\t";
 
-		total = total + stock[i].get_retail_price() * stock[i].get_number_of_items();
-		cout << stock[i].get_retail_price() * stock[i].get_number_of_items() << "/=";
+		total = total + stock[i].get_retail_price() * stock[i].get_quantity();
+		cout << stock[i].get_retail_price() * stock[i].get_quantity() << "/=";
 	}
 
 	cout << endl;
@@ -218,20 +230,35 @@ void display_stock_table(vector <Stock> stock)
 		cout << "-";
 
 	cout << endl;
-	for (int i = 0; i < (max_name + max_brand_name + length-40); i++)
+	for (int i = 0; i < (max_name + max_brand_name + length - 40); i++)
 		cout << " ";
 	cout << "Total Stock value : Rs\t" << total << "/=";
 
 	cout << endl;
 }
 
-void to_upper(string& input)
+void to_upper(string& input, bool to_upper)
 {
-	size_t len = input.size();
-	for (size_t i = 0; i < len; i++) {
-		if (input[i] == ' ')
-			input[i] = '_';
-		else if (input[i] >= 'a')
-			input[i] = input[i] - 32;
+	if (to_upper == 1)
+	{
+		size_t len = input.size();
+		for (size_t i = 0; i < len; i++) {
+			if (input[i] == ' ')
+				input[i] = '_';
+			else if (input[i] >= 'a')
+				input[i] = input[i] - 32;
+		}
+	}
+	else
+	{
+		size_t len = input.size();
+		if (input[0] == '_')
+			input[0] = ' ';
+		for (size_t i = 1; i < len; i++) {
+			if (input[i] == '_')
+				input[i] = ' ';
+			else if (input[i] >= 'A')
+				input[i] = input[i] + 32;
+		}
 	}
 }

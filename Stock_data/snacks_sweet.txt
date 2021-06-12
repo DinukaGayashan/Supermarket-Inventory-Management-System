@@ -1,10 +1,10 @@
 GPS02386
-Peanut
+PEANUT
 nounit
-Smak
-imported
-100
-180
-180
+SMAK
+Local
+236
+150
+147
 7
-0
+2

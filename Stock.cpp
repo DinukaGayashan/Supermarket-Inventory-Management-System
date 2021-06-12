@@ -3,13 +3,15 @@
 
 void Stock::show_data()
 {
-	cout << "\nItem Details\n-----------------------\n";
-	cout << "Item id\t\t: " << item_id << endl;
+	cout << "\nItem Details\n---------------------------------------\n";
+	cout << "Item id\t\t\t: " << item_id << endl;
+	to_upper(item_name, 0);
 	cout << "Item name\t\t: " << item_name << endl;
 	cout << "Retail price\t\t: " << retail_price  << "/=" << endl;
 	cout << "Final price\t\t: " << final_price << "/=" << endl;
-	cout << "Available quantity\t: " << number_of_items << endl;
+	cout << "Available quantity\t: " << quantity << endl;
 	if (brand_name != "nobrand") {
+		to_upper(brand_name, 0);
 		cout << "Brand name\t\t: " << brand_name << endl;
 		cout << "Supply type\t\t: " << supply_type << endl;
 	}
@@ -20,28 +22,30 @@ void Stock::input_data()
 	display_categories();
 	display_supply_type();
 
-	cout << "\nAdd New Item\n-----------------------\n";
+	cout << "\nAdd New Item\n---------------------------------------\n";
 
 	item_category = category_check();
 
-	cout << "Enter item name\t\t: ";
+	cout << "Enter item name\t\t\t: ";
 	getline(cin, item_name);
+	to_upper(item_name, 1);
 
 	if (item_category > 2) {
 		cout << "Enter brand name\t\t: ";
 		getline(cin, brand_name);
+		to_upper(brand_name, 1);
 
-		supply_type = (supply_type_check() == 1 ? "local" : "imported");
+		supply_type = (supply_type_check() == 1 ? "Local" : "Imported");
 	}
 
-	number_of_items = int_check("Enter number of items");
-	retail_price = rupees_check("Enter the retail price");
+	quantity = int_check("Enter number of items\t");
+	retail_price = rupees_check("Enter the retail price\t");
 	discount = int_check("Enter the discount percentage"); 
 	final_price = retail_price * (1 - (discount / 100.0));
 
 	item_id = generate_item_id(item_name, brand_name, item_category);
 
-	cout << "Item id\t\t\t\t: " << item_id;
+	cout << "Item ID\t\t\t\t: " << item_id<<endl;
 
 	//cout << "Press Enter to save\n";
 	//get keystroke
@@ -51,7 +55,7 @@ void Stock::input_data()
 
 ostream& operator<<(ostream& out, const Stock& obj)
 {
-	out <<obj.item_id << "\n"<< obj.item_name << "\n" << obj.measure_unit << "\n" << obj.brand_name << "\n" << obj.supply_type << "\n" << obj.number_of_items << "\n" << obj.retail_price << "\n"
+	out <<obj.item_id << "\n"<< obj.item_name << "\n" << obj.measure_unit << "\n" << obj.brand_name << "\n" << obj.supply_type << "\n" << obj.quantity << "\n" << obj.retail_price << "\n"
 		<<obj.final_price << "\n" << obj.item_category << "\n" << obj.discount << endl;
 	return out;
 }
@@ -63,7 +67,7 @@ istream& operator >> (istream& in, Stock& obj)
 	in >> obj.measure_unit;
 	in >> obj.brand_name;
 	in >> obj.supply_type;
-	in >> obj.number_of_items;
+	in >> obj.quantity;
 	in >> obj.retail_price;
 	in >> obj.final_price;
 	in >> obj.item_category;
@@ -117,15 +121,14 @@ string Stock::get_item_brand_name()
 }
 
 
-
 string Stock::get_item_supply_type()
 {
 	return supply_type;
 }
 
-int Stock::get_number_of_items()
+int Stock::get_quantity()
 {
-	return number_of_items;
+	return quantity;
 }
 
 void Stock::promotion(int promotion_type)
@@ -151,8 +154,9 @@ void Stock::promotion(int promotion_type)
 	//for a brand
 	if (promotion_type == 2) {
 		string brandName;
-		cout << "enter brand name :";
+		cout << "Enter brand name :";
 		getline(cin, brandName);
+		to_upper(brandName, 1);
 		items = find_item(brandName, false);
 		display_stock_table(items);
 
@@ -187,16 +191,17 @@ void Stock::promotion(int promotion_type)
 }
 
 void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
-{
+{	
 	while (true) {
 		string itm_nm;
 		cout << "Enter item name\t\t:";
 		getline(cin, itm_nm);
+		to_upper(itm_nm, 1);
 
 		items = find_item(itm_nm);
 
 		if (items.size() == 0)
-			cerr << "No such item exists\n";
+			display_error("ID01");
 		else
 			break;
 	}
@@ -213,7 +218,7 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 		if (error == false)
 			break;
 
-		cerr << "invalid id\n";
+		display_error("ID02");
 	}
 }
 
@@ -237,7 +242,8 @@ int Stock::get_discount()
 vector<Stock> Stock::find_item(const string& item,bool name)
 {
 	vector<Stock> items;
-
+	//to_upper(item, 1);
+	
 	for (int i = 1; i < 11; i++) {
 		vector<Stock> temp = read_data(i);
 		for (auto j : temp)
@@ -273,10 +279,10 @@ void Stock::edit_item()
 	
 	if (temp.item_category > 2) {
 
-		temp.supply_type = (supply_type_check() == 1 ? "local" : "imported");
+		temp.supply_type = (supply_type_check() == 1 ? "Local" : "Imported");
 	}
 
-	temp.number_of_items = int_check("Enter number of items\t");
+	temp.quantity = int_check("Enter number of items\t");
 	temp.retail_price = rupees_check("Enter the retail price\t");
 	temp.discount = int_check("Enter the discount percentage");
 	temp.final_price = temp.retail_price * (1 - (temp.discount / 100.0));

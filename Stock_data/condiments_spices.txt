@@ -1,23 +1,10 @@
-JCR09270
-Cinnamon Stick
+JGE07901
+GARAM_MASALA
 nounit
-Ruhunu
-local
-1500
-270
-270
+EASTERN
+Imported
+500
+400
+392
 10
-0
-JCR09200
-Cinnamon Stick
-nounit
-Ruhunu
-local
-1500
-270
-270
-10
-0
-
-
-
+2

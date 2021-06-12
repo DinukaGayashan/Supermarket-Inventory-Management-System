@@ -1,20 +1,10 @@
-DBB04808
-Bread
+DBB05186
+BREAD
 nounit
-Bread Talk
-local
+BREAD_TALK
+Local
 250
 65
 65
-4
-0
-DBB04808
-Bread
-nounit
-Bread Talk
-local
-250
-70
-70
 4
 0

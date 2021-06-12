@@ -20,7 +20,7 @@ private:
 	string measure_unit;
 	string brand_name;
 	string supply_type;	
-	int number_of_items;
+	int quantity;
 	double retail_price;
 	int item_category;
 	int discount;
@@ -28,7 +28,7 @@ private:
 
 public:
 	Stock(string itm_id="default", string itm_nme = "", string msr_unt = "nounit", string brnd_nme = "nobrand", string spply_type = "notype", int nmbr_itms = 0, double rprc = 0, int dscnt = 0, int itm_ctgry = 0) :
-	item_id(itm_id),item_name(itm_nme), measure_unit(msr_unt), brand_name(brnd_nme), supply_type(spply_type), number_of_items(nmbr_itms), retail_price(rprc), item_category(itm_ctgry), discount(dscnt),final_price(rprc){};
+	item_id(itm_id),item_name(itm_nme), measure_unit(msr_unt), brand_name(brnd_nme), supply_type(spply_type), quantity(nmbr_itms), retail_price(rprc), item_category(itm_ctgry), discount(dscnt),final_price(rprc){};
 		
 
 	friend ostream& operator << (ostream& out, const Stock& obj);
@@ -53,7 +53,7 @@ public:
 	string get_item_name();
 	string get_item_brand_name();
 	string get_item_supply_type();
-	int get_number_of_items();
+	int get_quantity();
 	double get_retail_price();
 	double get_final_price();
 	int get_discount();

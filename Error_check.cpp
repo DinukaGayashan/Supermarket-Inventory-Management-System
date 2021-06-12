@@ -112,7 +112,7 @@ int supply_type_check()
 	int type;
 
 	while (true) {
-		type = int_check("Enter supply type");
+		type = int_check("Enter supply type number");
 
 		if (type != 1 && type != 2) {
 			display_error("II05");
@@ -128,7 +128,7 @@ int category_check() {
 	int ctgry;
 
 	while (true) {
-		ctgry = int_check("Enter Category type");
+		ctgry = int_check("Enter category number\t");
 
 		if (ctgry > 10 || ctgry < 1) {
 			display_error("II04");

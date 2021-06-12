@@ -28,7 +28,7 @@ void Staff::add_user()
 {
 	void display_staff_positions();	//check(user interface functions are not working)
 	
-	cout << "\nAdd New User\n-----------------------\n";
+	cout << "\nAdd New User\n---------------------------------------\n";
 	
 	full_name = check_name("Enter full name");
 	
@@ -44,7 +44,7 @@ void Staff::add_user()
 
 void Staff::show_data()
 {
-	cout << "\nUser Details\n-----------------------\n";
+	cout << "\nUser Details\n---------------------------------------\n";
 	cout << "Username\t: " << username << endl;
 	cout << "Full Name\t: " << full_name  << endl;
 	cout << "Position\t: " << position.second <<  endl;
