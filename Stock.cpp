@@ -128,7 +128,7 @@ int Stock::get_number_of_items()
 	return number_of_items;
 }
 
-void Stock::promotion(int promotion_percentage,int promotion_type)
+void Stock::promotion(int promotion_type)
 {
 	vector<Stock> items;
 	//for an item item name or code ???
@@ -149,7 +149,7 @@ void Stock::promotion(int promotion_percentage,int promotion_type)
 
 		for (int i = 0; i < (int)items.size(); i++) {
 			items[i].discount = t;
-			items[i].final_price = items[i].retail_price*(1 - items[i].discount / 100.0f);
+			items[i].final_price = items[i].retail_price*(1 - (items[i].discount) / 100.0f);
 			int ctgry = items[i].item_category;
 			vector<Stock> itms = read_data(ctgry);
 
@@ -260,9 +260,6 @@ void Stock::edit_item()
 	int ctgry = temp.item_category;
 	
 	if (temp.item_category > 2) {
-
-		cout << "Enter brand name\t\t: ";
-		getline(cin, temp.brand_name);
 
 		temp.supply_type = (supply_type_check() == 1 ? "local" : "imported");
 	}

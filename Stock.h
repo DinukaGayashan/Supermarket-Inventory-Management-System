@@ -43,7 +43,7 @@ public:
 	static void edit_item();
 	static void delete_item();
 	static void find_and_display(Stock& item, vector<Stock>& items);
-	static void promotion(int promotion_percentage,int promotion_type);
+	static void promotion(int promotion_type);
 	static Stock find_by_id(const string& id, const vector<Stock>& items, bool& error);
 	string generate_item_id(const string& item_name_in, const string& brand_name_in, const int& category_in);
 
