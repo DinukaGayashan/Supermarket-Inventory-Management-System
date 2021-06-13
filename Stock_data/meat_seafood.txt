@@ -1,10 +1,10 @@
 BSN04637
-SEA_CRAB
+Sea crab
 nounit
-nobrand
+n‚’„
 notype
 10
 1625
-1576.25
+1543.75
 2
-3
+5

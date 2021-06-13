@@ -128,7 +128,7 @@ int category_check() {
 	int ctgry;
 
 	while (true) {
-		ctgry = int_check("Enter category number\t");
+		ctgry = int_check("Enter category number");
 
 		if (ctgry > 10 || ctgry < 1) {
 			display_error("II04");
@@ -147,7 +147,7 @@ int discount_check() {
 		dscnt = int_check("Enter Discount");
 
 		if (dscnt > 100 || dscnt < 0) {
-			display_error("II04");
+			display_error("II07");
 			continue;
 		}
 		break;

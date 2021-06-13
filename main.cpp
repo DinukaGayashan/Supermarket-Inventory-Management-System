@@ -57,14 +57,14 @@ int main()
 	cout << s.generate_item_id(name, "lAnka", 1) << endl;
 	cout << s.generate_item_id(name2, "lanKA", 1) << endl;
 	*/
-	
+	/*
 	Stock array[12];
 	
 	for (int i = 0; i < 5; i++)
 	{
 		array[i].input_data();
 		array[i].write_data(array[i].get_item_category());
-	}
+	}*/
 
 	//vector < Stock > stock = Stock::find_item("cucumber", 1);
 	//cout << fixed << setprecision(2);
@@ -75,7 +75,7 @@ int main()
 	//Stock::edit_item();
 	//Stock::delete_item();
 	//Beep(500, 1000);
-	//Stock::promotion(2);
+	Stock::promotion(3);
 	//Stock::read_data(8);
 	/*
 	string test = "my name is Chathurinda 123";

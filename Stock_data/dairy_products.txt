@@ -9,12 +9,12 @@ Local
 6
 3
 FMN02362
-MILO
+Milo
 nounit
-NESTLE
+Nestle
 Local
 1000
 60
-60
+57
 6
-0
+5
