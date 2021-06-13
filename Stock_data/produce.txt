@@ -11,7 +11,7 @@ notype
 ACN03924
 CABBAGE
 nounit
-nobrand
+NOBRAND
 notype
 200
 110

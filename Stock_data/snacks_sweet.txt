@@ -1,7 +1,7 @@
 GPS02386
-Peanut
+PEANUT
 nounit
-Smak
+SMACK
 Local
 236
 150

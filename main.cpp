@@ -29,10 +29,10 @@ int main()
 	set_console_size(1920, 1080);
 	//set_font_size(24,24);
 
-	Stock s1, s2("defsdd","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 3355, 20, 3);
-	vector < Stock > stock = { s1, s2 };
+	//Stock s1, s2("defsdd","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 3355, 20, 3);
+	//vector < Stock > stock = { s1, s2 };
 
-	display_stock_table(stock);
+	//display_stock_table(stock);
 	
 	//display_categories();
 	//Staff s;
@@ -47,8 +47,8 @@ int main()
 	//stock2.write_data(stock2.get_item_category());
 
 	//cout << "NOOOOOOOb";
-	vector<Stock> r = Stock::read_data(3);
-	display_stock_table(r);
+	//vector<Stock> r = Stock::read_data(3);
+	//display_stock_table(r);
 	/*
 	string name = "apPLe";
 	string name2 = "AppLE";
@@ -75,7 +75,7 @@ int main()
 	//Stock::edit_item();
 	//Stock::delete_item();
 	//Beep(500, 1000);
-	Stock::promotion(3);
+	//Stock::promotion(3);
 	//Stock::read_data(8);
 	/*
 	string test = "my name is Chathurinda 123";
@@ -85,7 +85,7 @@ int main()
 	cout << test;*/
 
 
-	//Stock::delete_item();
+	Stock::delete_item();
 
 
 

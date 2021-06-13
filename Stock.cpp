@@ -81,6 +81,8 @@ void Stock::write_data(int file_index)
 	const vector<string> file_names{ "Stock_data\\produce.txt","Stock_data\\meat_seafood.txt","Stock_data\\grains.txt","Stock_data\\bakery_products.txt","Stock_data\\frozen_foods.txt", "Stock_data\\dairy_products.txt","Stock_data\\snacks_sweet.txt","Stock_data\\beverages.txt","Stock_data\\health_beauty.txt","Stock_data\\condiments_spices.txt" };
 	ofstream write_file;
 	write_file.open(file_names[--file_index], ios::app);
+	to_upper(this->brand_name, 1);
+	to_upper(this->item_name, 1);
 	write_file << *this;
 
 }
@@ -297,6 +299,7 @@ void Stock::delete_item()
 	find_and_display(temp, itm);
 	
 	int ctgry = temp.item_category;
+	itm = read_data(ctgry);
 	int index(0);
 	for (int i = 0; i<int(itm.size()); i++)
 		if (itm[i].item_id == temp.item_id)
@@ -310,6 +313,12 @@ void Stock::delete_item()
 
 	for (int j = 0; j <int(itm.size()); j++) {
 		itm[j].write_data(ctgry + 1);
+	}
+
+	if (itm.size() == 0) {
+		ofstream write_file;
+		write_file.open(file_names[ctgry + 1]);
+		write_file.close();
 	}
 
 }

@@ -260,7 +260,7 @@ void to_upper(string& input, bool to_upper)
 		for (size_t i = 1; i < len; i++) {
 			if (input[i] == '_')
 				input[i] = ' ';
-			else if (input[i] >= 'A')
+			else if (input[i] >= 'A' && input[i] <='Z')
 				input[i] = input[i] + 32;
 		}
 	}
