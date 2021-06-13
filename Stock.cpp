@@ -1,5 +1,5 @@
 #include "Stock.h"
-
+#include <cmath>
 
 void Stock::show_data()
 {
@@ -317,7 +317,7 @@ void Stock::delete_item()
 
 	if (itm.size() == 0) {
 		ofstream write_file;
-		write_file.open(file_names[ctgry + 1]);
+		write_file.open(file_name);
 		write_file.close();
 	}
 
