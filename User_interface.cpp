@@ -95,6 +95,7 @@ void display_error(string error)
 	else if (error == "II04")	cerr << "\a\terror II04: Input must be in the range of 1 to 10.\n";
 	else if (error == "II05")	cerr << "\a\terror II05: Input must be either 1 or 2.\n";
 	else if (error == "II06")	cerr << "\a\terror II06: Input must be in the range of 1 to 3.\n";
+	else if (error == "II07")	cerr << "\a\terror II07: Input must be in the range of 0 to 100.\n";
 
 	else if (error == "ID01")	cerr << "\a\terror ID01: Input must be a value with two decimal points.\n";
 	else if (error == "ID02")	cerr << "\a\terror ID02: Input must be larger than zero.\n";
@@ -106,8 +107,8 @@ void display_error(string error)
 
 	else if (error == "IA01")	cerr << "\a\terror IA01: Input must be a valid date.\n";
 
-	else if (error == "ID01")	cerr << "\a\terror ID01: Non-existing item name entered.\n";
-	else if (error == "ID02")	cerr << "\a\terror ID02: Invalid item ID entered.\n";
+	else if (error == "SD01")	cerr << "\a\terror SD01: Non-existing item name entered.\n";
+	else if (error == "SD02")	cerr << "\a\terror SD02: Invalid item ID entered.\n";
 }
 
 void display_help(string error)
@@ -128,7 +129,7 @@ void display_stock_table(vector <Stock>& stock)
 	size_t max_name = 9, max_brand_name = 10;
 	size_t size = stock.size();
 	double total = 0;
-	int length = 182;
+	int length = 180;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -152,7 +153,7 @@ void display_stock_table(vector <Stock>& stock)
 
 	cout << "\n|    " << "Item ID" << "    |";
 
-	cout << "        " << "Item Catagory" << "        |";
+	cout << "       " << "Item Catagory" << "       |";
 
 	for (int i = 0; i < (max_name ) / 2; i++)
 		cout << " ";
@@ -184,23 +185,23 @@ void display_stock_table(vector <Stock>& stock)
 	{
 		cout << endl;
 
-		cout << "    " << stock[i].get_item_id() << "\t\t";
+		cout << "    " << stock[i].get_item_id() << "          ";
 
 		display_category(stock[i].get_item_category());
-		cout << "\t";
+		cout << "    ";
 
 		to_upper(stock[i].get_item_name(), 0);
 		
 		cout << stock[i].get_item_name();
 		for (int j = 0; j < (max_name - stock[i].get_item_name().length()); j++)
 			cout << " ";
-		cout << "\t\t";
+		cout << "               ";
 
 		to_upper(stock[i].get_item_brand_name(), 0);
 		cout << stock[i].get_item_brand_name();
 		for (int j = 0; j < (max_brand_name - stock[i].get_item_brand_name().length()); j++)
 			cout << " ";
-		cout << "\t\t";
+		cout << "              ";
 
 		cout << stock[i].get_item_supply_type();
 		if (stock[i].get_item_supply_type() == "Local")
@@ -216,8 +217,10 @@ void display_stock_table(vector <Stock>& stock)
 
 		cout << fixed << setprecision(2);
 
-		cout << stock[i].get_retail_price() << "\t\t";
-		cout << stock[i].get_discount() << "%\t    ";
+		cout << "   ";
+		cout << stock[i].get_retail_price() << "\t";
+		cout << "   ";
+		cout << stock[i].get_discount() << "%\t        ";
 		cout << stock[i].get_final_price() << "\t\t";
 
 		total = total + stock[i].get_retail_price() * stock[i].get_quantity();

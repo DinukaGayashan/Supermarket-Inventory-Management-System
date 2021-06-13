@@ -154,7 +154,7 @@ void Stock::promotion(int promotion_type)
 	//for a brand
 	if (promotion_type == 2) {
 		string brandName;
-		cout << "Enter brand name :";
+		cout << "Enter brand name\t: ";
 		getline(cin, brandName);
 		to_upper(brandName, 1);
 		items = find_item(brandName, false);
@@ -201,7 +201,7 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 		items = find_item(itm_nm);
 
 		if (items.size() == 0)
-			display_error("ID01");
+			display_error("SD01");
 		else
 			break;
 	}
@@ -211,14 +211,14 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 	while (id) {
 		bool error = false;
 		string id;
-		cout << "Enter ID : ";
+		cout << "Enter item ID : ";
 		getline(cin, id);
 		item = find_by_id(id, items, error);
 
 		if (error == false)
 			break;
 
-		display_error("ID02");
+		display_error("SD02");
 	}
 }
 
@@ -340,17 +340,6 @@ string Stock::generate_item_id(const string& item_name_in, const string& brand_n
 
 	
 	id += (category_in+64);
-
-	//if first letter is lower case making it up to upper case
-	if (i >= 'a') {
-		i = i - 32;
-	}
-	id += i;
-
-	if (b >= 'a') {
-		b = b - 32;
-	}
-	id += b;
 
 	//generating the number
 	int sum = 0;
