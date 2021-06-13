@@ -234,10 +234,19 @@ void Stock::promotion(int promotion_type)
 	//for a brand
 	if (promotion_type == 2) {
 		string brandName;
-		cout << "Enter brand name\t: ";
-		getline(cin, brandName);
-		to_upper(brandName, 1);
-		items = find_item(brandName, false);
+
+		while (true) {
+			cout << "Enter brand name\t: ";
+			getline(cin, brandName);
+			to_upper(brandName, 1);
+			items = find_item(brandName, false);
+			if (items.size() == 0) {
+				cerr << "No such brand Name\n";
+				continue;
+			}
+			break;
+		}
+		
 		display_stock_table(items);
 
 		int t = discount_check();
