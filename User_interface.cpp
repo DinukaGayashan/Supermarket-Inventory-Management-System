@@ -25,6 +25,16 @@ void set_font_size(int a, int b)
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, lp_console_current_font_ex);
 }
 
+string get_date() {
+	struct tm dt;
+	time_t now = time(0);
+	localtime_s(&dt, &now);
+
+	string d = "Date: "+to_string(1900 + dt.tm_year) + "." + to_string(1 + dt.tm_mon) + "." + to_string(dt.tm_mday)
+		+ "\nTime: " + to_string(dt.tm_hour) + "." + to_string(dt.tm_min) + "." + to_string(dt.tm_sec);
+	return d;
+}
+
 void display_category(int n)
 {
 	switch (n)
@@ -99,7 +109,7 @@ void display_error(string error)
 
 	else if (error == "ID01")	cerr << "\a\terror ID01: Input must be a value with two decimal points.\n";
 	else if (error == "ID02")	cerr << "\a\terror ID02: Input must be larger than zero.\n";
-	else if (error == "ID03")	cerr << "\a\terror ID03: Input value limit (Xe10) exceeded.\n";
+	else if (error == "ID03")	cerr << "\a\terror ID03: Input value limit (xe10) exceeded.\n";
 
 	else if (error == "IB01")	cerr << "\a\terror IB01: Input must be either 1 or 0.\n";
 
@@ -107,8 +117,10 @@ void display_error(string error)
 
 	else if (error == "IA01")	cerr << "\a\terror IA01: Input must be a valid date.\n";
 
-	else if (error == "SD01")	cerr << "\a\terror SD01: Non-existing item name entered.\n";
-	else if (error == "SD02")	cerr << "\a\terror SD02: Invalid item ID entered.\n";
+	else if (error == "SD01")	cerr << "\a\terror SD01: Invalid item ID entered.\n";
+	else if (error == "SD02")	cerr << "\a\terror SD02: Non-existing item name entered.\n";
+	else if (error == "SD03")	cerr << "\a\terror SD03: Non-existing brand name entered.\n";
+	else if (error == "SD04")	cerr << "\a\terror SD04: Item quantity exceeded. No enough items.\n";
 }
 
 void display_help(string error)

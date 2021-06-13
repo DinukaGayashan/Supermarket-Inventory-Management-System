@@ -1,13 +1,13 @@
 ACN04729
 CUCUMBER
 nounit
-nobrand
+NOBRAND
 notype
 100
 55
-55
+53.9
 1
-0
+2
 ACN03924
 CABBAGE
 nounit
@@ -15,6 +15,6 @@ NOBRAND
 notype
 200
 110
-105.6
+107.8
 1
-4
+2

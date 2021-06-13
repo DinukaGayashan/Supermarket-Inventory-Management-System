@@ -75,7 +75,7 @@ int main()
 	//Stock::edit_item();
 	//Stock::delete_item();
 	//Beep(500, 1000);
-	//Stock::promotion(3);
+	//Stock::promotion(2);
 	//Stock::read_data(8);
 	/*
 	string test = "my name is Chathurinda 123";
@@ -85,8 +85,8 @@ int main()
 	cout << test;*/
 
 
-	Stock::delete_item();
-
+	//Stock::delete_item();
+	cout << get_date();
 
 	//promotion 2 check
 	// vector < Stock > stock = Stock::find_item("cucumber", 1); capital check!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

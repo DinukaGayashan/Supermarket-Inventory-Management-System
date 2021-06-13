@@ -121,21 +121,20 @@ void Stock::transaction(const string& cashier_name)
 		for (auto j : temp)
 			items.emplace_back(j);
 	}
-
-	
+		
 
 	vector<Stock> bill_items;
 	while (true) {
 		string id;
-		cout << "Enter Item ID : ";
-		getline(cin, id);
 		Stock temp;
 		bool err = false;
 		while (true) {
+			cout << "Enter Item ID : ";
+			getline(cin, id);
 			temp = find_by_id(id, items, err);
 			if (err == true)
 			{
-				cerr << "no item\n";
+				display_error("SD01");
 				continue;
 			}
 			break;
@@ -144,7 +143,7 @@ void Stock::transaction(const string& cashier_name)
 		while (true) {
 			quantity = int_check("Enter quantity");
 			if (quantity > temp.quantity) {
-				cerr << "not enough items\n";
+				display_error("SD04");
 				continue;
 			}
 			break;
@@ -241,7 +240,7 @@ void Stock::promotion(int promotion_type)
 			to_upper(brandName, 1);
 			items = find_item(brandName, false);
 			if (items.size() == 0) {
-				cerr << "No such brand Name\n";
+				display_error("SD03");
 				continue;
 			}
 			break;
@@ -290,7 +289,7 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 		items = find_item(itm_nm);
 
 		if (items.size() == 0)
-			display_error("SD01");
+			display_error("SD02");
 		else
 			break;
 	}
@@ -307,7 +306,7 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 		if (error == false)
 			break;
 
-		display_error("SD02");
+		display_error("SD01");
 	}
 }
 

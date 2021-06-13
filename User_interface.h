@@ -6,6 +6,7 @@
 #include <string>
 #include <windows.h>
 #include <iomanip>
+#include <ctime>
 #include "Stock.h"
 
 using namespace std;
@@ -13,7 +14,7 @@ using namespace std;
 //forward declaration
 class Stock;
 
-
+string get_date();
 void set_console_size(int w, int h);
 void set_console_position(int x, int y);
 void set_font_size(int a, int b);
