@@ -110,12 +110,12 @@ int Stock::get_item_category()
 	return item_category;
 }
 
-string Stock::get_item_name()
+string& Stock::get_item_name()
 {
 	return item_name;
 }
 
-string Stock::get_item_brand_name()
+string& Stock::get_item_brand_name()
 {
 	return brand_name;
 }

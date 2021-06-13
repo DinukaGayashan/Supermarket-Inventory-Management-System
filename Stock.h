@@ -50,8 +50,8 @@ public:
 
 	//access data
 	string get_item_id();
-	string get_item_name();
-	string get_item_brand_name();
+	string& get_item_name();
+	string& get_item_brand_name();
 	string get_item_supply_type();
 	int get_quantity();
 	double get_retail_price();

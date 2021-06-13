@@ -123,7 +123,7 @@ void display_help(string error)
 
 }
 
-void display_stock_table(vector <Stock> stock)
+void display_stock_table(vector <Stock>& stock)
 {
 	size_t max_name = 9, max_brand_name = 10;
 	size_t size = stock.size();
@@ -189,14 +189,14 @@ void display_stock_table(vector <Stock> stock)
 		display_category(stock[i].get_item_category());
 		cout << "\t";
 
-		//to_upper(stock[i].get_item_name(), 0);
+		to_upper(stock[i].get_item_name(), 0);
 		
 		cout << stock[i].get_item_name();
 		for (int j = 0; j < (max_name - stock[i].get_item_name().length()); j++)
 			cout << " ";
 		cout << "\t\t";
 
-		//to_upper(stock[i].get_item_brand_name(), 0);
+		to_upper(stock[i].get_item_brand_name(), 0);
 		cout << stock[i].get_item_brand_name();
 		for (int j = 0; j < (max_brand_name - stock[i].get_item_brand_name().length()); j++)
 			cout << " ";

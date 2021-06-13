@@ -23,7 +23,7 @@ void display_supply_type();
 void display_staff_positions();
 void display_error(string error);
 void display_help(string error);
-void display_stock_table(vector <Stock> stock);
+void display_stock_table(vector <Stock>& stock);
 void to_upper(string& input, bool to_upper);
 
 #endif
