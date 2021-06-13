@@ -112,6 +112,84 @@ int Stock::get_item_category()
 	return item_category;
 }
 
+void Stock::transaction(const string& cashier_name)
+{
+	vector<Stock> items;
+
+	for (int i = 1; i < 11; i++) {
+		vector<Stock> temp = read_data(i);
+		for (auto j : temp)
+			items.emplace_back(j);
+	}
+
+	
+
+	vector<Stock> bill_items;
+	while (true) {
+		string id;
+		cout << "Enter Item ID : ";
+		getline(cin, id);
+		Stock temp;
+		bool err = false;
+		while (true) {
+			temp = find_by_id(id, items, err);
+			if (err == true)
+			{
+				cerr << "no item\n";
+				continue;
+			}
+			break;
+		}
+		int quantity = 0;
+		while (true) {
+			quantity = int_check("Enter quantity");
+			if (quantity > temp.quantity) {
+				cerr << "not enough items\n";
+				continue;
+			}
+			break;
+		}
+
+		temp.final_price = temp.final_price * quantity;
+		temp.quantity = quantity;
+
+		cout << "press 'V' to confirm\n";
+		cout << "press 'E' to cancel\n";
+		cout << "press 'F' to finish\n";
+
+
+		if (GetAsyncKeyState('V')) {
+			bill_items.push_back(temp);
+		}
+
+		if (GetAsyncKeyState('E')) {
+			continue;
+		}
+		if (GetAsyncKeyState('F')) {
+			break;
+		}
+	}
+
+	if (bill_items.size() == 0)
+		return;
+
+	for (int i = 0; i < bill_items.size(); i++) {
+		for (int j = 0; j < items.size(); j++) {
+			if (bill_items[i].item_id == items[j].item_id) {
+				items[j].quantity -= bill_items[i].quantity;
+			}
+		}
+	}
+
+	cout << "Updating...\n";
+	for (int j = 0; j < items.size(); j++)
+		write_all_data(items[j]);
+
+	cout << "Done....\n";
+
+	//bill ui
+}
+
 string& Stock::get_item_name()
 {
 	return item_name;

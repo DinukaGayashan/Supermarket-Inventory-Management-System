@@ -88,11 +88,6 @@ int main()
 	Stock::delete_item();
 
 
-
-
-
-
-
 	//promotion 2 check
 	// vector < Stock > stock = Stock::find_item("cucumber", 1); capital check!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	return 0;

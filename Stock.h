@@ -6,6 +6,7 @@
 #include <fstream>
 #include <limits>
 #include <vector>
+#include <Windows.h>
 #include "User_interface.h"
 #include "Error_check.h"
 
@@ -59,6 +60,8 @@ public:
 	double get_final_price();
 	int get_discount();
 	int get_item_category();
+
+	static void transaction(const string& cashier_name);
 
 
 
