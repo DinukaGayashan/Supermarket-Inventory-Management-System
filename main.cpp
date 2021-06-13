@@ -29,7 +29,7 @@ int main()
 	set_console_size(1920, 1080);
 	//set_font_size(24,24);
 
-	Stock s1, s2("defsdd","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 43355, 20, 3);
+	Stock s1, s2("defsdd","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 3355, 20, 3);
 	vector < Stock > stock = { s1, s2 };
 
 	display_stock_table(stock);
