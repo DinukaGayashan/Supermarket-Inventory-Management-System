@@ -34,6 +34,18 @@ void Staff::staff_write_data() {
 	write_file << *this;
 }
 
+vector<Staff>  Staff::staff_read_data()
+{
+	vector<Staff> members;
+	ifstream readfile;
+	readfile.open("Staff\\staff_data.txt");
+	Staff member;
+	while (readfile >> member)
+		members.emplace_back(member);
+
+	return members;
+}
+
 void Staff::add_user()
 {
 	void display_staff_positions();	//check(user interface functions are not working)
