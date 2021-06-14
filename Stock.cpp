@@ -187,6 +187,25 @@ void Stock::transaction(const string& cashier_name)
 	cout << "Done....\n";
 
 	//bill ui
+
+	//print bill
+
+
+	//logging
+	string file_name = "transactions\\"+cashier_name + get_date() + ".txt"; //get time also need to be added
+	ofstream write_file,transaction;
+	write_file.open("transactions\\names.txt",ios::app);
+	write_file << file_name;	//must test to find whether endl is needed
+	transaction.open(file_name, ios::app);
+	transaction << get_date() << endl;
+	//transaction << get_time() << endl;
+	transaction << cashier_name << endl;
+
+	for (Stock i : bill_items) {
+		transaction << i;
+	}
+
+
 }
 
 string& Stock::get_item_name()
