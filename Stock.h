@@ -62,6 +62,7 @@ public:
 	int get_item_category();
 
 	static void transaction(const string& cashier_name);
+	static void read_transaction();
 
 
 

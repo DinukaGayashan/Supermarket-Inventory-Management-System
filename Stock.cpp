@@ -208,7 +208,7 @@ void Stock::transaction(const string& cashier_name)
 
 }
 
-void read_transaction() {
+void Stock::read_transaction() {
 	ifstream read_file;
 	read_file.open("transactions\\names.txt");
 
