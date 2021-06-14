@@ -208,6 +208,38 @@ void Stock::transaction(const string& cashier_name)
 
 }
 
+void read_transaction() {
+	ifstream read_file;
+	read_file.open("transactions\\names.txt");
+
+	vector<string> file_names;
+
+	string fname;
+	while (read_file >> fname)
+		file_names.emplace_back(fname);
+
+	for (string i : file_names) {
+		ifstream input;
+		input.open(i);
+		string dt,tm,cname;
+		vector<Stock> items;
+		Stock t;
+		input >> dt;
+		input >> tm;
+		input >> cname;
+
+		while (input >> t)
+			items.emplace_back(t);
+
+
+		//print bill
+
+	
+		
+
+	}
+}
+
 string& Stock::get_item_name()
 {
 	return item_name;
