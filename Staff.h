@@ -35,6 +35,8 @@ public:
 
 	void add_user();
 	void show_data();
+	void staff_write_data();
+	
 
 
 	string get_user_name();

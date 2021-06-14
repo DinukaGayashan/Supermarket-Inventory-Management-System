@@ -23,6 +23,16 @@ istream& operator >> (istream& in, Staff& obj)
 	return in;
 }
 
+void Staff::staff_write_data() {
+	ofstream write_file;
+	write_file.open("Staff\\staff_data.txt", ios::app);
+	to_upper(this->username,1);
+	to_upper(this->password, 1);
+	to_upper(this->full_name, 1);
+	to_upper(this->position.second, 1);
+	
+	write_file << *this;
+}
 
 void Staff::add_user()
 {
