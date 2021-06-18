@@ -25,14 +25,20 @@ void set_font_size(int a, int b)
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, lp_console_current_font_ex);
 }
 
-string get_date() {
+string get_date() 
+{
 	struct tm dt;
 	time_t now = time(0);
 	localtime_s(&dt, &now);
+	return "Date: " + to_string(1900 + dt.tm_year) + "." + to_string(1 + dt.tm_mon) + "." + to_string(dt.tm_mday);
+}
 
-	string d = "Date: "+to_string(1900 + dt.tm_year) + "." + to_string(1 + dt.tm_mon) + "." + to_string(dt.tm_mday)
-		+ "\nTime: " + to_string(dt.tm_hour) + "." + to_string(dt.tm_min) + "." + to_string(dt.tm_sec);
-	return d;
+string get_time()
+{
+	struct tm dt;
+	time_t now = time(0);
+	localtime_s(&dt, &now);
+	return "Time: " + to_string(dt.tm_hour) + "." + to_string(dt.tm_min) + "." + to_string(dt.tm_sec);
 }
 
 void display_category(int n)
@@ -250,6 +256,76 @@ void display_stock_table(vector <Stock>& stock)
 	cout << "Total Stock value : Rs\t" << total << "/=";
 
 	cout << endl;
+}
+
+void transaction_bill(vector <Stock> stock, string cashier, string date, string time)
+{
+	int length = 80, total = 0;
+
+	for (int i = 0; i < length / 2 - 8; i++)
+		cout << " ";
+	cout << "CMD Supermarket\n";
+
+	for (int i = 0; i < length; i++)
+		cout << "-";
+	//bill number
+	cout << endl;
+	cout << "Cashier: " << cashier;
+
+	for (int i = cashier.length(); i < length - 25; i++)
+		cout << " ";
+	cout << date;
+	cout << endl;
+	for (int i = 0; i < length - 16; i++)
+		cout << " ";
+	cout << time;
+
+	cout << endl;
+	for (int i = 0; i < length; i++)
+		cout << "-";
+
+	cout << endl;
+	cout << "Item code     Item name        Brand name       Price * Quantity       Amount";
+
+	cout << endl;
+	for (int i = 0; i < length; i++)
+		cout << "-";
+
+	for (int i = 0; i < stock.size(); i++)
+	{
+		cout << endl;
+		cout << stock[i].get_item_id() << "      ";
+
+		cout << stock[i].get_item_name();
+		for (int j = stock[i].get_item_name().length(); j < 18; j++)
+			cout << " ";
+
+		cout << stock[i].get_item_brand_name();
+		for (int j = stock[i].get_item_brand_name().length(); j < 18; j++)
+			cout << " ";
+
+		cout << "" << stock[i].get_final_price();
+
+		cout << " * " << stock[i].get_quantity();
+
+		cout << "\t         " << stock[i].get_final_price()* stock[i].get_quantity();
+
+		total = total + stock[i].get_final_price() * stock[i].get_quantity();
+	}
+
+	cout << endl;
+	for (int i = 0; i < length; i++)
+		cout << "-";
+
+	cout << endl;
+	cout << "Total";
+	for (int i = 0; i < length - 12; i++)
+		cout << " ";
+	cout << total;
+
+	cout << endl;
+	for (int i = 0; i < length; i++)
+		cout << "-";
 }
 
 void to_upper(string& input, bool to_upper)

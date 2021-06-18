@@ -29,8 +29,8 @@ int main()
 	set_console_size(1920, 1080);
 	//set_font_size(24,24);
 
-	//Stock s1, s2("defsdd","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 3355, 20, 3);
-	//vector < Stock > stock = { s1, s2 };
+	Stock s1, s2("AAA00000","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 90, 2, 3);
+	vector < Stock > stock = { s1, s2 };
 
 	//display_stock_table(stock);
 	
@@ -86,7 +86,10 @@ int main()
 
 
 	//Stock::delete_item();
-	cout << get_date();
+
+	string d=get_date();
+	string t= get_time();
+	transaction_bill(stock, "dfgddhfgdsrgf",d,t);
 
 	//promotion 2 check
 	// vector < Stock > stock = Stock::find_item("cucumber", 1); capital check!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
