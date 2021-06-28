@@ -54,26 +54,6 @@ vector<Supply>  Supply::supply_read_data()
 	return items;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void Supply::update()
 {
 
