@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <tuple>
+#include <fstream>
 #include <utility>
 #include "User_interface.h"
 
@@ -36,7 +37,7 @@ public:
 	void add_user();
 	void show_data();
 	void staff_write_data();
-	static vector<Staff> staff_read_data();
+	static  vector<Staff> staff_read_data();
 
 
 	string get_user_name();

@@ -61,6 +61,10 @@ public:
 	int get_discount();
 	int get_item_category();
 
+
+	void set_quantity(int amount);
+	void set_supply_type(int t);
+
 	static void transaction(const string& cashier_name);
 	static void read_transaction();
 

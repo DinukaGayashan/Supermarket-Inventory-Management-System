@@ -240,6 +240,16 @@ void Stock::read_transaction() {
 	}
 }
 
+void Stock::set_quantity(int amount)
+{
+	quantity = quantity + amount;
+}
+
+void Stock::set_supply_type(int t)
+{
+	supply_type = (t == 1 ? "Local" : "Imported");
+}
+
 string& Stock::get_item_name()
 {
 	return item_name;
