@@ -13,11 +13,11 @@ using namespace std;
 class Supply : public Stock
 {
 	string source; //local or international
-	string vehicle_type;
+	string vehicle_type; //small van, medium, large or ship
 	string reg_number;
 	string item_name;
 	int quantity;
-	string name_of_origin;
+	string name_of_origin; //farm of factory
 	Date date_of_depature;
 	Date date_of_arrival;
 	bool status; //false until accepted
