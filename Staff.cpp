@@ -34,7 +34,7 @@ void Staff::staff_write_data() {
 	write_file << *this;
 }
 
-vector<Staff>  Staff::staff_read_data()
+vector<Staff>  Staff::read_staff_data()
 {
 	vector<Staff> members;
 	ifstream readfile;
@@ -54,7 +54,25 @@ void Staff::add_user()
 	
 	full_name = check_name("Enter full name");
 	
-	username = check_name("Enter user name");
+
+	while (true) {
+		username = check_name("Enter user name");
+
+		vector<Staff> users = read_staff_data();
+		bool flag = false;
+		for (Staff  i : users) {
+			if (i.username == username) {
+				flag = true;
+				cerr << "username already exists";
+				break;
+			}
+		}
+
+		if (flag == 0) {
+			break;
+		}
+	}
+	
 	
 	position.first = check_position();
 	const string positions[4] = { "owner","manager","cashier","floor" };
