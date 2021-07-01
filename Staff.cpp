@@ -1,6 +1,4 @@
 #include "Staff.h"
-#include "Error_check.h"
-
 
 ostream& operator<<(ostream& out, const Staff& obj)
 {
@@ -34,7 +32,7 @@ void Staff::staff_write_data() {
 	write_file << *this;
 }
 
-vector<Staff>  Staff::read_staff_data()
+vector<Staff> Staff::read_staff_data()
 {
 	vector<Staff> members;
 	ifstream readfile;
@@ -48,22 +46,21 @@ vector<Staff>  Staff::read_staff_data()
 
 void Staff::add_user()
 {
-	void display_staff_positions();	//check(user interface functions are not working)
+	display_staff_positions();
 	
 	cout << "\nAdd New User\n---------------------------------------\n";
 	
-	full_name = check_name("Enter full name");
+	full_name = check_name("Enter full name\t");
 	
-
 	while (true) {
-		username = check_name("Enter user name");
-
+		username = check_name("Enter username\t");
+		to_upper(username, 1);
 		vector<Staff> users = read_staff_data();
 		bool flag = false;
 		for (Staff  i : users) {
 			if (i.username == username) {
 				flag = true;
-				cerr << "username already exists";
+				display_error("SD05");
 				break;
 			}
 		}
@@ -72,27 +69,37 @@ void Staff::add_user()
 			break;
 		}
 	}
-	
-	
 	position.first = check_position();
-	const string positions[4] = { "owner","manager","cashier","floor" };
+	const string positions[4] = { "owner","manager","cashier","floor worker" };
 	position.second = positions[position.first];
 
 	join_date = check_date("Enter join date");
 
+	string password1, password2;
+	do
+	{
+		password1 = enter_password("Password\t: ");
+		password2 = enter_password("\nConfirm password: ");
+		cout << endl;
+		if (password1 != password2)
+			display_error("IS02");
+	} while (password1 != password2);
+	password = password1;
 }
 
 void Staff::show_data()
 {
 	cout << "\nUser Details\n---------------------------------------\n";
 	cout << "Username\t: " << username << endl;
+	to_upper(full_name, 0);
 	cout << "Full Name\t: " << full_name  << endl;
+	to_upper(position.second, 0);
 	cout << "Position\t: " << position.second <<  endl;
 	//need to add support
 	//cout << "Joined Date\t: " << join_date << endl;
 }
 
-string Staff::get_user_name()
+string Staff::get_username()
 {
 	return username;
 }

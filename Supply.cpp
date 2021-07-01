@@ -1,6 +1,4 @@
 #include "Supply.h"
-#include "Error_check.h"
-
 
 ostream& operator<<(ostream& out, const Supply& obj)
 {
@@ -29,6 +27,66 @@ istream& operator >> (istream& in, Supply& obj)
 	return in;
 }
 
+void Supply::get_data()
+{
+	display_source_type();
+	display_vehicle_types();
+
+	cout << "\nAdd New Supply Item\n---------------------------------------\n";
+
+	cout << "Enter item name\t\t\t: ";
+	getline(cin, item_name);
+	to_upper(item_name, 1);
+
+	quantity = int_check("Enter number of items\t");
+
+	cout << "Enter item origin\t\t\t: ";
+	getline(cin, name_of_origin);
+	to_upper(name_of_origin, 1);
+
+	cout << "Enter item source\t\t\t: ";
+	source = (supply_type_check() == 1 ? "Local" : "International");
+
+	date_of_depature = check_date("Enter depature date");
+
+	date_of_arrival = check_date("Enter arival date");
+
+	if (source == "Local")
+	{
+		int v_t = vehicle_category_check();
+		if (v_t == 1)
+			vehicle_type = "Large Truck";
+		else if (v_t == 2)
+			vehicle_type = "Small Truck";
+		else
+			vehicle_type = "Van";
+	}
+	else
+		vehicle_type = "Ship";
+	
+	cout << "Enter vehicle register number\t\t: ";
+	getline(cin, reg_number);
+	to_upper(reg_number, 1);
+
+	//cout << "Press Enter to save\n";
+	//get keystroke
+
+}
+
+void Supply::show_data()
+{
+	cout << "\nSupply Details\n---------------------------------------\n";
+	to_upper(item_name, 0);
+	cout << "Item name\t\t: " << item_name << endl;
+	cout << "Quantity\t\t: " << quantity << endl;
+	to_upper(name_of_origin, 0);
+	cout << "Item origin\t\t: " << name_of_origin << endl;
+	cout << "Item source\t\t: " << source << endl;
+	cout << "Depature date\t\t: " << date_of_depature.year << "." << date_of_depature.month << "." << date_of_depature.day << endl;
+	cout << "Arrival date\t\t: " << date_of_arrival.year << "." << date_of_arrival.month << "." << date_of_arrival.day << endl;
+	cout << "Vehicle type\t\t: " << vehicle_type << endl;
+	cout << "Vehicle register number\t: " << reg_number << endl;
+}
 
 void Supply::supply_write_data() {
 	ofstream write_file;
@@ -56,7 +114,6 @@ vector<Supply>  Supply::supply_read_data()
 
 void Supply::update()
 {
-
 	Stock temp;
 	vector<Stock> itm;
 
@@ -72,7 +129,6 @@ void Supply::update()
 
 	temp.set_quantity(q);
 	
-
 	write_all_data(temp);
 }
 

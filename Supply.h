@@ -1,12 +1,12 @@
 #ifndef SUPPLY_H
 #define SUPPLY_H
 
-#include "Stock.h"
-#include "Staff.h"
 #include <string>
 #include <fstream>
 #include <vector>
-
+#include "Stock.h"
+#include "Staff.h"
+#include "Error_check.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ class Supply : public Stock
 	string reg_number;
 	string item_name;
 	int quantity;
-	string name_of_origin; //farm of factory
+	string name_of_origin; //farm or factory
 	Date date_of_depature;
 	Date date_of_arrival;
 	bool status; //false until accepted

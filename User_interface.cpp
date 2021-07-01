@@ -1,5 +1,19 @@
 #include "User_interface.h"
 
+void display_header()
+{
+	int size = 200;
+
+	cout << endl;
+	for (int i = 0; i < size/2-10; i++)
+		cout << " ";
+	cout << "CMD Supermarket\n";
+	
+
+	for (int i = 0; i < size; i++)
+		cout << "_";
+	cout << endl;
+}
 
 void set_console_position(int x, int y)
 {
@@ -94,6 +108,14 @@ void display_supply_type()
 	cout << "2. Imported\n";
 }
 
+void display_source_type()
+{
+	cout << "\nSupply Type\n";
+	cout << "-------------------------\n";
+	cout << "1. Local\n";
+	cout << "2. International\n";
+}
+
 void display_staff_positions()
 {
 	cout << "\nStaff Positions\n";
@@ -101,6 +123,15 @@ void display_staff_positions()
 	cout << "1. Manager\n";
 	cout << "2. Cashier\n";
 	cout << "3. Floor worker\n";
+}
+
+void display_vehicle_types()
+{
+	cout << "\nVehicle Types\n";
+	cout << "---------------------------------------\n";
+	cout << "1. Large Truck\n";
+	cout << "2. Small Truck\n";
+	cout << "3. Van\n";
 }
 
 void display_error(string error)
@@ -120,6 +151,7 @@ void display_error(string error)
 	else if (error == "IB01")	cerr << "\a\terror IB01: Input must be either 1 or 0.\n";
 
 	else if (error == "IS01")	cerr << "\a\terror IS01: Input must be a phrase with letters.\n";
+	else if (error == "IS02")	cerr << "\a\terror IS02: Input passwords are not matching.\n";
 
 	else if (error == "IA01")	cerr << "\a\terror IA01: Input must be a valid date.\n";
 
@@ -127,6 +159,7 @@ void display_error(string error)
 	else if (error == "SD02")	cerr << "\a\terror SD02: Non-existing item name entered.\n";
 	else if (error == "SD03")	cerr << "\a\terror SD03: Non-existing brand name entered.\n";
 	else if (error == "SD04")	cerr << "\a\terror SD04: Item quantity exceeded. No enough items.\n";
+	else if (error == "SD05")	cerr << "\a\terror SD05: Already existing username entered.\n";
 }
 
 void display_help(string error)
@@ -257,22 +290,216 @@ void display_stock_table(vector <Stock>& stock)
 
 	cout << endl;
 }
+//
+//void display_supply_table(vector <Supply>& supply)
+//{
+//	size_t max_name = 9, max_brand_name = 10;
+//	size_t size = stock.size();
+//	double total = 0;
+//	int length = 180;
+//
+//	for (int i = 0; i < size; i++)
+//	{
+//		if (stock[i].get_item_name().length() > max_name)
+//			max_name = stock[i].get_item_name().length() + 1;
+//	}
+//
+//	for (int i = 0; i < size; i++)
+//	{
+//		if (stock[i].get_item_brand_name().length() > max_brand_name)
+//			max_brand_name = stock[i].get_item_brand_name().length();
+//	}
+//
+//	cout << "\n";
+//	for (int i = 0; i < (max_name + max_brand_name + length - 16) / 2; i++)
+//		cout << " ";
+//	cout << "Stock Table\n";
+//
+//	for (int i = 0; i < max_name + max_brand_name + length; i++)
+//		cout << "-";
+//
+//	cout << "\n|    " << "Item ID" << "    |";
+//
+//	cout << "       " << "Item Catagory" << "       |";
+//
+//	for (int i = 0; i < (max_name) / 2; i++)
+//		cout << " ";
+//	cout << "   Item Name   ";
+//	for (int i = 0; i < (max_name) / 2; i++)
+//		cout << " ";
+//	cout << "|";
+//
+//	for (int i = 0; i < (max_brand_name) / 2; i++)
+//		cout << " ";
+//	cout << "  Brand Name  ";
+//	for (int i = 0; i < (max_brand_name) / 2; i++)
+//		cout << " ";
+//	cout << "|";
+//
+//	cout << "    " << "Supply Type" << "    |";
+//	cout << "     " << "Quantity" << "     |";
+//	cout << " " << " Retail Price " << " |";
+//	cout << " " << "Discount" << " |";
+//	cout << " " << " Final Price " << " |";
+//	cout << "     " << "Stock Value" << "     |";
+//
+//	cout << endl;
+//
+//	for (int i = 0; i < max_name + max_brand_name + length; i++)
+//		cout << "-";
+//
+//	for (int i = 0; i < size; i++)
+//	{
+//		cout << endl;
+//
+//		cout << "    " << stock[i].get_item_id() << "          ";
+//
+//		display_category(stock[i].get_item_category());
+//		cout << "    ";
+//
+//		to_upper(stock[i].get_item_name(), 0);
+//
+//		cout << stock[i].get_item_name();
+//		for (int j = 0; j < (max_name - stock[i].get_item_name().length()); j++)
+//			cout << " ";
+//		cout << "               ";
+//
+//		to_upper(stock[i].get_item_brand_name(), 0);
+//		cout << stock[i].get_item_brand_name();
+//		for (int j = 0; j < (max_brand_name - stock[i].get_item_brand_name().length()); j++)
+//			cout << " ";
+//		cout << "              ";
+//
+//		cout << stock[i].get_item_supply_type();
+//		if (stock[i].get_item_supply_type() == "Local")
+//			cout << "   ";
+//		else if (stock[i].get_item_supply_type() == "notype")
+//			cout << "   ";
+//		cout << "\t";
+//
+//		if (stock[i].get_item_category() == 1 || stock[i].get_item_category() == 2 || stock[i].get_item_category() == 3)
+//			cout << fixed << setprecision(3) << "\t" << stock[i].get_quantity() / 1000.0 << " kg\t";
+//		else
+//			cout << fixed << setprecision(0) << "\t" << stock[i].get_quantity() << "\t\t";
+//
+//		cout << fixed << setprecision(2);
+//
+//		cout << "   ";
+//		cout << stock[i].get_retail_price() << "\t";
+//		cout << "   ";
+//		cout << stock[i].get_discount() << "%\t        ";
+//		cout << stock[i].get_final_price() << "\t\t";
+//
+//		total = total + stock[i].get_retail_price() * stock[i].get_quantity();
+//		cout << stock[i].get_retail_price() * stock[i].get_quantity() << "/=";
+//	}
+//
+//	cout << endl;
+//
+//	for (int i = 0; i < max_name + max_brand_name + length; i++)
+//		cout << "-";
+//
+//	cout << endl;
+//	for (int i = 0; i < (max_name + max_brand_name + length - 40); i++)
+//		cout << " ";
+//	cout << "Total Stock value : Rs\t" << total << "/=";
+//
+//	cout << endl;
+//}
+
+void display_staff_table(vector <Staff>& staff)
+{
+	size_t max_username = 8, max_full_name = 9;
+	size_t size = staff.size();
+	int length = 60;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (staff[i].get_username().length() > max_username)
+			max_username = staff[i].get_username().length();
+	}
+
+	for (int i = 0; i < size; i++)
+	{
+		if (staff[i].get_full_name().length() > max_full_name)
+			max_full_name = staff[i].get_full_name().length();
+	}
+
+	cout << "\n";
+	for (int i = 0; i < (max_username + max_full_name + length - 16) / 2; i++)
+		cout << " ";
+	cout << "Staff Table\n";
+
+	for (int i = 0; i < max_username + max_full_name + length; i++)
+		cout << "-";
+
+	cout << "\n|";
+	for (int i = 0; i < (max_username) / 2; i++)
+		cout << " ";
+	cout << "Username";
+	for (int i = 0; i < (max_username) / 2; i++)
+		cout << " ";
+	cout << "|";
+
+	for (int i = 0; i < (max_full_name) / 2; i++)
+		cout << " ";
+	cout << " Full Name ";
+	for (int i = 0; i < (max_full_name) / 2; i++)
+		cout << " ";
+	cout << "|";
+
+	cout << "      " << "Position" << "      |";
+
+	cout << "   " << "Joined date" << "   |";
+
+	cout << "\n";
+	for (int i = 0; i < max_username + max_full_name + length; i++)
+		cout << "-";
+
+	for (int i = 0; i < size; i++)
+	{
+		cout << endl;
+
+		cout << "     ";
+		cout << staff[i].get_username();
+		for (int j = 0; j < (max_username - staff[i].get_username().length()); j++)
+			cout << " ";
+		cout << "          ";
+
+		cout << staff[i].get_full_name();
+		for (int j = 0; j < (max_full_name - staff[i].get_full_name().length()); j++)
+			cout << " ";
+		cout << "           ";
+
+		cout << staff[i].get_position().second;
+		for (int j = 0; j < (12 - staff[i].get_position().second.length()); j++)
+			cout << " ";
+		cout << "       ";
+
+		cout << "1999.23.53";
+		//cout << get_join_date().year << "." << get_join_date().month << "." << get_join_date().day << endl;
+	}
+	cout << endl;
+	for (int i = 0; i < max_username + max_full_name + length; i++)
+		cout << "-";
+	cout << endl;
+}
 
 void transaction_bill(vector <Stock> stock, string cashier, string date, string time)
 {
 	int length = 80, total = 0;
 
-	for (int i = 0; i < length / 2 - 8; i++)
+	for (size_t i = 0; i < length / 2 - 8; i++)
 		cout << " ";
 	cout << "CMD Supermarket\n";
 
-	for (int i = 0; i < length; i++)
+	for (size_t i = 0; i < length; i++)
 		cout << "-";
 	//bill number
 	cout << endl;
 	cout << "Cashier: " << cashier;
 
-	for (int i = cashier.length(); i < length - 25; i++)
+	for (size_t i = cashier.length(); i < length - 25; i++)
 		cout << " ";
 	cout << date;
 	cout << endl;
@@ -297,11 +524,11 @@ void transaction_bill(vector <Stock> stock, string cashier, string date, string 
 		cout << stock[i].get_item_id() << "      ";
 
 		cout << stock[i].get_item_name();
-		for (int j = stock[i].get_item_name().length(); j < 18; j++)
+		for (size_t j = stock[i].get_item_name().length(); j < 18; j++)
 			cout << " ";
 
 		cout << stock[i].get_item_brand_name();
-		for (int j = stock[i].get_item_brand_name().length(); j < 18; j++)
+		for (size_t j = stock[i].get_item_brand_name().length(); j < 18; j++)
 			cout << " ";
 
 		cout << "" << stock[i].get_final_price();
@@ -336,7 +563,7 @@ void to_upper(string& input, bool to_upper)
 		for (size_t i = 0; i < len; i++) {
 			if (input[i] == ' ')
 				input[i] = '_';
-			else if (input[i] >= 'a')
+			else if (input[i] >= 'a' && input[i] <= 'z')
 				input[i] = input[i] - 32;
 		}
 	}
@@ -352,4 +579,39 @@ void to_upper(string& input, bool to_upper)
 				input[i] = input[i] + 32;
 		}
 	}
+}
+
+string enter_password(const string& prompt)
+{
+	string result;
+
+	DWORD mode = 0, count;
+	HANDLE ih = GetStdHandle(STD_INPUT_HANDLE);
+	HANDLE oh = GetStdHandle(STD_OUTPUT_HANDLE);
+	if (!GetConsoleMode(ih, &mode))
+		throw runtime_error("getpassword: You must be connected to a console to use this program.\n");
+	SetConsoleMode(ih, mode & ~(ENABLE_ECHO_INPUT | ENABLE_LINE_INPUT));
+
+	WriteConsoleA(oh, prompt.c_str(), prompt.length(), &count, NULL);
+	char c;
+	while (ReadConsoleA(ih, &c, 1, &count, NULL) && (c != '\r') && (c != '\n'))
+	{
+		if (c == '\b')
+		{
+			if (result.length())
+			{
+				WriteConsoleA(oh, "\b \b", 3, &count, NULL);
+				result.erase(result.end() - 1);
+			}
+		}
+		else
+		{
+			WriteConsoleA(oh, "*", 1, &count, NULL);
+			result.push_back(c);
+		}
+	}
+
+	SetConsoleMode(ih, mode);
+
+	return result;
 }

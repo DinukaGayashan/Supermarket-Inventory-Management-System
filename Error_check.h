@@ -8,9 +8,7 @@
 
 struct Date;
 
-
 using namespace std;
-
 
 int int_check(const string str);
 bool is_int(const string str);
@@ -20,6 +18,7 @@ double rupees_check(const string str);
 
 int supply_type_check();
 int category_check();
+int vehicle_category_check();
 
 int check_position();
 bool is_name(const string name);

@@ -124,7 +124,8 @@ int supply_type_check()
 	return type;
 }
 
-int category_check() {
+int category_check() 
+{
 	int ctgry;
 
 	while (true) {
@@ -136,8 +137,23 @@ int category_check() {
 		}
 		break;
 	}
-
 	return ctgry;
+}
+
+int vehicle_category_check() 
+{
+	int vctgry;
+
+	while (true) {
+		vctgry = int_check("Enter vehicle category number");
+
+		if (vctgry > 3 || vctgry < 1) {
+			display_error("II06");
+			continue;
+		}
+		break;
+	}
+	return vctgry;
 }
 
 int discount_check() {

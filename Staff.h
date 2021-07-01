@@ -7,13 +7,14 @@
 #include <fstream>
 #include <utility>
 #include "User_interface.h"
-
+#include "Error_check.h"
 
 using namespace std;
+
 struct Date
 {
 	int day, month, year;
-	Date(int d = 0,int m=0,int y=0):day(d), month(m), year(y){}
+	Date(int d = 0, int m = 0, int y = 0) :day(d), month(m), year(y) {}
 };
 
 class Staff
@@ -37,10 +38,10 @@ public:
 	void add_user();
 	void show_data();
 	void staff_write_data();
-	static  vector<Staff> read_staff_data();
+	static vector<Staff> read_staff_data();
 
 
-	string get_user_name();
+	string get_username();
 	string get_password();
 	string get_full_name();
 	pair<int,string> get_position();

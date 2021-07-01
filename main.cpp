@@ -3,10 +3,11 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
-#include "Stock.h"
 #include "Error_check.h"
 #include "User_interface.h"
+#include "Stock.h"
 #include "Staff.h"
+#include "Supply.h"
 
 using namespace std;
 
@@ -29,8 +30,8 @@ int main()
 	set_console_size(1920, 1080);
 	//set_font_size(24,24);
 
-	Stock s1, s2("AAA00000","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 90, 2, 3);
-	vector < Stock > stock = { s1, s2 };
+	/*Stock s1, s2("AAA00000","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 90, 2, 3);
+	vector < Stock > stock = { s1, s2 };*/
 
 	//display_stock_table(stock);
 	
@@ -87,11 +88,42 @@ int main()
 
 	//Stock::delete_item();
 
-	string d=get_date();
+	/*string d=get_date();
 	string t= get_time();
-	transaction_bill(stock, "dfgddhfgdsrgf",d,t);
+	transaction_bill(stock, "dfgddhfgdsrgf",d,t);*/
 
 	//promotion 2 check
 	// vector < Stock > stock = Stock::find_item("cucumber", 1); capital check!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+	//Staff s1;
+	//s1.add_user();
+	//s1.staff_write_data();
+	//s1.show_data();
+	//
+
+	/*Supply.s1;
+	s1.add_user();
+	s1.staff_write_data();
+	s1.show_data();*/
+
+
+	//string password = get_password("Enter password : ");
+	//cout << password;
+	display_header();
+	Staff s1,s2 ;
+	
+	vector < Staff > staff = { s1 ,s2};
+
+	
+	display_staff_table(staff);
+
+
+
+
+
+
+
+
 	return 0;
 }
