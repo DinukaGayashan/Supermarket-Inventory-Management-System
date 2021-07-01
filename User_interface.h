@@ -9,14 +9,18 @@
 #include <ctime>
 #include <stdexcept>
 #include "Stock.h"
+#include "Staff.h"
+#include "Supply.h"
 
 using namespace std;
 
 //forward declaration
 class Stock;
 class Staff;
+class Supply;
 
-void display_header();
+void display_header(string user);
+void display_login_screen();
 string get_date();
 string get_time();
 void set_console_size(int w, int h);

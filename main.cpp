@@ -102,28 +102,33 @@ int main()
 	//s1.show_data();
 	//
 
-	Supply s1;
-	s1.add_user();
-	s1.staff_write_data();
-	s1.show_data();
-
+	//Staff s1;
+	//s1.add_user();
+	//s1.write_data();
+	//s1.show_data();
+	//Stock s2;
+	//s2.input_data();
 
 	//string password = get_password("Enter password : ");
 	//cout << password;
 	//display_header();
-	/*Staff s1,s2 ;
 	
+	Staff s1,s2 ;
 	vector < Staff > staff = { s1 ,s2};
+	display_staff_table(staff);
 
+	/*Supply s1;
 	
-	display_staff_table(staff);*/
+	s1.get_data();
+	s1.supply_write_data();
+	s1.show_data();
+	s1.update();
+	s1.show_data();*/
 
+	/*Stock s;
+	s.transaction("kk");*/
 
-
-
-
-
-
+	display_login_screen();
 
 	return 0;
 }

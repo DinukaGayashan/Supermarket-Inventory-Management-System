@@ -20,7 +20,7 @@ int int_check(const string str)
 	string input;
 	while (true)
 	{
-		cout << str << "\t: ";
+		cout << str << ": ";
 		getline(cin, input);
 
 		if (is_int(input))
@@ -71,7 +71,7 @@ double rupees_check(const string str)
 	string input;
 	while (true)
 	{
-		cout << str << "\t: ";
+		cout << str << ": ";
 		getline(cin, input);
 
 		if (is_double(input))
@@ -129,7 +129,7 @@ int category_check()
 	int ctgry;
 
 	while (true) {
-		ctgry = int_check("Enter category number");
+		ctgry = int_check("Enter category number\t");
 
 		if (ctgry > 10 || ctgry < 1) {
 			display_error("II04");
@@ -145,7 +145,7 @@ int vehicle_category_check()
 	int vctgry;
 
 	while (true) {
-		vctgry = int_check("Enter vehicle category number");
+		vctgry = int_check("Enter vehicle category\t");
 
 		if (vctgry > 3 || vctgry < 1) {
 			display_error("II06");
@@ -202,7 +202,7 @@ int check_position() {
 	int position;
 
 	while (true) {
-		position = int_check("Enter position");
+		position = int_check("Enter position\t");
 
 		if (position > 3 || position < 0) {
 			display_error("II06");
@@ -237,9 +237,9 @@ Date check_date(const string input_str) {
 	Date date;
 	while (true) {
 		cout << input_str <<endl;
-		date.day = int_check("Enter day");
-		date.month = int_check("Enter month");
-		date.year = int_check("Enter year");
+		date.day = int_check("Enter date\t");
+		date.month = int_check("Enter month\t");
+		date.year = int_check("Enter year\t");
 
 		if (is_date(date) == false) {
 			display_error("IA01");

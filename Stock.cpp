@@ -26,12 +26,12 @@ void Stock::input_data()
 
 	item_category = category_check();
 
-	cout << "Enter item name\t\t\t: ";
+	cout << "Enter item name\t\t: ";
 	getline(cin, item_name);
 	to_upper(item_name, 1);
 
 	if (item_category > 2) {
-		cout << "Enter brand name\t\t: ";
+		cout << "Enter brand name\t: ";
 		getline(cin, brand_name);
 		to_upper(brand_name, 1);
 
@@ -40,12 +40,12 @@ void Stock::input_data()
 
 	quantity = int_check("Enter number of items\t");
 	retail_price = rupees_check("Enter the retail price\t");
-	discount = int_check("Enter the discount percentage"); 
+	discount = int_check("Enter discount percentage"); 
 	final_price = retail_price * (1 - (discount / 100.0));
 
 	item_id = generate_item_id(item_name, brand_name, item_category);
 
-	cout << "Item ID\t\t\t\t: " << item_id<<endl;
+	cout << "Item ID\t\t\t: " << item_id<<endl;
 
 	//cout << "Press Enter to save\n";
 	//get keystroke
@@ -102,15 +102,6 @@ vector<Stock> Stock::read_data(int file_index)
 	return items;
 }
 
-string Stock::get_item_id()
-{
-	return item_id;
-}
-
-int Stock::get_item_category()
-{
-	return item_category;
-}
 
 void Stock::transaction(const string& cashier_name)
 {
@@ -131,6 +122,7 @@ void Stock::transaction(const string& cashier_name)
 		while (true) {
 			cout << "Enter Item ID : ";
 			getline(cin, id);
+			to_upper(id, 1);
 			temp = find_by_id(id, items, err);
 			if (err == true)
 			{
@@ -250,26 +242,8 @@ void Stock::set_supply_type(int t)
 	supply_type = (t == 1 ? "Local" : "Imported");
 }
 
-string& Stock::get_item_name()
-{
-	return item_name;
-}
-
-string& Stock::get_item_brand_name()
-{
-	return brand_name;
-}
 
 
-string Stock::get_item_supply_type()
-{
-	return supply_type;
-}
-
-int Stock::get_quantity()
-{
-	return quantity;
-}
 
 void Stock::promotion(int promotion_type)
 {
@@ -334,16 +308,14 @@ void Stock::promotion(int promotion_type)
 			dis.emplace_back(items[i]);
 		}
 		display_stock_table(dis);
-
 	}
-
 }
 
 void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 {	
 	while (true) {
 		string itm_nm;
-		cout << "Enter item name\t\t:";
+		cout << "Enter item name\t\t: ";
 		getline(cin, itm_nm);
 		to_upper(itm_nm, 1);
 
@@ -371,6 +343,35 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 	}
 }
 
+string Stock::get_item_id()
+{
+	return item_id;
+}
+
+int Stock::get_item_category()
+{
+	return item_category;
+}
+
+string& Stock::get_item_name()
+{
+	return item_name;
+}
+
+string& Stock::get_item_brand_name()
+{
+	return brand_name;
+}
+
+string Stock::get_item_supply_type()
+{
+	return supply_type;
+}
+
+int Stock::get_quantity()
+{
+	return quantity;
+}
 
 double Stock::get_retail_price()
 {

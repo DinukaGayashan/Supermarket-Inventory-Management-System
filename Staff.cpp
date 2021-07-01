@@ -78,7 +78,7 @@ void Staff::add_user()
 	string password1, password2;
 	do
 	{
-		password1 = enter_password("Password\t: ");
+		password1 = enter_password("Enter password\t: ");
 		password2 = enter_password("\nConfirm password: ");
 		cout << endl;
 		if (password1 != password2)

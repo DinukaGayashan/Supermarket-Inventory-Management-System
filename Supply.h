@@ -10,16 +10,21 @@
 
 using namespace std;
 
+struct Date;					//testing these
+class Staff;					//
+class Stock;					//
+
 class Supply : public Stock
 {
+private:
+	string supply_item_name;
+	int supply_quantity;
 	string source; //local or international
-	string vehicle_type; //small van, medium, large or ship
-	string reg_number;
-	string item_name;
-	int quantity;
-	string name_of_origin; //farm or factory
+	string origin_name; //farm or factory
 	Date date_of_depature;
 	Date date_of_arrival;
+	string vehicle_type; //small van, medium, large or ship
+	string reg_number;
 	bool status; //false until accepted
 
 public:
@@ -36,6 +41,17 @@ public:
 	void update();
 
 	bool check_item();
+
+																					//attribute tika public damuko ithin
+	string get_supply_item_name();
+	int get_supply_quantity();
+	string get_source();
+	string get_origin_name();
+	Date get_date_of_depature();
+	Date get_date_of_arrival();
+	string get_vehicle_type();
+	string get_reg_number();
+	bool get_status();
 
 };
 
