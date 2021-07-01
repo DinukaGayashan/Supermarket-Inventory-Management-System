@@ -102,21 +102,21 @@ int main()
 	//s1.show_data();
 	//
 
-	/*Supply.s1;
+	Supply s1;
 	s1.add_user();
 	s1.staff_write_data();
-	s1.show_data();*/
+	s1.show_data();
 
 
 	//string password = get_password("Enter password : ");
 	//cout << password;
-	display_header();
-	Staff s1,s2 ;
+	//display_header();
+	/*Staff s1,s2 ;
 	
 	vector < Staff > staff = { s1 ,s2};
 
 	
-	display_staff_table(staff);
+	display_staff_table(staff);*/
 
 
 
