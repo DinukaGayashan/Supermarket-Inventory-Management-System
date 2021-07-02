@@ -147,39 +147,160 @@ bool Supply::check_item()
 	return bool(items.size());
 }
 
-string Supply:: get_supply_item_name()
+//string Supply:: get_supply_item_name()
+//{
+//	return supply_item_name;
+//}
+//int Supply::get_supply_quantity()
+//{
+//	return supply_quantity;
+//}
+//string Supply::get_source()
+//{
+//	return source;
+//}
+//string Supply::get_origin_name()
+//{
+//	return origin_name;
+//}
+//Date Supply::get_date_of_depature()
+//{
+//	return date_of_depature;
+//}
+//Date Supply::get_date_of_arrival()
+//{
+//	return date_of_arrival;
+//}
+//string Supply::get_vehicle_type()
+//{
+//	return vehicle_type;
+//}
+//string Supply::get_reg_number()
+//{
+//	return reg_number;
+//}
+//bool Supply::get_status()
+//{
+//	return status;
+//}
+
+void Supply:: display_supply_table(vector <Supply>& supply)
 {
-	return supply_item_name;
-}
-int Supply::get_supply_quantity()
-{
-	return supply_quantity;
-}
-string Supply::get_source()
-{
-	return source;
-}
-string Supply::get_origin_name()
-{
-	return origin_name;
-}
-Date Supply::get_date_of_depature()
-{
-	return date_of_depature;
-}
-Date Supply::get_date_of_arrival()
-{
-	return date_of_arrival;
-}
-string Supply::get_vehicle_type()
-{
-	return vehicle_type;
-}
-string Supply::get_reg_number()
-{
-	return reg_number;
-}
-bool Supply::get_status()
-{
-	return status;
+	size_t max_name = 9, max_origin = 6, max_reg_num = 15;
+	size_t size = supply.size();
+	int length = 150;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (supply[i].supply_item_name.length() > max_name)
+			max_name = supply[i].supply_item_name.length() + 1;
+	}
+
+	for (int i = 0; i < size; i++)
+	{
+		if (supply[i].origin_name.length() > max_origin)
+			max_origin = supply[i].origin_name.length();
+	}
+
+	for (int i = 0; i < size; i++)
+	{
+		if (supply[i].reg_number.length() > max_reg_num)
+			max_reg_num = supply[i].reg_number.length();
+	}
+
+	cout << "\n";
+	for (int i = 0; i < (max_name + max_origin + max_reg_num + length - 18) / 2; i++)
+		cout << " ";
+	cout << "Supply Table\n";
+
+	for (int i = 0; i < max_name + max_origin + max_reg_num + length; i++)
+		cout << "-";
+
+	cout << "\n|";
+	for (int i = 0; i < (max_name) / 2; i++)
+		cout << " ";
+	cout << "   Item Name   ";
+	for (int i = 0; i < (max_name) / 2; i++)
+		cout << " ";
+	cout << "|";
+
+	cout << "     " << "Quantity" << "     |";
+
+	cout << "     " << "Source" << "     |";
+
+	for (int i = 0; i < (max_origin) / 2; i++)
+		cout << " ";
+	cout << "  Origin Name  ";
+	for (int i = 0; i < (max_origin) / 2; i++)
+		cout << " ";
+	cout << "|";
+
+	cout << " " << "Date of Depature" << " |";
+
+	cout << " " << "Date of Arrival" << " |";
+
+	cout << "   " << "Vehicle Type" << "   |";
+
+	for (int i = 0; i < (max_reg_num) / 2; i++)
+		cout << " ";
+	cout << " Registration Number ";
+	for (int i = 0; i < (max_reg_num) / 2; i++)
+		cout << " ";
+	cout << "|";
+
+	cout << "     " << "Status" << "     |\n";
+
+	for (int i = 0; i < max_name + max_origin + max_reg_num + length; i++)
+		cout << "-";
+
+	cout << endl;
+	for (int i = 0; i < size; i++)
+	{
+		cout << endl;
+
+		cout << "  ";
+
+		to_upper(supply[i].supply_item_name, 0);
+		cout << supply[i].supply_item_name;
+		for (int j = 0; j < (max_name - supply[i].supply_item_name.length()); j++)
+			cout << " ";
+		cout << "    ";
+
+		cout << supply[i].supply_quantity << "\t";
+
+		cout << supply[i].source;
+		for (int j = 0; j < (13 - supply[i].source.length()); j++)
+			cout << " ";
+		cout << "       ";
+
+		to_upper(supply[i].origin_name, 0);
+		cout << supply[i].origin_name;
+		for (int j = 0; j < (max_origin - supply[i].origin_name.length()); j++)
+			cout << " ";
+		cout << "    ";
+
+		cout << supply[i].date_of_depature.year << "." << supply[i].date_of_depature.month << "." << supply[i].date_of_depature.day <<"\t";
+
+		cout << supply[i].date_of_arrival.year << "." << supply[i].date_of_arrival.month << "." << supply[i].date_of_arrival.day << "\t";
+
+		cout << supply[i].vehicle_type;
+		for (int j = 0; j < (12 - supply[i].vehicle_type.length()); j++)
+			cout << " ";
+		cout << "       ";
+
+		cout << supply[i].reg_number;
+		for (int j = 0; j < (max_reg_num - supply[i].reg_number.length()); j++)
+			cout << " ";
+		cout << "    ";
+
+		if (supply[i].status)
+			cout << "Accepted";
+		else
+			cout << "In transit";
+
+	}
+	cout << endl;
+	for (int i = 0; i < max_name + max_origin + max_reg_num + length; i++)
+		cout << "-";
+	cout << endl;
 }

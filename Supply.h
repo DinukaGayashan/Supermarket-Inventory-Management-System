@@ -34,16 +34,17 @@ public:
 
 	bool check_item();
 
-																					//attribute tika public damuko ithin
-	string get_supply_item_name();
-	int get_supply_quantity();
-	string get_source();
-	string get_origin_name();
-	Date get_date_of_depature();
-	Date get_date_of_arrival();
-	string get_vehicle_type();
-	string get_reg_number();
-	bool get_status();
+	//string get_supply_item_name();
+	//int get_supply_quantity();
+	//string get_source();
+	//string get_origin_name();
+	//Date get_date_of_depature();
+	//Date get_date_of_arrival();
+	//string get_vehicle_type();
+	//string get_reg_number();
+	//bool get_status();
+
+	static void display_supply_table(vector <Supply>& supply);
 
 };
 

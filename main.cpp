@@ -28,8 +28,8 @@ int main()
 	}
 	*/
 	
-	/*set_console_position(0, 0);
-	set_console_size(1920, 1080);*/
+	set_console_position(0, 0);
+	set_console_size(1920, 1080);
 	//set_font_size(24,24);
 
 	/*Stock s1, s2("AAA00000","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 90, 2, 3);
@@ -130,7 +130,7 @@ int main()
 	/*Stock s;
 	s.transaction("kk");*/
 
-	/*display_login_screen();*/
+	display_login_screen();
 
 	return 0;
 }
