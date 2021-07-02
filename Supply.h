@@ -1,19 +1,11 @@
 #ifndef SUPPLY_H
 #define SUPPLY_H
 
-#include <string>
-#include <fstream>
-#include <vector>
 #include "Stock.h"
-#include "Staff.h"
-#include "Error_check.h"
+#include "Date.h"
 
-using namespace std;
 
-struct Date;					//testing these
-class Staff;					//
-class Stock;					//
-
+class Stock;
 class Supply : public Stock
 {
 private:

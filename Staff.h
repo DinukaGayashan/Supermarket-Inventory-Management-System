@@ -6,16 +6,13 @@
 #include <tuple>
 #include <fstream>
 #include <utility>
+#include <vector>
+
 #include "User_interface.h"
 #include "Error_check.h"
+#include "Date.h"
 
 using namespace std;
-
-struct Date
-{
-	int day, month, year;
-	Date(int d = 0, int m = 0, int y = 0) :day(d), month(m), year(y) {}
-};
 
 class Staff
 {

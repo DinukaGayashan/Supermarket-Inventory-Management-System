@@ -1,5 +1,5 @@
 #include "Stock.h"
-#include <cmath>
+
 
 void Stock::show_data()
 {

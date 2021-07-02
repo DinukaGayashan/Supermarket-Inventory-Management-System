@@ -4,9 +4,10 @@
 #include <iostream>
 #include <string>
 #include <tuple>
-#include "Staff.h"
+#include "User_interface.h"
+#include "Date.h"
 
-struct Date;
+
 
 using namespace std;
 

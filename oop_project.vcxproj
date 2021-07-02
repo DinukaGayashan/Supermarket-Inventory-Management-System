@@ -143,14 +143,21 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Stock.cpp" />
-    <ClCompile Include="Supply.cpp" />
+    <ClCompile Include="Supply.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="User_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Date.h" />
     <ClInclude Include="Error_check.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Stock.h" />
-    <ClInclude Include="Supply.h" />
+    <ClInclude Include="Supply.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="User_interface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

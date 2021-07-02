@@ -5,12 +5,14 @@
 #include <iostream>
 #include <fstream>
 #include <limits>
+#include <cmath>
 #include <vector>
 #include <Windows.h>
 #include "User_interface.h"
 #include "Error_check.h"
 
 using namespace std;
+
 
 class Stock
 {

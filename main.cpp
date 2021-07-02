@@ -3,11 +3,13 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+
+#include "Stock.h"
+#include "Supply.h"
+#include "Staff.h"
 #include "Error_check.h"
 #include "User_interface.h"
-#include "Stock.h"
-#include "Staff.h"
-#include "Supply.h"
+
 
 using namespace std;
 
@@ -26,8 +28,8 @@ int main()
 	}
 	*/
 	
-	set_console_position(0, 0);
-	set_console_size(1920, 1080);
+	/*set_console_position(0, 0);
+	set_console_size(1920, 1080);*/
 	//set_font_size(24,24);
 
 	/*Stock s1, s2("AAA00000","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 90, 2, 3);
@@ -113,9 +115,9 @@ int main()
 	//cout << password;
 	//display_header();
 	
-	Staff s1,s2 ;
+	/*Staff s1,s2 ;
 	vector < Staff > staff = { s1 ,s2};
-	display_staff_table(staff);
+	display_staff_table(staff);*/
 
 	/*Supply s1;
 	
@@ -128,7 +130,7 @@ int main()
 	/*Stock s;
 	s.transaction("kk");*/
 
-	display_login_screen();
+	/*display_login_screen();*/
 
 	return 0;
 }

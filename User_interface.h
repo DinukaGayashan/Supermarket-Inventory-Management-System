@@ -8,16 +8,15 @@
 #include <iomanip>
 #include <ctime>
 #include <stdexcept>
-#include "Stock.h"
 #include "Staff.h"
+#include "Stock.h"
 #include "Supply.h"
 
-using namespace std;
-
-//forward declaration
 class Stock;
-class Staff;
 class Supply;
+class Staff;
+
+using namespace std;
 
 void display_header(string user);
 void display_login_screen();

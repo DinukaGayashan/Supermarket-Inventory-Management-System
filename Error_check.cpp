@@ -1,5 +1,4 @@
 #include "Error_check.h"
-#include "User_interface.h"
 
 bool is_int(const string str)
 {
