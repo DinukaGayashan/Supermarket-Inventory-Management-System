@@ -236,7 +236,7 @@ Date check_date(const string input_str) {
 	Date date;
 	while (true) {
 		cout << input_str <<endl;
-		date.day = int_check("Enter date\t");
+		date.day = int_check("Enter day\t");
 		date.month = int_check("Enter month\t");
 		date.year = int_check("Enter year\t");
 

@@ -34,7 +34,7 @@ void display_vehicle_types();
 void display_error(string error);
 void display_help(string error);
 void display_stock_table(vector <Stock>& stock);
-void display_staff_table(vector <Staff>& staff);
+
 void transaction_bill(vector <Stock> stock, string cashier, string date, string time);
 void to_upper(string& input, bool to_upper);
 string enter_password(const string& prompt);

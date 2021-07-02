@@ -184,11 +184,11 @@ bool Supply::check_item()
 //	return status;
 //}
 
-void Supply:: display_supply_table(vector <Supply>& supply)
+void Supply:: display_supply_table(vector <Supply> supply)
 {
-	size_t max_name = 9, max_origin = 6, max_reg_num = 15;
+	size_t max_name = 9, max_origin = 6;
 	size_t size = supply.size();
-	int length = 150;
+	int length = 162;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -202,96 +202,97 @@ void Supply:: display_supply_table(vector <Supply>& supply)
 			max_origin = supply[i].origin_name.length();
 	}
 
-	for (int i = 0; i < size; i++)
-	{
-		if (supply[i].reg_number.length() > max_reg_num)
-			max_reg_num = supply[i].reg_number.length();
-	}
-
 	cout << "\n";
-	for (int i = 0; i < (max_name + max_origin + max_reg_num + length - 18) / 2; i++)
+	for (int i = 0; i < (max_name + max_origin + length - 18) / 2; i++)
 		cout << " ";
 	cout << "Supply Table\n";
 
-	for (int i = 0; i < max_name + max_origin + max_reg_num + length; i++)
+	for (int i = 0; i < max_name + max_origin + length; i++)
 		cout << "-";
 
 	cout << "\n|";
 	for (int i = 0; i < (max_name) / 2; i++)
 		cout << " ";
-	cout << "   Item Name   ";
+	cout << "Item Name";
 	for (int i = 0; i < (max_name) / 2; i++)
 		cout << " ";
 	cout << "|";
 
-	cout << "     " << "Quantity" << "     |";
+	cout << "    " << "Quantity" << "    |";
 
-	cout << "     " << "Source" << "     |";
+	cout << "       " << "Source" << "       |";
 
 	for (int i = 0; i < (max_origin) / 2; i++)
 		cout << " ";
-	cout << "  Origin Name  ";
+	cout << " Origin Name ";
 	for (int i = 0; i < (max_origin) / 2; i++)
 		cout << " ";
 	cout << "|";
 
-	cout << " " << "Date of Depature" << " |";
+	cout << "  " << "Date of Depature" << "  |";
 
-	cout << " " << "Date of Arrival" << " |";
+	cout << "  " << "Date of Arrival" << "  |";
 
 	cout << "   " << "Vehicle Type" << "   |";
 
-	for (int i = 0; i < (max_reg_num) / 2; i++)
-		cout << " ";
-	cout << " Registration Number ";
-	for (int i = 0; i < (max_reg_num) / 2; i++)
-		cout << " ";
-	cout << "|";
-
+	cout << "  " << "Registration Number" << "  |";
+	
 	cout << "     " << "Status" << "     |\n";
 
-	for (int i = 0; i < max_name + max_origin + max_reg_num + length; i++)
+	for (int i = 0; i < max_name + max_origin + length; i++)
 		cout << "-";
 
-	cout << endl;
 	for (int i = 0; i < size; i++)
 	{
 		cout << endl;
 
-		cout << "  ";
+		cout << "     ";
 
 		to_upper(supply[i].supply_item_name, 0);
 		cout << supply[i].supply_item_name;
 		for (int j = 0; j < (max_name - supply[i].supply_item_name.length()); j++)
 			cout << " ";
-		cout << "    ";
+		cout << "            ";
 
 		cout << supply[i].supply_quantity << "\t";
+		cout << "         ";
 
+		to_upper(supply[i].source, 0);
 		cout << supply[i].source;
 		for (int j = 0; j < (13 - supply[i].source.length()); j++)
 			cout << " ";
-		cout << "       ";
+		cout << "         ";
 
 		to_upper(supply[i].origin_name, 0);
 		cout << supply[i].origin_name;
 		for (int j = 0; j < (max_origin - supply[i].origin_name.length()); j++)
 			cout << " ";
-		cout << "    ";
+		cout << "                ";
 
-		cout << supply[i].date_of_depature.year << "." << supply[i].date_of_depature.month << "." << supply[i].date_of_depature.day <<"\t";
+		string d1 = "", d2 = "";
+		d1 += to_string(supply[i].date_of_depature.year) + "." + to_string(supply[i].date_of_depature.month) + "." + to_string(supply[i].date_of_depature.day) ;
+		d2 += to_string(supply[i].date_of_arrival.year) + "." + to_string(supply[i].date_of_arrival.month) + "." + to_string(supply[i].date_of_arrival.day) ;
+		cout << d1;
+		for (int j = 0; j < (10 - d1.length()); j++)
+			cout << " ";
+		cout << "          ";
 
-		cout << supply[i].date_of_arrival.year << "." << supply[i].date_of_arrival.month << "." << supply[i].date_of_arrival.day << "\t";
+		cout << d2;
+		for (int j = 0; j < (10 - d2.length()); j++)
+			cout << " ";
+		cout << "        ";
 
+
+		to_upper(supply[i].vehicle_type, 0);
 		cout << supply[i].vehicle_type;
 		for (int j = 0; j < (12 - supply[i].vehicle_type.length()); j++)
 			cout << " ";
-		cout << "       ";
+		cout << "         ";
 
 		cout << supply[i].reg_number;
-		for (int j = 0; j < (max_reg_num - supply[i].reg_number.length()); j++)
+		for (int j = 0; j < (19 - supply[i].reg_number.length()); j++)
 			cout << " ";
-		cout << "    ";
+		cout << "  ";
 
 		if (supply[i].status)
 			cout << "Accepted";
@@ -300,7 +301,7 @@ void Supply:: display_supply_table(vector <Supply>& supply)
 
 	}
 	cout << endl;
-	for (int i = 0; i < max_name + max_origin + max_reg_num + length; i++)
+	for (int i = 0; i < max_name + max_origin + length; i++)
 		cout << "-";
 	cout << endl;
 }

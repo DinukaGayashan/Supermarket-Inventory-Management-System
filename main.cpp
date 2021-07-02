@@ -130,7 +130,10 @@ int main()
 	/*Stock s;
 	s.transaction("kk");*/
 
-	display_login_screen();
+	//display_login_screen();
+
+Staff::display_staff_table(Staff::read_staff_data());
+
 
 	return 0;
 }

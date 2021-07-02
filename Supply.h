@@ -44,7 +44,7 @@ public:
 	//string get_reg_number();
 	//bool get_status();
 
-	static void display_supply_table(vector <Supply>& supply);
+	static void display_supply_table(vector <Supply> supply);
 
 };
 

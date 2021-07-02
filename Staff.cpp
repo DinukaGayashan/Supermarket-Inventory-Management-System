@@ -3,7 +3,7 @@
 ostream& operator<<(ostream& out, const Staff& obj)
 {
 	out << obj.username << "\n" << obj.password << "\n" << obj.full_name << "\n" << obj.position.first << "\n" << obj.position.second << "\n" << obj.join_date.day << "\n" 
-	<< obj.join_date.month << "\n" << obj.join_date.year << "\n" << endl;
+	<< obj.join_date.month << "\n" << obj.join_date.year << endl;
 	return out;
 }
 
@@ -99,27 +99,107 @@ void Staff::show_data()
 	//cout << "Joined Date\t: " << join_date << endl;
 }
 
-string Staff::get_username()
-{
-	return username;
-}
+//string Staff::get_username()
+//{
+//	return username;
+//}
+//
+//string Staff::get_password()
+//{
+//	return password;
+//}
+//
+//string Staff::get_full_name()
+//{
+//	return full_name;
+//}
+//
+//pair<int, string> Staff::get_position()
+//{
+//	return position;
+//}
+//
+//Date Staff::get_join_date()
+//{
+//	return join_date;
+//}
 
-string Staff::get_password()
+void Staff:: display_staff_table(vector <Staff> staff)
 {
-	return password;
-}
+	size_t max_username = 8, max_full_name = 9;
+	size_t size = staff.size();
+	int length = 59;
 
-string Staff::get_full_name()
-{
-	return full_name;
-}
+	for (int i = 0; i < size; i++)
+	{
+		if (staff[i].username.length() > max_username)
+			max_username = staff[i].username.length();
+	}
 
-pair<int, string> Staff::get_position()
-{
-	return position;
-}
+	for (int i = 0; i < size; i++)
+	{
+		if (staff[i].full_name.length() > max_full_name)
+			max_full_name = staff[i].full_name.length();
+	}
 
-Date Staff::get_join_date()
-{
-	return join_date;
+	cout << "\n";
+	for (int i = 0; i < (max_username + max_full_name + length - 18) / 2; i++)
+		cout << " ";
+	cout << "Staff Table\n";
+
+	for (int i = 0; i < max_username + max_full_name + length; i++)
+		cout << "-";
+
+	cout << "\n|";
+	for (int i = 0; i < (max_username) / 2; i++)
+		cout << " ";
+	cout << "Username";
+	for (int i = 0; i < (max_username) / 2; i++)
+		cout << " ";
+	cout << "|";
+
+	for (int i = 0; i < (max_full_name) / 2; i++)
+		cout << " ";
+	cout << " Full Name ";
+	for (int i = 0; i < (max_full_name) / 2; i++)
+		cout << " ";
+	cout << "|";
+
+	cout << "      " << "Position" << "      |";
+
+	cout << "   " << "Joined date" << "   |";
+
+	cout << "\n";
+	for (int i = 0; i < max_username + max_full_name + length; i++)
+		cout << "-";
+
+	for (int i = 0; i < size; i++)
+	{
+		cout << endl;
+		cout << "     ";
+
+		to_upper(staff[i].username, 0);
+		cout << staff[i].username;
+		for (int j = 0; j < (max_username - staff[i].username.length()); j++)
+			cout << " ";
+		cout << "          ";
+
+		to_upper(staff[i].full_name, 0);
+		cout << staff[i].full_name;
+		for (int j = 0; j < (max_full_name - staff[i].full_name.length()); j++)
+			cout << " ";
+		cout << "          ";
+
+		to_upper(staff[i].position.second, 0);
+		cout << staff[i].position.second;
+		for (int j = 0; j < (12 - staff[i].position.second.length()); j++)
+			cout << " ";
+		cout << "        ";
+
+		cout << staff[i].join_date.year << "." << staff[i].join_date.month << "." << staff[i].join_date.day;
+	}
+	cout << endl;
+	for (int i = 0; i < max_username + max_full_name + length; i++)
+		cout << "-";
+	cout << endl;
 }

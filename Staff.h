@@ -38,12 +38,13 @@ public:
 	static vector<Staff> read_staff_data();
 
 
-	string get_username();
-	string get_password();
-	string get_full_name();
-	pair<int,string> get_position();
-	Date get_join_date();
+	//string get_username();
+	//string get_password();
+	//string get_full_name();
+	//pair<int,string> get_position();
+	//Date get_join_date();
 
+	static void display_staff_table(vector <Staff> staff);
 };
 
 
