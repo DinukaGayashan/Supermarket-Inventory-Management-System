@@ -114,7 +114,7 @@ vector<Supply>  Supply::supply_read_data()
 {
 	vector<Supply> items;
 	ifstream readfile;
-	readfile.open("Supply\\Supply_data.txt");
+	readfile.open("Supply\\supply_data.txt");
 	Supply item;
 	while (readfile >> item)
 		items.emplace_back(item);
@@ -124,11 +124,18 @@ vector<Supply>  Supply::supply_read_data()
 
 void Supply::update_stock()
 {
-	vector <Supply> supply = supply_read_data();
+	vector <Supply> full_supply = supply_read_data();
+	vector <Supply> supply;
+	for (int i = 0; i < full_supply.size(); i++)
+	{
+		if (full_supply[i].status == 0)
+			supply.push_back(full_supply[i]);
+	}
+	
 	display_supply_table(supply);
 	string supply_item;
 
-	int q = 0;
+	int q = 0, element = 0;
 	bool condition = 0;
 	do
 	{
@@ -145,7 +152,7 @@ void Supply::update_stock()
 			display_error("SD02");
 	} while (condition == 0);
 
-	if (check_stock_item(supply_item))
+	if (check_stock_item(supply_item) == 0)
 	{
 		display_error("SD06");
 		return;
@@ -154,17 +161,20 @@ void Supply::update_stock()
 	Stock temp;
 	vector<Stock> itm;
 	
-	find_name_and_display(temp, itm,supply_item);
-
-	int ctgry = temp.get_item_category();
-
-	//int q = int_check("Enter number of items\t");
-
+	find_name_and_display(temp, itm, supply_item);
 	temp.set_quantity(q);
-	
 	write_all_data(temp);
 
-	//edit in supply data
+	for (int j = 0; j < full_supply.size(); j++)
+	{
+		if (full_supply[j].supply_item_name == supply_item)
+			element = j;
+	}
+	full_supply[element].status = 1;
+	remove("Supply\\supply_data.txt");
+	for (int j = 0; j < full_supply.size(); j++)
+		full_supply[j].supply_write_data();
+	
 }
 
 bool Supply::check_stock_item(string & supply_item_name) const

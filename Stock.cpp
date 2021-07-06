@@ -152,7 +152,11 @@ void Stock::transaction(const string& cashier_name)
 		char c;
 		c = _getch();
 
-		if (c == 'f') {
+		if (c == 'f'||c=='F') {
+			bill_items.push_back(temp);
+			break;
+		}
+		else if (c == 'f' || c == 'F') {
 			bill_items.push_back(temp);
 			break;
 		}
@@ -182,9 +186,9 @@ void Stock::transaction(const string& cashier_name)
 
 
 	//logging
-	string file_name = "transactions\\"+cashier_name + get_date() + ".txt"; //get time also need to be added
+	string file_name = "Transactions\\"+cashier_name + get_date() + ".txt"; //get time also need to be added
 	ofstream write_file,transaction;
-	write_file.open("transactions\\names.txt",ios::app);
+	write_file.open("Transactions\\names.txt",ios::app);
 	write_file << file_name;	//must test to find whether endl is needed
 	transaction.open(file_name, ios::app);
 	transaction << get_date() << endl;
@@ -200,7 +204,7 @@ void Stock::transaction(const string& cashier_name)
 
 void Stock::read_transaction() {
 	ifstream read_file;
-	read_file.open("transactions\\names.txt");
+	read_file.open("Transactions\\names.txt");
 
 	vector<string> file_names;
 
