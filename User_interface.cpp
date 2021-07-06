@@ -11,8 +11,8 @@ void display_header(string user)
 	for (int i = 0; i < size / 2 - 10; i++)
 		cout << " ";
 	cout << "Inventory System\n";
-	cout << get_date() << endl;
-	cout << get_time() << endl;
+	cout << "Date: " << get_date() << endl;
+	cout << "Time: " << get_time() << endl;
 	if (user.length() > 0)
 		cout << "Logged in as " << user << endl;
 	for (int i = 0; i < size; i++)
@@ -57,7 +57,7 @@ string get_date()
 	struct tm dt;
 	time_t now = time(0);
 	localtime_s(&dt, &now);
-	return "Date: " + to_string(1900 + dt.tm_year) + "." + to_string(1 + dt.tm_mon) + "." + to_string(dt.tm_mday);
+	return to_string(1900 + dt.tm_year) + "." + to_string(1 + dt.tm_mon) + "." + to_string(dt.tm_mday);
 }
 
 string get_time()
@@ -65,7 +65,7 @@ string get_time()
 	struct tm dt;
 	time_t now = time(0);
 	localtime_s(&dt, &now);
-	return "Time: " + to_string(dt.tm_hour) + "." + to_string(dt.tm_min) + "." + to_string(dt.tm_sec);
+	return to_string(dt.tm_hour) + "." + to_string(dt.tm_min) + "." + to_string(dt.tm_sec);
 }
 
 void display_category(int n)
@@ -324,11 +324,11 @@ void transaction_bill(vector <Stock> stock, string cashier, string date, string 
 
 	for (size_t i = cashier.length(); i < length - 25; i++)
 		cout << " ";
-	cout << date;
+	cout << "Date: "<<date;
 	cout << endl;
 	for (int i = 0; i < length - 16; i++)
 		cout << " ";
-	cout << time;
+	cout << "Time: " << time;
 
 	cout << endl;
 	for (int i = 0; i < length; i++)

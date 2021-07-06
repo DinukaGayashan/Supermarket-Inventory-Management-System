@@ -127,8 +127,8 @@ int main()
 	//s1.edit_item();
 	//s1.show_data();
 
-	Stock s;
-	Stock::transaction("kk");
+	/*Stock s;
+	
 
 	//display_login_screen();
 
@@ -144,7 +144,8 @@ int main()
 
 	//Staff s3;
 	
-
+Stock::transaction("kk"); 
+Stock::read_transaction();
 
 
 

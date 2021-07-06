@@ -145,22 +145,25 @@ void Stock::transaction(const string& cashier_name)
 		temp.final_price = temp.final_price * quantity;
 		temp.quantity = quantity;
 
-		cout << "press 'V' to confirm\n";
-		cout << "press 'E' to cancel\n";
-		cout << "press 'F' to finish\n";
+		cout << endl;
+		cout << "Press 'C' to confirm\n";
+		cout << "Press 'X' to cancel\n";
+		cout << "Press 'F' to finish\n";
 
 		char c;
 		c = _getch();
 
-		if (c == 'f'||c=='F') {
-			bill_items.push_back(temp);
-			break;
+		if (c == 'x'||c=='X') {
+			continue;
 		}
 		else if (c == 'f' || c == 'F') {
 			bill_items.push_back(temp);
 			break;
 		}
-				
+		else if (c == 'c' || c == 'C') {
+			bill_items.push_back(temp);
+			continue;
+		}
 	}
 
 	if (bill_items.size() == 0)
@@ -186,20 +189,18 @@ void Stock::transaction(const string& cashier_name)
 
 
 	//logging
-	string file_name = "Transactions\\"+cashier_name + get_date() + ".txt"; //get time also need to be added
+	string file_name = "Transactions\\\\" + cashier_name + get_date() + "." + get_time() + ".txt"; //get time also need to be added
 	ofstream write_file,transaction;
 	write_file.open("Transactions\\names.txt",ios::app);
-	write_file << file_name;	//must test to find whether endl is needed
+	write_file << file_name<<endl;	//must test to find whether endl is needed
 	transaction.open(file_name, ios::app);
 	transaction << get_date() << endl;
-	//transaction << get_time() << endl;
+	transaction << get_time() << endl;
 	transaction << cashier_name << endl;
 
 	for (Stock i : bill_items) {
 		transaction << i;
 	}
-
-
 }
 
 void Stock::read_transaction() {
@@ -218,6 +219,7 @@ void Stock::read_transaction() {
 		string dt,tm,cname;
 		vector<Stock> items;
 		Stock t;
+		
 		input >> dt;
 		input >> tm;
 		input >> cname;
@@ -225,12 +227,7 @@ void Stock::read_transaction() {
 		while (input >> t)
 			items.emplace_back(t);
 
-
-		//print bill
-
-	
-		
-
+		transaction_bill(items, cname, dt, tm);
 	}
 }
 
