@@ -13,8 +13,8 @@ MILO
 nounit
 NESTLE
 Local
-1000
+3003
 60
-58.8
+58.2
 6
-2
+3

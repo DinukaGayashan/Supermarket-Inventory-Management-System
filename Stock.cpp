@@ -120,7 +120,7 @@ void Stock::transaction(const string& cashier_name)
 		Stock temp;
 		bool err = false;
 		while (true) {
-			cout << "Enter Item ID : ";
+			cout << "Enter Item ID\t: ";
 			getline(cin, id);
 			to_upper(id, 1);
 			temp = find_by_id(id, items, err);
@@ -133,7 +133,7 @@ void Stock::transaction(const string& cashier_name)
 		}
 		int quantity = 0;
 		while (true) {
-			quantity = int_check("Enter quantity");
+			quantity = int_check("Enter quantity\t");
 			if (quantity > temp.quantity) {
 				display_error("SD04");
 				continue;
@@ -179,7 +179,7 @@ void Stock::transaction(const string& cashier_name)
 	cout << "Done....\n";
 
 	//bill ui
-
+	transaction_bill(bill_items, cashier_name, get_date(), get_time());
 	//print bill
 
 
@@ -332,8 +332,37 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 	while (id) {
 		bool error = false;
 		string id;
-		cout << "Enter item ID : ";
+		cout << "Enter item ID\t\t: ";
 		getline(cin, id);
+		to_upper(id, 1);
+		item = find_by_id(id, items, error);
+
+		if (error == false)
+			break;
+
+		display_error("SD01");
+	}
+}
+
+void Stock::find_name_and_display(Stock& item, vector<Stock>& items, string itm_nm,bool id)
+{
+	while (true) {
+		items = find_item(itm_nm);
+
+		if (items.size() == 0)
+			display_error("SD02");
+		else
+			break;
+	}
+
+	display_stock_table(items);
+
+	while (id) {
+		bool error = false;
+		string id;
+		cout << "Enter item ID\t\t: ";
+		getline(cin, id);
+		to_upper(id, 1);
 		item = find_by_id(id, items, error);
 
 		if (error == false)
@@ -428,7 +457,8 @@ void Stock::edit_item()
 	int ctgry = temp.item_category;
 	
 	if (temp.item_category > 2) {
-
+		display_supply_type();
+		cout << "\n";
 		temp.supply_type = (supply_type_check() == 1 ? "Local" : "Imported");
 	}
 

@@ -119,20 +119,33 @@ int main()
 	vector < Staff > staff = { s1 ,s2};
 	display_staff_table(staff);*/
 
-	/*Supply s1;
-	
-	s1.get_data();
-	s1.supply_write_data();
-	s1.show_data();
-	s1.update();
-	s1.show_data();*/
+	//Stock s1;
+	//
+	//s1.get_data();
+	//s1.supply_write_data();
+	//s1.show_data();
+	//s1.edit_item();
+	//s1.show_data();
 
-	/*Stock s;
-	s.transaction("kk");*/
+	//Stock s;
+	Stock::transaction("kk");
 
 	//display_login_screen();
 
 Staff::display_staff_table(Staff::read_staff_data());
+
+
+
+	/*Stock s1;
+	s1.edit_item();*/
+
+	/*Supply s2;
+	s2.update_stock();*/
+
+	//Staff s3;
+	
+
+
 
 
 	return 0;

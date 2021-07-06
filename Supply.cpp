@@ -97,7 +97,8 @@ void Supply::show_data()
 	cout << endl;
 }
 
-void Supply::supply_write_data() {
+void Supply::supply_write_data() 
+{
 	ofstream write_file;
 	write_file.open("Supply\\supply_data.txt", ios::app);
 	to_upper(this->source, 1);
@@ -121,27 +122,42 @@ vector<Supply>  Supply::supply_read_data()
 	return items;
 }
 
-void Supply::update()
+void Supply::update_stock()
 {
+	vector <Supply> supply = supply_read_data();
+	display_supply_table(supply);
+	string supply_item;
+
+	bool condition = 0;
+	do
+	{
+		cout << "Enter supply item\t: ";
+		getline(cin, supply_item);
+		to_upper(supply_item, 1);
+		for (int i = 0; i < supply.size(); i++)
+			if (supply[i].supply_item_name == supply_item)
+				condition = 1;
+		if (condition == 0)
+			display_error("SD02");
+	} while (condition == 0);
+
 	Stock temp;
 	vector<Stock> itm;
-
-	find_and_display(temp, itm);
+	
+	find_name_and_display(temp, itm,supply_item);
 
 	int ctgry = temp.get_item_category();
-
-	if (ctgry > 2) {
-		temp.set_supply_type(supply_type_check());
-	}
 
 	int q = int_check("Enter number of items\t");
 
 	temp.set_quantity(q);
 	
 	write_all_data(temp);
+
+	//edit in supply data
 }
 
-bool Supply::check_item()
+bool Supply::check_stock_item()
 {
 	vector<Stock> items = find_item(supply_item_name, true);
 	return bool(items.size());
@@ -220,7 +236,7 @@ void Supply:: display_supply_table(vector <Supply> supply)
 
 	cout << "    " << "Quantity" << "    |";
 
-	cout << "       " << "Source" << "       |";
+	cout << "      " << "Source" << "       |";
 
 	for (int i = 0; i < (max_origin) / 2; i++)
 		cout << " ";
@@ -267,7 +283,7 @@ void Supply:: display_supply_table(vector <Supply> supply)
 		cout << supply[i].origin_name;
 		for (int j = 0; j < (max_origin - supply[i].origin_name.length()); j++)
 			cout << " ";
-		cout << "                ";
+		cout << "             ";
 
 		string d1 = "", d2 = "";
 		d1 += to_string(supply[i].date_of_depature.year) + "." + to_string(supply[i].date_of_depature.month) + "." + to_string(supply[i].date_of_depature.day) ;
@@ -287,7 +303,7 @@ void Supply:: display_supply_table(vector <Supply> supply)
 		cout << supply[i].vehicle_type;
 		for (int j = 0; j < (12 - supply[i].vehicle_type.length()); j++)
 			cout << " ";
-		cout << "         ";
+		cout << "          ";
 
 		cout << supply[i].reg_number;
 		for (int j = 0; j < (19 - supply[i].reg_number.length()); j++)
@@ -303,5 +319,5 @@ void Supply:: display_supply_table(vector <Supply> supply)
 	cout << endl;
 	for (int i = 0; i < max_name + max_origin + length; i++)
 		cout << "-";
-	cout << endl;
+	cout << "\n\n";
 }

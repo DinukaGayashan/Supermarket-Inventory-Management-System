@@ -30,9 +30,9 @@ public:
 	void supply_write_data();
 	static vector<Supply>  supply_read_data();
 
-	void update();
+	void update_stock();
 
-	bool check_item();
+	bool check_stock_item();
 
 	//string get_supply_item_name();
 	//int get_supply_quantity();

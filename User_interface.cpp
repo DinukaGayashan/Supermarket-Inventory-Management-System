@@ -117,7 +117,7 @@ void display_categories()
 
 void display_supply_type()
 {
-	cout << "\nSupply Type\n";
+	cout << "\nSupply Types\n";
 	cout << "-------------------------\n";
 	cout << "1. Local\n";
 	cout << "2. Imported\n";
@@ -125,7 +125,7 @@ void display_supply_type()
 
 void display_source_type()
 {
-	cout << "\nSupply Type\n";
+	cout << "\nSupply Types\n";
 	cout << "-------------------------\n";
 	cout << "1. Local\n";
 	cout << "2. International\n";
