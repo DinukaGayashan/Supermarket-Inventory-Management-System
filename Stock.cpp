@@ -153,10 +153,10 @@ void Stock::transaction(const string& cashier_name)
 		c = _getch();
 
 		if (c == 'f') {
+			bill_items.push_back(temp);
 			break;
 		}
-
-		
+				
 	}
 
 	if (bill_items.size() == 0)
@@ -170,11 +170,11 @@ void Stock::transaction(const string& cashier_name)
 		}
 	}
 
-	cout << "Updating...\n";
+	//cout << "Updating...\n";
 	for (int j = 0; j < items.size(); j++)
 		write_all_data(items[j]);
 
-	cout << "Done....\n";
+	//cout << "Done....\n";
 
 	//bill ui
 	transaction_bill(bill_items, cashier_name, get_date(), get_time());

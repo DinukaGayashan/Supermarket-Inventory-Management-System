@@ -128,6 +128,7 @@ void Supply::update_stock()
 	display_supply_table(supply);
 	string supply_item;
 
+	int q = 0;
 	bool condition = 0;
 	do
 	{
@@ -136,10 +137,19 @@ void Supply::update_stock()
 		to_upper(supply_item, 1);
 		for (int i = 0; i < supply.size(); i++)
 			if (supply[i].supply_item_name == supply_item)
+			{
 				condition = 1;
+				q = supply[i].supply_quantity;
+			}
 		if (condition == 0)
 			display_error("SD02");
 	} while (condition == 0);
+
+	if (check_stock_item(supply_item))
+	{
+		display_error("SD06");
+		return;
+	}
 
 	Stock temp;
 	vector<Stock> itm;
@@ -148,7 +158,7 @@ void Supply::update_stock()
 
 	int ctgry = temp.get_item_category();
 
-	int q = int_check("Enter number of items\t");
+	//int q = int_check("Enter number of items\t");
 
 	temp.set_quantity(q);
 	
@@ -157,7 +167,7 @@ void Supply::update_stock()
 	//edit in supply data
 }
 
-bool Supply::check_stock_item()
+bool Supply::check_stock_item(string & supply_item_name) const
 {
 	vector<Stock> items = find_item(supply_item_name, true);
 	return bool(items.size());

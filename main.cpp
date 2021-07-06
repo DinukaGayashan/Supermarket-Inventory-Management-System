@@ -128,19 +128,19 @@ int main()
 	//s1.show_data();
 
 	//Stock s;
-	Stock::transaction("kk");
+	//Stock::transaction("kk");
 
 	//display_login_screen();
 
-Staff::display_staff_table(Staff::read_staff_data());
+//Staff::display_staff_table(Staff::read_staff_data());
 
 
 
 	/*Stock s1;
 	s1.edit_item();*/
 
-	/*Supply s2;
-	s2.update_stock();*/
+	Supply s2;
+	s2.update_stock();
 
 	//Staff s3;
 	

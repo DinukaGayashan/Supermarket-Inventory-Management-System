@@ -32,7 +32,7 @@ public:
 
 	void update_stock();
 
-	bool check_stock_item();
+	bool check_stock_item(string& supply_item_name) const;
 
 	//string get_supply_item_name();
 	//int get_supply_quantity();

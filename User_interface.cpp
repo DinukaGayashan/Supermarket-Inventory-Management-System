@@ -1,7 +1,5 @@
 #include "User_interface.h"
 
-
-
 void display_header(string user)
 {
 	int size = 200;
@@ -175,6 +173,7 @@ void display_error(string error)
 	else if (error == "SD03")	cerr << "\a\terror SD03: Non-existing brand name entered.\n";
 	else if (error == "SD04")	cerr << "\a\terror SD04: Item quantity exceeded. No enough items.\n";
 	else if (error == "SD05")	cerr << "\a\terror SD05: Already existing username entered.\n";
+	else if (error == "SD06")	cerr << "\a\terror SD06: Item do not exist in the stock. Add item before supplying.\n";
 }
 
 void display_help(string error)
@@ -347,10 +346,12 @@ void transaction_bill(vector <Stock> stock, string cashier, string date, string 
 		cout << endl;
 		cout << stock[i].get_item_id() << "      ";
 
+		to_upper(stock[i].get_item_name(), 0);
 		cout << stock[i].get_item_name();
 		for (size_t j = stock[i].get_item_name().length(); j < 18; j++)
 			cout << " ";
 
+		to_upper(stock[i].get_item_brand_name(), 0);
 		cout << stock[i].get_item_brand_name();
 		for (size_t j = stock[i].get_item_brand_name().length(); j < 18; j++)
 			cout << " ";
@@ -377,6 +378,7 @@ void transaction_bill(vector <Stock> stock, string cashier, string date, string 
 	cout << endl;
 	for (int i = 0; i < length; i++)
 		cout << "-";
+	cout << "\n\n";
 }
 
 void to_upper(string& input, bool to_upper)
