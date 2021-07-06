@@ -8,6 +8,7 @@
 #include <cmath>
 #include <vector>
 #include <Windows.h>
+#include <conio.h>
 #include "User_interface.h"
 #include "Error_check.h"
 

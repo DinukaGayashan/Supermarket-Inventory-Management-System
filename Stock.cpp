@@ -118,8 +118,9 @@ void Stock::transaction(const string& cashier_name)
 	while (true) {
 		string id;
 		Stock temp;
-		bool err = false;
+		
 		while (true) {
+			bool err = false;
 			cout << "Enter Item ID\t: ";
 			getline(cin, id);
 			to_upper(id, 1);
@@ -148,17 +149,14 @@ void Stock::transaction(const string& cashier_name)
 		cout << "press 'E' to cancel\n";
 		cout << "press 'F' to finish\n";
 
+		char c;
+		c = _getch();
 
-		if (GetAsyncKeyState('V')) {
-			bill_items.push_back(temp);
-		}
-
-		if (GetAsyncKeyState('E')) {
-			continue;
-		}
-		if (GetAsyncKeyState('F')) {
+		if (c == 'f') {
 			break;
 		}
+
+		
 	}
 
 	if (bill_items.size() == 0)
