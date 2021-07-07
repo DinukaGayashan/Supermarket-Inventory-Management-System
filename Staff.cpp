@@ -25,7 +25,6 @@ void Staff::staff_write_data() {
 	ofstream write_file;
 	write_file.open("Staff\\staff_data.txt", ios::app);
 	to_upper(this->username,1);
-	to_upper(this->password, 1);
 	to_upper(this->full_name, 1);
 	to_upper(this->position.second, 1);
 	
@@ -99,25 +98,25 @@ void Staff::show_data()
 	//cout << "Joined Date\t: " << join_date << endl;
 }
 
-//string Staff::get_username()
-//{
-//	return username;
-//}
-//
-//string Staff::get_password()
-//{
-//	return password;
-//}
+string Staff::get_username()
+{
+	return username;
+}
+
+string Staff::get_password()
+{
+	return password;
+}
 //
 //string Staff::get_full_name()
 //{
 //	return full_name;
 //}
 //
-//pair<int, string> Staff::get_position()
-//{
-//	return position;
-//}
+pair<int, string> Staff::get_position()
+{
+	return position;
+}
 //
 //Date Staff::get_join_date()
 //{

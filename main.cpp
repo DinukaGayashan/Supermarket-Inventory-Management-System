@@ -14,23 +14,21 @@
 using namespace std;
 
 int main() 
-{
-	//Stock stock;
-	//stock.input_data(); 
-	//stock.write_data(stock.get_item_category());
-	
-	//Stock::delete_item();
-	/*
-	vector<Stock> test = Stock::read_data(1);
-	
-	for (int i = 0; i < test.size(); i++) {
-		test[i].show_data(); cout << endl;
-	}
-	*/
-	
+{	
 	set_console_position(0, 0);
 	set_console_size(1920, 1080);
 	//set_font_size(24,24);
+
+	string username;
+	int user_position;
+
+	display_login_screen(username,user_position);
+		
+	cout << username <<endl<< user_position;
+
+	display_main_menu(username, user_position);
+
+
 
 	/*Stock s1, s2("AAA00000","vghfjcfggjfv", "nfghjxfg", "chghhjd", "notype", 20, 90, 2, 3);
 	vector < Stock > stock = { s1, s2 };*/
@@ -144,8 +142,8 @@ int main()
 
 	//Staff s3;
 	
-Stock::transaction("kk"); 
-Stock::read_transaction();
+//Stock::transaction("kk"); 
+//Stock::read_transaction();
 
 
 

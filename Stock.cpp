@@ -153,14 +153,15 @@ void Stock::transaction(const string& cashier_name)
 		char c;
 		c = _getch();
 
-		if (c == 'x'||c=='X') {
+		if (c == 'x'||c=='X') 
 			continue;
-		}
-		else if (c == 'f' || c == 'F') {
+		else if (c == 'f' || c == 'F') 
+		{
 			bill_items.push_back(temp);
 			break;
 		}
-		else if (c == 'c' || c == 'C') {
+		else if (c == 'c' || c == 'C') 
+		{
 			bill_items.push_back(temp);
 			continue;
 		}

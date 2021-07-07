@@ -154,7 +154,7 @@ void Supply::update_stock()
 
 	if (check_stock_item(supply_item) == 0)
 	{
-		display_error("SD06");
+		display_error("SD07");
 		return;
 	}
 

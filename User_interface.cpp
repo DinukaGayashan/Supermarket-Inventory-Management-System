@@ -1,31 +1,158 @@
 #include "User_interface.h"
 
-void display_header(string user)
+void display_header(string user, int user_position)
 {
+	system("cls");
+
 	int size = 200;
 
 	cout << endl;
 	for (int i = 0; i < size / 2 - 10; i++)
 		cout << " ";
-	cout << "CMD Supermarket\n";
+	cout << "The Supermarket\n";
 	for (int i = 0; i < size / 2 - 10; i++)
 		cout << " ";
 	cout << "Inventory System\n";
 	cout << "Date: " << get_date() << endl;
 	cout << "Time: " << get_time() << endl;
 	if (user.length() > 0)
-		cout << "Logged in as " << user << endl;
+	{
+		cout << "Logged in as " << user<<", ";
+		if (user_position == 0)
+			cout << "Owner";
+		else if (user_position == 1)
+			cout << "Manager";
+		else if (user_position == 2)
+			cout << "Cashier";
+		else if (user_position == 3)
+			cout << "Floor worker";
+		cout << "\n";
+	}
 	for (int i = 0; i < size; i++)
 		cout << "_";
 	cout << endl;
 }
 
-void display_login_screen()
+void display_login_screen(string& username, int& user_position)
 {
-	display_header("");
-	cout << "\n";
-	
-	//vector <Staff> users = read_staff_data();
+	display_header("", NULL);
+	cout << "\n\nPlease login to enter inventory system.\n\n";
+
+	string in_username,in_password,password;
+	bool condition = 0;
+	int pos = NULL;
+
+	vector <Staff> users = Staff::read_staff_data();
+
+	do
+	{
+		cout << "Username : ";
+		getline(cin, in_username);
+		to_upper(in_username, 1);
+		for (int i = 0; i < users.size(); i++)
+			if (users[i].get_username() == in_username)
+			{
+				condition = 1;
+				password = users[i].get_password();
+				pos = users[i].get_position().first;
+			}
+		if (condition == 0)
+			display_error("SD06");
+	} while (condition == 0);
+
+	condition = 0;
+	do
+	{
+		cout << "Password : ";
+		getline(cin, in_password);
+		if (in_password == password)
+			condition = 1;
+		if (condition == 0)
+			display_error("SD08");
+	} while (condition == 0);
+
+	username = in_username;
+	user_position = pos;
+}
+
+void display_main_menu(string username, int user_position)
+{
+	display_header(username, user_position);
+
+	cout << "\n\nSelect menu item number.\n\n";
+	cout << "1. Stock\n";
+	cout << "2. Supply\n";
+	cout << "3. Staff\n";
+	cout << "4. Instructions\n";
+	cout << "5. Credits\n";
+	cout << "6. Log out\n";
+
+	char c = _getch();
+
+	if (c == '1') 
+	{
+		display_stock_menu(username, user_position);
+	}
+	else if (c == '2') 
+	{
+		display_supply_menu(username, user_position);
+	}
+	else if (c == '3')
+	{
+		if (user_position < 2)
+			display_staff_menu(username, user_position);
+		else
+			display_error("AM01");
+	}
+	else if (c == '4')
+	{
+		display_instructions();
+	}
+	else if (c == '5')
+	{
+		display_credits();
+	}
+	else if (c == '6')
+	{
+		return;
+	}
+}
+
+void display_stock_menu(string username, int user_position)
+{
+
+}
+
+void display_supply_menu(string username, int user_position)
+{
+
+}
+
+void display_staff_menu(string username, int user_position)
+{
+
+}
+
+void display_instructions()
+{
+	display_header("", NULL);
+	cout << "Access & more\n";
+	cout << "---------------------------------------\n";
+
+
+
+
+}
+
+void display_credits()
+{
+	display_header("", NULL);
+	cout << "Credits\n";
+	cout << "---------------------------------------\n";
+
+
+
+
 }
 
 void set_console_position(int x, int y)
@@ -156,16 +283,12 @@ void display_error(string error)
 	else if (error == "II05")	cerr << "\a\terror II05: Input must be either 1 or 2.\n";
 	else if (error == "II06")	cerr << "\a\terror II06: Input must be in the range of 1 to 3.\n";
 	else if (error == "II07")	cerr << "\a\terror II07: Input must be in the range of 0 to 100.\n";
-
 	else if (error == "ID01")	cerr << "\a\terror ID01: Input must be a value with two decimal points.\n";
 	else if (error == "ID02")	cerr << "\a\terror ID02: Input must be larger than zero.\n";
 	else if (error == "ID03")	cerr << "\a\terror ID03: Input value limit (xe10) exceeded.\n";
-
 	else if (error == "IB01")	cerr << "\a\terror IB01: Input must be either 1 or 0.\n";
-
 	else if (error == "IS01")	cerr << "\a\terror IS01: Input must be a phrase with letters.\n";
 	else if (error == "IS02")	cerr << "\a\terror IS02: Input passwords are not matching.\n";
-
 	else if (error == "IA01")	cerr << "\a\terror IA01: Input must be a valid date.\n";
 
 	else if (error == "SD01")	cerr << "\a\terror SD01: Invalid item ID entered.\n";
@@ -173,20 +296,11 @@ void display_error(string error)
 	else if (error == "SD03")	cerr << "\a\terror SD03: Non-existing brand name entered.\n";
 	else if (error == "SD04")	cerr << "\a\terror SD04: Item quantity exceeded. No enough items.\n";
 	else if (error == "SD05")	cerr << "\a\terror SD05: Already existing username entered.\n";
-	else if (error == "SD06")	cerr << "\a\terror SD06: Item do not exist in the stock. Add item before supplying.\n";
-}
+	else if (error == "SD06")	cerr << "\a\terror SD06: Non-existing username entered.\n";
+	else if (error == "SD07")	cerr << "\a\terror SD07: Item do not exist in the stock. Add item before supplying.\n";
+	else if (error == "SD08")	cerr << "\a\terror SD08: Invalid password entered.\n";
 
-void display_help(string error)
-{
-	cout << "Error Coding\n";
-	cout << "---------------------------------------\n";
-	cout << "First letter corresponds to the task type (Input, Process)\n";
-	cout << "Second letter corresponds to the data type\n";
-
-	if (error == "II01")
-		cerr << "error II01: ";
-
-
+	else if (error == "AM01")	cerr << "\a\terror AM01: You don't have access to this menu.\n";
 }
 
 void display_stock_table(vector <Stock>& stock)
@@ -314,7 +428,7 @@ void transaction_bill(vector <Stock> stock, string cashier, string date, string 
 
 	for (size_t i = 0; i < length / 2 - 8; i++)
 		cout << " ";
-	cout << "CMD Supermarket\n";
+	cout << "The Supermarket\n";
 
 	for (size_t i = 0; i < length; i++)
 		cout << "-";

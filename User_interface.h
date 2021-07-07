@@ -18,8 +18,14 @@ class Staff;
 
 using namespace std;
 
-void display_header(string user);
-void display_login_screen();
+void display_header(string user, int user_position);
+void display_login_screen(string &username,int &user_position);
+void display_main_menu(string username, int user_position);
+void display_stock_menu(string username, int user_position);
+void display_supply_menu(string username, int user_position);
+void display_staff_menu(string username, int user_position);
+void display_instructions();
+void display_credits();
 string get_date();
 string get_time();
 void set_console_size(int w, int h);
@@ -32,9 +38,7 @@ void display_source_type();
 void display_staff_positions();
 void display_vehicle_types();
 void display_error(string error);
-void display_help(string error);
 void display_stock_table(vector <Stock>& stock);
-
 void transaction_bill(vector <Stock> stock, string cashier, string date, string time);
 void to_upper(string& input, bool to_upper);
 string enter_password(const string& prompt);
