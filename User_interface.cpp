@@ -30,13 +30,13 @@ void display_header(string user, int user_position)
 	}
 	for (int i = 0; i < size; i++)
 		cout << "_";
-	cout << endl;
+	cout << "\n\n";
 }
 
 void display_login_screen(string& username, int& user_position)
 {
 	display_header("", NULL);
-	cout << "\n\nPlease login to enter inventory system.\n\n";
+	cout << "\nPlease login to enter inventory system.\n\n";
 
 	string in_username,in_password,password;
 	bool condition = 0;
@@ -63,69 +63,72 @@ void display_login_screen(string& username, int& user_position)
 	condition = 0;
 	do
 	{
-		cout << "Password : ";
-		getline(cin, in_password);
+		in_password=enter_password("Password : ");
 		if (in_password == password)
 			condition = 1;
 		if (condition == 0)
+		{
+			cout << endl;
 			display_error("SD08");
+		}
 	} while (condition == 0);
 
 	username = in_username;
 	user_position = pos;
 }
 
-void display_main_menu(string username, int user_position)
-{
-	display_header(username, user_position);
-
-	cout << "\n\nSelect menu item number.\n\n";
-	cout << "1. Stock\n";
-	cout << "2. Supply\n";
-	cout << "3. Staff\n";
-	cout << "4. Instructions\n";
-	cout << "5. Credits\n";
-	cout << "6. Log out\n";
-
-	char c = _getch();
-
-	if (c == '1') 
-	{
-		display_stock_menu(username, user_position);
-	}
-	else if (c == '2') 
-	{
-		display_supply_menu(username, user_position);
-	}
-	else if (c == '3')
-	{
-		if (user_position < 2)
-			display_staff_menu(username, user_position);
-		else
-			display_error("AM01");
-	}
-	else if (c == '4')
-	{
-		display_instructions();
-	}
-	else if (c == '5')
-	{
-		display_credits();
-	}
-	else if (c == '6')
-	{
-		return;
-	}
-}
+//void display_main_menu(string username, int user_position)
+//{
+//	display_header(username, user_position);
+//
+//	cout << "\nSelect menu item number.\n\n";
+//	cout << "1. Stock\n";
+//	cout << "2. Supply\n";
+//	cout << "3. Staff\n";
+//	cout << "4. Instructions\n";
+//	cout << "5. Credits\n";
+//	cout << "6. Log out\n";
+//
+//	char c = _getch();
+//
+//	if (c == '1') 
+//	{
+//		display_stock_menu(username, user_position);
+//	}
+//	else if (c == '2') 
+//	{
+//		display_supply_menu(username, user_position);
+//	}
+//	else if (c == '3')
+//	{
+//		if (user_position < 2)
+//			display_staff_menu(username, user_position);
+//		else
+//			display_error("AM01");
+//	}
+//	else if (c == '4')
+//	{
+//		display_instructions();
+//	}
+//	else if (c == '5')
+//	{
+//		display_credits();
+//	}
+//	else if (c == '6')
+//	{
+//		return;
+//	}
+//}
 
 void display_stock_menu(string username, int user_position)
 {
-
+	
 }
 
 void display_supply_menu(string username, int user_position)
 {
-
+	cout << "Access & more\n";
+	cout << "---------------------------------------\n";
 }
 
 void display_staff_menu(string username, int user_position)
@@ -133,67 +136,29 @@ void display_staff_menu(string username, int user_position)
 
 }
 
-void display_instructions()
+void display_instructions(string username, int user_position)
 {
-	display_header("", NULL);
+	display_header(username, user_position);
 	cout << "Access & more\n";
 	cout << "---------------------------------------\n";
 
 
 
-
+	system("pause");
 }
 
-void display_credits()
+void display_credits(string username, int user_position)
 {
-	display_header("", NULL);
+	display_header(username, user_position);
 	cout << "Credits\n";
 	cout << "---------------------------------------\n";
 
 
 
-
+	system("pause");
 }
 
-void set_console_position(int x, int y)
-{
-	HWND console_window = GetConsoleWindow();
-	SetWindowPos(console_window, 0, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
-}
 
-void set_console_size(int w, int h)
-{
-	HWND console = GetConsoleWindow();
-	RECT r;
-	GetWindowRect(console, &r);
-	MoveWindow(console, r.left, r.top, w, h, true);
-}
-
-void set_font_size(int a, int b) 
-{
-	PCONSOLE_FONT_INFOEX lp_console_current_font_ex = new CONSOLE_FONT_INFOEX();
-	lp_console_current_font_ex->cbSize = sizeof(CONSOLE_FONT_INFOEX);
-	GetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, lp_console_current_font_ex);
-	lp_console_current_font_ex->dwFontSize.X = a;
-	lp_console_current_font_ex->dwFontSize.Y = b;
-	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, lp_console_current_font_ex);
-}
-
-string get_date() 
-{
-	struct tm dt;
-	time_t now = time(0);
-	localtime_s(&dt, &now);
-	return to_string(1900 + dt.tm_year) + "." + to_string(1 + dt.tm_mon) + "." + to_string(dt.tm_mday);
-}
-
-string get_time()
-{
-	struct tm dt;
-	time_t now = time(0);
-	localtime_s(&dt, &now);
-	return to_string(dt.tm_hour) + "." + to_string(dt.tm_min) + "." + to_string(dt.tm_sec);
-}
 
 void display_category(int n)
 {
@@ -555,3 +520,44 @@ string enter_password(const string& prompt)
 
 	return result;
 }
+
+void set_console_position(int x, int y)
+{
+	HWND console_window = GetConsoleWindow();
+	SetWindowPos(console_window, 0, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+}
+
+void set_console_size(int w, int h)
+{
+	HWND console = GetConsoleWindow();
+	RECT r;
+	GetWindowRect(console, &r);
+	MoveWindow(console, r.left, r.top, w, h, true);
+}
+
+void set_font_size(int a, int b)
+{
+	PCONSOLE_FONT_INFOEX lp_console_current_font_ex = new CONSOLE_FONT_INFOEX();
+	lp_console_current_font_ex->cbSize = sizeof(CONSOLE_FONT_INFOEX);
+	GetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, lp_console_current_font_ex);
+	lp_console_current_font_ex->dwFontSize.X = a;
+	lp_console_current_font_ex->dwFontSize.Y = b;
+	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, lp_console_current_font_ex);
+}
+
+string get_date()
+{
+	struct tm dt;
+	time_t now = time(0);
+	localtime_s(&dt, &now);
+	return to_string(1900 + dt.tm_year) + "." + to_string(1 + dt.tm_mon) + "." + to_string(dt.tm_mday);
+}
+
+string get_time()
+{
+	struct tm dt;
+	time_t now = time(0);
+	localtime_s(&dt, &now);
+	return to_string(dt.tm_hour) + "." + to_string(dt.tm_min) + "." + to_string(dt.tm_sec);
+}
+

@@ -10,7 +10,6 @@
 #include "Error_check.h"
 #include "User_interface.h"
 
-
 using namespace std;
 
 int main() 
@@ -21,12 +20,123 @@ int main()
 
 	string username;
 	int user_position;
+	bool logout = 1;
+	
+	do
+	{
+		if (logout)
+		{
+			display_login_screen(username, user_position);
+			logout = 0;
+		}
 
-	display_login_screen(username,user_position);
-		
-	cout << username <<endl<< user_position;
+		display_header(username, user_position);
 
-	display_main_menu(username, user_position);
+		cout << "\nSelect option number\n\n";
+		cout << "1. Stock\n";
+		cout << "2. Supply\n";
+		cout << "3. Staff\n";
+		cout << "4. Help\n";
+		cout << "5. Credits\n";
+		cout << "6. Log out\n";
+		cout << "7. Exit\n";
+
+		char a = _getch();
+
+		if (a == '1')
+		{
+			do
+			{
+				display_header(username, user_position);
+
+				cout << "\nSelect option\n\n";
+				cout << "1. Display item details\n";
+				cout << "2. Display all stock items\n";
+				cout << "3. Staff\n";
+				cout << "4. Instructions\n";
+				cout << "5. Credits\n";
+				cout << "6. Go back to main menu\n";
+
+				char b = _getch();
+
+				if (b == '1')
+				{
+					
+				}
+				else if (b == '2')
+				{
+					
+				}
+				else if (b == '3')
+				{
+					if (user_position < 2)
+						display_staff_menu(username, user_position);
+					else
+						display_error("AM01");
+				}
+				else if (b == '4')
+				{
+					display_instructions(username, user_position);
+				}
+				else if (b == '5')
+				{
+					display_credits(username, user_position);
+				}
+				else if (b == '6')
+				{
+					break;
+				}
+			} while (1);
+		}
+		else if (a == '2')
+		{
+			display_supply_menu(username, user_position);
+		}
+		else if (a == '3')
+		{
+			if (user_position < 2)
+				display_staff_menu(username, user_position);
+			else
+			{
+				display_error("AM01");
+				system("pause");
+			}
+		}
+		else if (a == '4')
+		{
+			display_instructions(username, user_position);
+		}
+		else if (a == '5')
+		{
+			display_credits(username, user_position);
+		}
+		else if (a == '6')
+		{
+			logout = 1;
+		}
+		else if (a == '7')
+		{
+			system("cls");
+			return 0;
+		}
+	} while (1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//cout << username <<endl<< user_position;
+
+	//display_main_menu(username, user_position);
 
 
 
