@@ -46,13 +46,19 @@ void Stock::input_data()
 
 	temp.quantity = int_check("Enter number of items\t");
 	temp.retail_price = rupees_check("Enter the retail price\t");
-	temp.discount = int_check("Enter discount percentage");
+	temp.discount = discount_check();
 	temp.final_price = temp.retail_price * (1 - (temp.discount / 100.0));
 
 	temp.item_id = temp.generate_item_id(temp.item_name, temp.brand_name, temp.item_category);
+
+	bool errorFlag = false;
 	
-	//check item existed
-	display_error("SD09");
+	vector<Stock> items = read_data(temp.item_category);
+
+	find_by_id(temp.item_id, items, errorFlag);
+
+	if(errorFlag == false)
+		display_error("SD09");
 
 
 	cout << "Item ID\t\t\t: " << temp.item_id<<endl;

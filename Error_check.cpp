@@ -159,7 +159,7 @@ int discount_check() {
 	int dscnt;
 
 	while (true) {
-		dscnt = int_check("Enter Discount");
+		dscnt = int_check("Enter Discount Percentage");
 
 		if (dscnt > 100 || dscnt < 0) {
 			display_error("II07");

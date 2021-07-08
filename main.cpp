@@ -229,7 +229,7 @@ int main()
 
 								char b5 = _getch();
 
-								if (b5 == 1)
+								if (b5 == '1')
 								{
 									if (user_position < 2)
 									{
@@ -241,7 +241,7 @@ int main()
 										display_error("AM01");
 									system("pause");
 								}
-								else if (b5 == 2)
+								else if (b5 == '2')
 								{
 									if (user_position < 2)
 									{
@@ -253,7 +253,7 @@ int main()
 										display_error("AM01");
 									system("pause");
 								}
-								else if (b5 == 3)
+								else if (b5 == '3')
 								{
 									if (user_position < 2)
 									{
@@ -265,7 +265,7 @@ int main()
 										display_error("AM01");
 									system("pause");
 								}
-								else if (b5 == 4)
+								else if (b5 == '4')
 									break;
 							} while (1);
 						}
