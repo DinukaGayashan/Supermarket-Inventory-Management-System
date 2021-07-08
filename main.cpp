@@ -16,7 +16,7 @@ int main()
 {	
 	set_console_position(0, 0);
 	set_console_size(1920, 1080);
-	set_font_size(20,20);
+	//set_font_size(24,22);
 	
 	string username;
 	int user_position;
@@ -125,9 +125,21 @@ int main()
 												all_stock.push_back(temp[ij]);
 										}										
 										string name;
-										Stock item;
-										Stock::find_and_display(item, all_stock, 1);		
-										item.show_data();
+										cout << "\nEnter item Name\t\t: ";
+										getline(cin, name);
+										to_upper(name, 1);
+										vector<Stock> items = Stock::find_item(name, 1);
+
+										if (items.size() == 0) {
+											display_error("SD02");
+										}
+
+										else {
+											Stock item;
+											Stock::find_name_and_display(item, all_stock, name, 1);
+											item.show_data();
+										}
+										
 									}
 									else
 										display_error("AM01");
@@ -291,7 +303,7 @@ int main()
 
 								char b6 = _getch();
 
-								if (b6 == 1)
+								if (b6 == '1')
 								{
 									if (user_position < 3)
 									{
@@ -303,7 +315,7 @@ int main()
 										display_error("AM01");
 									system("pause");
 								}
-								else if (b6 == 2)
+								else if (b6 == '2')
 								{
 									if (user_position < 3)
 									{
@@ -315,7 +327,7 @@ int main()
 										display_error("AM01");
 									system("pause");
 								}
-								else if (b6 == 3)
+								else if (b6 == '3')
 									break;
 							} while (1);
 						}

@@ -125,11 +125,11 @@ int supply_type_check()
 
 int category_check() 
 {
-	int ctgry;
+	int ctgry = -1;
 
 	while (true) {
 		ctgry = int_check("Enter category number\t");
-
+		
 		if (ctgry > 10 || ctgry < 1) {
 			display_error("II04");
 			continue;

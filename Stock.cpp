@@ -18,12 +18,14 @@ void Stock::show_data()
 	}
 	cout << "Available quantity\t: " << quantity << endl;
 	cout << "Retail price\t\t: " << retail_price  << "/=" << endl;
-	cout << "Discount\t\t: " << discount << endl;
+	cout << "Discount\t\t: " << discount << "%"<< endl;
 	cout << "Final price\t\t: " << final_price << "/=" << endl << endl;
 }
 
 void Stock::input_data()
 {
+	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+
 	Stock temp;
 	display_categories();
 	display_supply_type();
@@ -32,21 +34,44 @@ void Stock::input_data()
 
 	temp.item_category = category_check();
 
+	char press = _getch();
+	if (press == 27) return;
+
+	point:
 	cout << "Enter item name\t\t: ";
 	getline(cin, temp.item_name);
+
+	if (temp.item_name.length() == 0) {
+		display_error("IS01");
+		goto point;
+	}
+
+	 press = _getch();
+	if (press == 27) return;
 	to_upper(temp.item_name, 1);
 
 	if (temp.item_category > 2) {
 		cout << "Enter brand name\t: ";
 		getline(cin, temp.brand_name);
+		press = _getch();
+		if (press == 27) return;
 		to_upper(temp.brand_name, 1);
 
 		temp.supply_type = (supply_type_check() == 1 ? "Local" : "Imported");
+		press = _getch();
+		if (press == 27) return;
 	}
 
 	temp.quantity = int_check("Enter number of items\t");
+	press = _getch();
+	if (press == 27) return;
 	temp.retail_price = rupees_check("Enter the retail price\t");
+	press = _getch();
+	if (press == 27) return;
 	temp.discount = discount_check();
+	press = _getch();
+	if (press == 27) return;
+
 	temp.final_price = temp.retail_price * (1 - (temp.discount / 100.0));
 
 	temp.item_id = temp.generate_item_id(temp.item_name, temp.brand_name, temp.item_category);
@@ -122,6 +147,10 @@ vector<Stock> Stock::read_data(int file_index)
 
 void Stock::transaction(const string& cashier_name)
 {
+	cout << "Press 'Enter' to continue, Press 'Esc' to cancel\n\n";
+	char c;
+
+	
 	vector<Stock> items;
 
 	for (int i = 1; i < 11; i++) {
@@ -132,6 +161,10 @@ void Stock::transaction(const string& cashier_name)
 	string customer_name;
 	cout << "Enter customer name\t: ";
 	getline(cin, customer_name);
+
+	c = _getch();
+	if (c == 27) return;
+
 	to_upper(customer_name, 1);
 	vector<Stock> bill_items;
 	
@@ -143,6 +176,10 @@ void Stock::transaction(const string& cashier_name)
 			bool err = false;
 			cout << "Enter Item ID\t: ";
 			getline(cin, id);
+
+			c = _getch();
+			if (c == 27) return;
+
 			to_upper(id, 1);
 			temp = find_by_id(id, items, err);
 			if (err == true)
@@ -155,6 +192,10 @@ void Stock::transaction(const string& cashier_name)
 		int quantity = 0;
 		while (true) {
 			quantity = int_check("Enter quantity\t");
+
+			c = _getch();
+			if (c == 27) return;
+
 			if (quantity > temp.quantity) {
 				display_error("SD04");
 				continue;
@@ -274,8 +315,15 @@ void Stock::promotion(int promotion_type)
 	//for an item item name or code ???
 	if (promotion_type == 1) {
 		Stock temp;
-		find_and_display(temp, items,false);
+		find_and_display(temp, items,true);
+
+		if (temp.item_id == "default")
+			return;
+			
 		int t = discount_check();
+		char press = _getch();
+		if (press == 27) return;
+
 		for (int i = 0; i < (int)items.size(); i++) {
 			items[i].discount = t;
 			items[i].final_price = items[i].retail_price * (1 - (items[i].discount) / 100.0f);
@@ -290,10 +338,16 @@ void Stock::promotion(int promotion_type)
 	//for a brand
 	if (promotion_type == 2) {
 		string brandName;
-
+		cout << "Press 'Enter' to continue, Press 'Esc' to cancel\n\n";
+		char c;
 		while (true) {
 			cout << "Enter brand name\t: ";
+			
+
 			getline(cin, brandName);
+			c = _getch();
+			if (c == 27) return;
+			
 			to_upper(brandName, 1);
 			items = find_item(brandName, false);
 			if (items.size() == 0) {
@@ -306,6 +360,9 @@ void Stock::promotion(int promotion_type)
 		display_stock_table(items);
 
 		int t = discount_check();
+
+		c = _getch();
+		if (c == 27) return;
 
 		for (int i = 0; i < (int)items.size(); i++) {
 			items[i].discount = t;
@@ -335,6 +392,8 @@ void Stock::promotion(int promotion_type)
 
 void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 {	
+	cout << "Press 'Enter' to continue, Press 'Esc' to cancel\n\n";
+	char c;
 	while (true) {
 		string itm_nm;
 		cout << "Enter item name\t\t: ";
@@ -347,6 +406,10 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 			display_error("SD02");
 		else
 			break;
+
+		
+		c = _getch();
+		if (c == 27)	return;
 	}
 
 	display_stock_table(items);
@@ -356,6 +419,9 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 		string id;
 		cout << "Enter item ID\t\t: ";
 		getline(cin, id);
+
+		c = _getch();
+		if (c == 27)	return;
 		to_upper(id, 1);
 		item = find_by_id(id, items, error);
 
@@ -368,15 +434,12 @@ void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 
 void Stock::find_name_and_display(Stock& item, vector<Stock>& items, string itm_nm,bool id)
 {
-	while (true) {
-		items = find_item(itm_nm);
+	
+	items = find_item(itm_nm);
 
-		if (items.size() == 0)
-			display_error("SD02");
-		else
-			break;
-	}
-
+	if (items.size() == 0)
+		display_error("SD02");
+	
 	display_stock_table(items);
 
 	while (id) {
@@ -476,6 +539,9 @@ void Stock::edit_item()
 	
 	find_and_display(temp, itm);
 
+	if (temp.item_id == "default")
+		return;
+
 	int ctgry = temp.item_category;
 	
 	if (temp.item_category > 2) {
@@ -498,6 +564,9 @@ void Stock::delete_item()
 	vector<Stock> itm;
 	find_and_display(temp, itm);
 	
+	if (temp.item_id == "default")
+		return;
+
 	int ctgry = temp.item_category;
 	itm = read_data(ctgry);
 	int index(0);
