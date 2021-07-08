@@ -16,7 +16,7 @@ int main()
 {	
 	set_console_position(0, 0);
 	set_console_size(1920, 1080);
-	//set_font_size(24,24);
+	set_font_size(20,20);
 	
 	string username;
 	int user_position;
