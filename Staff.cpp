@@ -201,4 +201,5 @@ void Staff:: display_staff_table(vector <Staff> staff)
 	for (int i = 0; i < max_username + max_full_name + length; i++)
 		cout << "-";
 	cout << endl;
+	cout << endl;
 }

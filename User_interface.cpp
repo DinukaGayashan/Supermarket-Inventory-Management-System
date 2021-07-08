@@ -136,29 +136,34 @@ void display_login_screen(string& username, int& user_position)
 //
 //}
 
-void display_instructions(string username, int user_position)
+void display_instructions()
 {
-	display_header(username, user_position);
-	cout << "Access & more\n";
-	cout << "---------------------------------------\n";
-
-
-
+	cout << "\n\tHelp\n";
+	cout << "---------------------------------------------------------------------------------------------------------------------\n\n";
+	cout << "\t?\tYou must enter the username and password correctly in order to access the system.\n\n";
+	cout << "\t?\tThe floor workers cannot access the staff section. They can only access the stock and supply,\n";
+	cout << "\t\tand increase the number of stock of an existing product in the inventory.\n\n";
+	cout << "\t?\tThe cashiers cannot access the staff section. They can only access the stock and supply\n";
+	cout << "\t\tand reduce the stock of the relevant items after a successful transaction with a customer.\n\n";
+	cout << "\t?\tThe managers can access all three sections stock, staff and supply. They can add or remove \n";
+	cout << "\t\titems from the inventory, check the details of the staff members and also able to perform\n";
+	cout << "\t\tall the actions of the cashier and floor workers.\n\n";
+	cout << "\t?\tThe owner can access all three sections and is able to perform all the other actions performed\n";
+	cout << "\t\tby oother three employees. In addition to that the owner is the only user that is able to add or\n";
+	cout << "\t\tremove staff members.\n\n";
 	system("pause");
 }
 
-void display_credits(string username, int user_position)
+void display_credits()
 {
-	display_header(username, user_position);
-	cout << "Credits\n";
-	cout << "---------------------------------------\n";
-
-
-
+	cout << "\n\tCredits\n";
+	cout << "---------------------------------------------------------------------------------------------------------------------\n\n";
+	cout << "______________________________________________________________________________________\n\n";
+	cout << "\t\tDeveloped by: TEAM CMD\n";
+	cout << "\n\t\t\t\tRANASINGHE R.A.C.M.\n\t\t\t\tKASTHURIARACHCHI K.A.D.G.\n\t\t\t\tWICKRAMASINGHE K.W.M.M.D.\n";
+	cout << "______________________________________________________________________________________\n\n";
 	system("pause");
 }
-
-
 
 void display_category(int n)
 {

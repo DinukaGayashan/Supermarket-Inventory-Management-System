@@ -20,8 +20,8 @@ using namespace std;
 
 void display_header(string user, int user_position);
 void display_login_screen(string &username,int &user_position);
-void display_instructions(string username, int user_position);
-void display_credits(string username, int user_position);
+void display_instructions();
+void display_credits();
 
 void display_category(int n);
 void display_categories();

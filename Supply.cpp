@@ -175,6 +175,7 @@ void Supply::update_stock()
 	for (int j = 0; j < full_supply.size(); j++)
 		full_supply[j].supply_write_data();
 	
+	cout << endl;
 }
 
 bool Supply::check_stock_item(string & supply_item_name) const

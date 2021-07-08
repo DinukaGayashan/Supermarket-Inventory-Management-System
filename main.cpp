@@ -347,28 +347,149 @@ int main()
 				system("pause");
 			}
 		}
-		//else if (a == '2')
-		//{
-		//	
-		//}
-		//else if (a == '3')
-		//{
-		//	if (user_position < 2)
-		//		display_staff_menu(username, user_position);
-		//	else
-		//	{
-		//		display_error("AM01");
-		//		system("pause");
-		//	}
-		//}
-		//else if (a == '4')
-		//{
-		//	display_instructions(username, user_position);
-		//}
-		//else if (a == '5')
-		//{
-		//	display_credits(username, user_position);
-		//}
+		else if (a == '2')
+		{
+			if (user_position < 4)
+			{
+				do
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Supply\n\n";
+					cout << "Select option\n\n";
+					cout << "\t1. View supply details\n";
+					cout << "\t2. Add supply item\n";
+					cout << "\t3. Update stock\n";
+					cout << "\t4. Go back to main menu\n";
+					cout << endl;
+
+					char c = _getch();
+
+					if (c == '1')
+					{
+						if (user_position < 4)
+						{
+							display_header(username, user_position);
+							cout << "Main menu  >  Supply  >  View supply details\n\n";
+							Supply::display_supply_table(Supply::supply_read_data());
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (c == '2')
+					{
+						if (user_position < 4)
+						{
+							display_header(username, user_position);
+							cout << "Main menu  >  Supply  >  Add supply item\n\n";
+							Supply temp;
+							temp.get_data();
+							temp.supply_write_data();
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (c == '3')
+					{
+						if (user_position < 4)
+						{
+							display_header(username, user_position);
+							cout << "Main menu  >  Supply  >  Update stock\n\n";
+							Supply temp;
+							temp.update_stock();
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (c == '4')
+						break;
+				} while (1);
+			}
+			else
+			{
+				display_error("AM01");
+				system("pause");
+			}
+		}
+		else if (a == '3')
+		{
+			if (user_position < 2)
+			{
+				do
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Staff\n\n";
+					cout << "Select option\n\n";
+					cout << "\t1. View staff details\n";
+					cout << "\t2. Add staff member\n";
+					cout << "\t3. Remove staff member\n";
+					cout << "\t4. Go back to main menu\n";
+					cout << endl;
+	
+					char d = _getch();
+	
+					if (d == '1')
+					{
+						if (user_position < 2)
+						{
+							display_header(username, user_position);
+							cout << "Main menu  >  Staff  >  View staff details\n\n";
+							Staff::display_staff_table(Staff::read_staff_data());
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (d == '2')
+					{
+						if (user_position < 1)
+						{
+							display_header(username, user_position);
+							cout << "Main menu  >  Staff  >  Add staff member\n\n";
+							Staff temp;
+							temp.add_user();
+							temp.staff_write_data();
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (d == '3')
+					{
+						if (user_position < 1)
+						{
+							display_header(username, user_position);
+							cout << "Main menu  >  Staff  >  Remove staff member\n\n";
+
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (d == '4')
+						break;
+				} while (1);
+			}
+			else
+			{
+				display_error("AM01");
+				system("pause");
+			}
+		}
+		else if (a == '4')
+		{
+			display_header(username, user_position);
+			cout << "Main menu  >  Help\n\n";
+			display_instructions();
+		}
+		else if (a == '5')
+		{
+			display_header(username, user_position);
+			cout << "Main menu  >  Credits\n\n";
+			display_credits();
+		}
 		else if (a == '6')
 			logout = 1;
 		else if (a == '7')
