@@ -17,7 +17,7 @@ int main()
 	set_console_position(0, 0);
 	set_console_size(1920, 1080);
 	//set_font_size(24,24);
-
+	
 	string username;
 	int user_position;
 	bool logout = 1;
@@ -31,89 +31,334 @@ int main()
 		}
 
 		display_header(username, user_position);
-
-		cout << "\nSelect option number\n\n";
-		cout << "1. Stock\n";
-		cout << "2. Supply\n";
-		cout << "3. Staff\n";
-		cout << "4. Help\n";
-		cout << "5. Credits\n";
-		cout << "6. Log out\n";
-		cout << "7. Exit\n";
+		cout << "Main menu\n\n";
+		cout << "Select option number\n\n";
+		cout << "\t1. Stock\n";
+		cout << "\t2. Supply\n";
+		cout << "\t3. Staff\n";
+		cout << "\t4. Help\n";
+		cout << "\t5. Credits\n";
+		cout << "\t6. Log out\n";
+		cout << "\t7. Exit\n";
+		cout << endl;
 
 		char a = _getch();
 
 		if (a == '1')
-		{
-			do
+		{			
+			if (user_position < 4)
 			{
-				display_header(username, user_position);
+				do
+				{	
+					display_header(username, user_position);
+					cout << "Main menu  >  Stock\n\n";
+					cout << "Select option\n\n";
+					cout << "\t1. View item details\n";
+					cout << "\t2. Add item\n";
+					cout << "\t3. Edit item\n";
+					cout << "\t4. Remove item\n";
+					cout << "\t5. Add promotion\n";
+					cout << "\t6. Transaction\n";
+					cout << "\t7. Go back to main menu\n";
+					cout << endl;
 
-				cout << "\nSelect option\n\n";
-				cout << "1. Display item details\n";
-				cout << "2. Display all stock items\n";
-				cout << "3. Staff\n";
-				cout << "4. Instructions\n";
-				cout << "5. Credits\n";
-				cout << "6. Go back to main menu\n";
+					char b = _getch();
 
-				char b = _getch();
+					if (b == '1')
+					{						
+						if (user_position < 4)
+						{						
+							do
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  View item details\n\n";
+								cout << "Select option\n\n";
+								cout << "\t1. Search by item ID\n";
+								cout << "\t2. Search by item name\n";
+								cout << "\t3. Search by item category\n";
+								cout << "\t4. View all stock items\n";
+								cout << "\t5. Go back\n";
+								cout << endl;
 
-				if (b == '1')
-				{
-					
-				}
-				else if (b == '2')
-				{
-					
-				}
-				else if (b == '3')
-				{
-					if (user_position < 2)
-						display_staff_menu(username, user_position);
-					else
-						display_error("AM01");
-				}
-				else if (b == '4')
-				{
-					display_instructions(username, user_position);
-				}
-				else if (b == '5')
-				{
-					display_credits(username, user_position);
-				}
-				else if (b == '6')
-				{
-					break;
-				}
-			} while (1);
-		}
-		else if (a == '2')
-		{
-			display_supply_menu(username, user_position);
-		}
-		else if (a == '3')
-		{
-			if (user_position < 2)
-				display_staff_menu(username, user_position);
+								char b1 = _getch();
+
+								if (b1 == '1')
+								{									
+									if (user_position < 4)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  View item details  >  Search by item ID\n\n";
+										vector<Stock> all_stock;
+										for (int ii = 1; ii < 11; ii++)
+										{
+											vector <Stock> temp = Stock::read_data(ii);
+											for (int ij = 0; ij < temp.size(); ij++)
+												all_stock.push_back(temp[ij]);
+										}
+										bool not_found = 0;
+										string id;
+										Stock item;
+										cout << "\nEnter item ID\t\t: ";
+										getline(cin, id);
+										to_upper(id, 1);
+										item = Stock::find_by_id(id, all_stock, not_found);
+										if (not_found)
+											display_error("SD01");
+										else
+											item.show_data();
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b1 == '2')
+								{									
+									if (user_position < 4)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  View item details  >  Search by item name\n\n";
+										vector<Stock> all_stock;
+										for (int ii = 1; ii < 11; ii++)
+										{
+											vector <Stock> temp = Stock::read_data(ii);
+											for (int ij = 0; ij < temp.size(); ij++)
+												all_stock.push_back(temp[ij]);
+										}										
+										string name;
+										Stock item;
+										Stock::find_and_display(item, all_stock, 1);		
+										item.show_data();
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b1 == '3')
+								{									
+									if (user_position < 4)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  View item details  >  Search by item category\n\n";
+										int b1c = category_check();
+										vector <Stock> stock = Stock::read_data(b1c);
+										display_stock_table(stock);
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b1 == '4')
+								{									
+									if (user_position < 4)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  View item details  >  View all stock items\n\n";
+										vector<Stock> all_stock;
+										for (int ii = 1; ii < 11; ii++)
+										{
+											vector <Stock> temp = Stock::read_data(ii);
+											for (int ij = 0; ij < temp.size(); ij++)
+												all_stock.push_back(temp[ij]);
+										}
+										display_stock_table(all_stock);
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b1 == '5')
+									break;
+							} while (1);
+						}
+						else
+						{
+							display_error("AM01");
+							system("pause");
+						}
+					}
+					else if (b == '2')
+					{						
+						if (user_position < 2)
+						{
+							display_header(username, user_position);
+							cout << "Main menu  >  Stock  >  Add item\n\n";
+							Stock::input_data();
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (b == '3')
+					{						
+						if (user_position < 2)
+						{
+							display_header(username, user_position);
+							cout << "Main menu  >  Stock  >  Edit item\n\n";
+							Stock::edit_item();
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (b == '4')
+					{						
+						if (user_position < 2)
+						{							
+							display_header(username, user_position);
+							cout << "Main menu  >  Stock  >  Remove item\n\n";
+							Stock::delete_item();
+						}
+						else
+							display_error("AM01");
+						system("pause");
+					}
+					else if (b == '5')
+					{						
+						if (user_position < 2)
+						{
+							do
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  Add promotion\n\n";
+								cout << "Select option\n\n";
+								cout << "\t1. For an item\n";
+								cout << "\t2. For a brand\n";
+								cout << "\t3. For a category\n";
+								cout << "\t4. Go back\n";
+								cout << endl;
+
+								char b5 = _getch();
+
+								if (b5 == 1)
+								{
+									if (user_position < 2)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  Add promotion  > For an item\n\n";
+										Stock::promotion(1);
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b5 == 2)
+								{
+									if (user_position < 2)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  Add promotion  > For a brand\n\n";
+										Stock::promotion(2);
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b5 == 3)
+								{
+									if (user_position < 2)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  Add promotion  > For a category\n\n";
+										Stock::promotion(3);
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b5 == 4)
+									break;
+							} while (1);
+						}
+						else
+						{
+							display_error("AM01");
+							system("pause");
+						}
+					}
+					else if (b == '6')
+					{
+						if (user_position < 3)
+						{
+							do
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  Transaction\n\n";
+								cout << "Select option\n\n";
+								cout << "\t1. New transaction\n";
+								cout << "\t2. Transaction log\n";
+								cout << "\t3. Go back\n";
+								cout << endl;
+
+								char b6 = _getch();
+
+								if (b6 == 1)
+								{
+									if (user_position < 3)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  Transaction  > New transaction\n\n";
+										Stock::transaction(username);
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b6 == 2)
+								{
+									if (user_position < 3)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Stock  >  Add promotion  > Transaction log\n\n";
+										Stock::read_transaction();
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (b6 == 3)
+									break;
+							} while (1);
+						}
+						else
+						{
+							display_error("AM01");
+							system("pause");
+						}
+					}
+					else if (b == '7')
+						break;
+				} while (1);
+			}
 			else
 			{
 				display_error("AM01");
 				system("pause");
 			}
 		}
-		else if (a == '4')
-		{
-			display_instructions(username, user_position);
-		}
-		else if (a == '5')
-		{
-			display_credits(username, user_position);
-		}
+		//else if (a == '2')
+		//{
+		//	
+		//}
+		//else if (a == '3')
+		//{
+		//	if (user_position < 2)
+		//		display_staff_menu(username, user_position);
+		//	else
+		//	{
+		//		display_error("AM01");
+		//		system("pause");
+		//	}
+		//}
+		//else if (a == '4')
+		//{
+		//	display_instructions(username, user_position);
+		//}
+		//else if (a == '5')
+		//{
+		//	display_credits(username, user_position);
+		//}
 		else if (a == '6')
-		{
 			logout = 1;
-		}
 		else if (a == '7')
 		{
 			system("cls");

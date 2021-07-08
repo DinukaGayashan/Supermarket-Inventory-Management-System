@@ -120,21 +120,21 @@ void display_login_screen(string& username, int& user_position)
 //	}
 //}
 
-void display_stock_menu(string username, int user_position)
-{
-	
-}
-
-void display_supply_menu(string username, int user_position)
-{
-	cout << "Access & more\n";
-	cout << "---------------------------------------\n";
-}
-
-void display_staff_menu(string username, int user_position)
-{
-
-}
+//void display_stock_menu(string username, int user_position)
+//{
+//	
+//}
+//
+//void display_supply_menu(string username, int user_position)
+//{
+//	cout << "Access & more\n";
+//	cout << "---------------------------------------\n";
+//}
+//
+//void display_staff_menu(string username, int user_position)
+//{
+//
+//}
 
 void display_instructions(string username, int user_position)
 {
@@ -264,6 +264,7 @@ void display_error(string error)
 	else if (error == "SD06")	cerr << "\a\terror SD06: Non-existing username entered.\n";
 	else if (error == "SD07")	cerr << "\a\terror SD07: Item do not exist in the stock. Add item before supplying.\n";
 	else if (error == "SD08")	cerr << "\a\terror SD08: Invalid password entered.\n";
+	else if (error == "SD09")	cerr << "\a\terror SD09: Already existing item entered.\n";
 
 	else if (error == "AM01")	cerr << "\a\terror AM01: You don't have access to this menu.\n";
 }
@@ -273,7 +274,7 @@ void display_stock_table(vector <Stock>& stock)
 	size_t max_name = 9, max_brand_name = 10;
 	size_t size = stock.size();
 	double total = 0;
-	int length = 180;
+	int length = 178;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -301,7 +302,7 @@ void display_stock_table(vector <Stock>& stock)
 
 	for (int i = 0; i < (max_name ) / 2; i++)
 		cout << " ";
-	cout << "   Item Name   ";
+	cout << "  Item Name  ";
 	for (int i = 0; i < (max_name ) / 2; i++)
 		cout << " ";
 	cout << "|";
@@ -339,7 +340,7 @@ void display_stock_table(vector <Stock>& stock)
 		cout << stock[i].get_item_name();
 		for (int j = 0; j < (max_name - stock[i].get_item_name().length()); j++)
 			cout << " ";
-		cout << "               ";
+		cout << "              ";
 
 		to_upper(stock[i].get_item_brand_name(), 0);
 		cout << stock[i].get_item_brand_name();
@@ -351,22 +352,81 @@ void display_stock_table(vector <Stock>& stock)
 		if (stock[i].get_item_supply_type() == "Local")
 			cout << "   ";
 		else if (stock[i].get_item_supply_type() == "notype")
-			cout << "   ";
-		cout << "\t";
+			cout << "  ";
+		cout << "           ";
 		
 		if (stock[i].get_item_category() == 1 || stock[i].get_item_category() == 2 || stock[i].get_item_category() == 3)
-			cout << fixed << setprecision(3) << "\t" << stock[i].get_quantity() / 1000.0 << " kg\t";
+			cout << fixed << setprecision(3)  << stock[i].get_quantity() / 1000.0 << " kg";
 		else
-			cout << fixed << setprecision(0) << "\t" << stock[i].get_quantity() << "\t\t";
+		{
+			cout << fixed << setprecision(0) << stock[i].get_quantity();
+			if (stock[i].get_quantity() < 10)
+				cout << "       ";
+			else if (stock[i].get_quantity() < 100)
+				cout << "      ";
+			else if (stock[i].get_quantity() < 1000)
+				cout << "     ";
+			else if (stock[i].get_quantity() < 10000)
+				cout << "    ";
+			else if (stock[i].get_quantity() < 100000)
+				cout << "   ";
+			else if (stock[i].get_quantity() < 1000000)
+				cout << "  ";
+			else if (stock[i].get_quantity() < 10000000)
+				cout << " ";
+		}
 
 		cout << fixed << setprecision(2);
 
+		cout << "            ";
+		cout << stock[i].get_retail_price();
+		if (stock[i].get_retail_price() < 10)
+			cout << "       ";
+		else if (stock[i].get_retail_price() < 100)
+			cout << "      ";
+		else if (stock[i].get_retail_price() < 1000)
+			cout << "     ";
+		else if (stock[i].get_retail_price() < 10000)
+			cout << "    ";
+		else if (stock[i].get_retail_price() < 100000)
+			cout << "   ";
+		else if (stock[i].get_retail_price() < 1000000)
+			cout << "  ";
+		else if (stock[i].get_retail_price() < 10000000)
+			cout << " ";
 		cout << "   ";
-		cout << stock[i].get_retail_price() << "\t";
+		cout << stock[i].get_discount() << "%";
+		if (stock[i].get_discount() < 10)
+			cout << "       ";
+		else if (stock[i].get_discount() < 100)
+			cout << "      ";
+		else if (stock[i].get_discount() < 1000)
+			cout << "     ";
+		else if (stock[i].get_discount() < 10000)
+			cout << "    ";
+		else if (stock[i].get_discount() < 100000)
+			cout << "   ";
+		else if (stock[i].get_discount() < 1000000)
+			cout << "  ";
+		else if (stock[i].get_discount() < 10000000)
+			cout << " ";
 		cout << "   ";
-		cout << stock[i].get_discount() << "%\t        ";
-		cout << stock[i].get_final_price() << "\t\t";
-
+		cout << stock[i].get_final_price() ;
+		if (stock[i].get_final_price() < 10)
+			cout << "       ";
+		else if (stock[i].get_final_price() < 100)
+			cout << "      ";
+		else if (stock[i].get_final_price() < 1000)
+			cout << "     ";
+		else if (stock[i].get_final_price() < 10000)
+			cout << "    ";
+		else if (stock[i].get_final_price() < 100000)
+			cout << "   ";
+		else if (stock[i].get_final_price() < 1000000)
+			cout << "  ";
+		else if (stock[i].get_final_price() < 10000000)
+			cout << " ";
+		cout << "      ";
 		total = total + stock[i].get_retail_price() * stock[i].get_quantity();
 		cout << stock[i].get_retail_price() * stock[i].get_quantity() << "/=";
 	}
@@ -377,16 +437,21 @@ void display_stock_table(vector <Stock>& stock)
 		cout << "-";
 
 	cout << endl;
-	for (int i = 0; i < (max_name + max_brand_name + length - 40); i++)
+	cout << "   Total Stock value";
+	for (int i = 0; i < (max_name + max_brand_name + length - 39); i++)
 		cout << " ";
-	cout << "Total Stock value : Rs\t" << total << "/=";
+	cout << "Rs " << total << "/=";
+	cout << endl;
 
+	for (int i = 0; i < max_name + max_brand_name + length; i++)
+		cout << "-";
+	cout << endl;
 	cout << endl;
 }
 
 
 
-void transaction_bill(vector <Stock> stock, string cashier, string date, string time)
+void transaction_bill(vector <Stock> stock, string cashier, string customer, string date, string time)
 {
 	int length = 80;
 	double total = 0;
@@ -397,15 +462,18 @@ void transaction_bill(vector <Stock> stock, string cashier, string date, string 
 
 	for (size_t i = 0; i < length; i++)
 		cout << "-";
-	//bill number
+	
 	cout << endl;
+	to_upper(cashier, 0);
 	cout << "Cashier: " << cashier;
-
 	for (size_t i = cashier.length(); i < length - 25; i++)
 		cout << " ";
 	cout << "Date: "<<date;
+	
 	cout << endl;
-	for (int i = 0; i < length - 16; i++)
+	to_upper(customer, 0);
+	cout << "Customer: " << customer;
+	for (int i = customer.length(); i < length - 26; i++)
 		cout << " ";
 	cout << "Time: " << time;
 

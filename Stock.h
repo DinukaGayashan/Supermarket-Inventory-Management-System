@@ -38,7 +38,7 @@ public:
 
 
 	void show_data();
-	void input_data();
+	static void input_data();
 	void write_data(int file_index);
 	static vector<Stock> read_data(int file_index);
 	static vector<Stock> find_item(const string& item, bool name = 1);

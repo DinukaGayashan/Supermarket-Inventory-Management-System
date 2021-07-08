@@ -5,51 +5,62 @@ void Stock::show_data()
 {
 	cout << "\nItem Details\n---------------------------------------\n";
 	cout << "Item id\t\t\t: " << item_id << endl;
+	cout << "Item category\t\t: ";
+	display_category(item_category);
+	cout<< endl;
 	to_upper(item_name, 0);
 	cout << "Item name\t\t: " << item_name << endl;
-	cout << "Retail price\t\t: " << retail_price  << "/=" << endl;
-	cout << "Final price\t\t: " << final_price << "/=" << endl;
-	cout << "Available quantity\t: " << quantity << endl;
-	if (brand_name != "nobrand") {
+	if (brand_name != "nobrand") 
+	{
 		to_upper(brand_name, 0);
 		cout << "Brand name\t\t: " << brand_name << endl;
 		cout << "Supply type\t\t: " << supply_type << endl;
 	}
+	cout << "Available quantity\t: " << quantity << endl;
+	cout << "Retail price\t\t: " << retail_price  << "/=" << endl;
+	cout << "Discount\t\t: " << discount << endl;
+	cout << "Final price\t\t: " << final_price << "/=" << endl << endl;
 }
 
 void Stock::input_data()
 {
+	Stock temp;
 	display_categories();
 	display_supply_type();
 
 	cout << "\nAdd New Item\n---------------------------------------\n";
 
-	item_category = category_check();
+	temp.item_category = category_check();
 
 	cout << "Enter item name\t\t: ";
-	getline(cin, item_name);
-	to_upper(item_name, 1);
+	getline(cin, temp.item_name);
+	to_upper(temp.item_name, 1);
 
-	if (item_category > 2) {
+	if (temp.item_category > 2) {
 		cout << "Enter brand name\t: ";
-		getline(cin, brand_name);
-		to_upper(brand_name, 1);
+		getline(cin, temp.brand_name);
+		to_upper(temp.brand_name, 1);
 
-		supply_type = (supply_type_check() == 1 ? "Local" : "Imported");
+		temp.supply_type = (supply_type_check() == 1 ? "Local" : "Imported");
 	}
 
-	quantity = int_check("Enter number of items\t");
-	retail_price = rupees_check("Enter the retail price\t");
-	discount = int_check("Enter discount percentage"); 
-	final_price = retail_price * (1 - (discount / 100.0));
+	temp.quantity = int_check("Enter number of items\t");
+	temp.retail_price = rupees_check("Enter the retail price\t");
+	temp.discount = int_check("Enter discount percentage");
+	temp.final_price = temp.retail_price * (1 - (temp.discount / 100.0));
 
-	item_id = generate_item_id(item_name, brand_name, item_category);
+	temp.item_id = temp.generate_item_id(temp.item_name, temp.brand_name, temp.item_category);
+	
+	//check item existed
+	display_error("SD09");
 
-	cout << "Item ID\t\t\t: " << item_id<<endl;
 
-	//cout << "Press Enter to save\n";
-	//get keystroke
+	cout << "Item ID\t\t\t: " << temp.item_id<<endl;
 
+	cout << "Press 'Enter' to save";
+	char c=_getch();
+	if (c == 13)
+		temp.write_data(temp.item_category);
 }
 
 
@@ -112,13 +123,16 @@ void Stock::transaction(const string& cashier_name)
 		for (auto j : temp)
 			items.emplace_back(j);
 	}
-		
-
+	string customer_name;
+	cout << "Enter customer name\t: ";
+	getline(cin, customer_name);
+	to_upper(customer_name, 1);
 	vector<Stock> bill_items;
+	
 	while (true) {
 		string id;
 		Stock temp;
-		
+
 		while (true) {
 			bool err = false;
 			cout << "Enter Item ID\t: ";
@@ -185,7 +199,7 @@ void Stock::transaction(const string& cashier_name)
 	//cout << "Done....\n";
 
 	//bill ui
-	transaction_bill(bill_items, cashier_name, get_date(), get_time());
+	transaction_bill(bill_items, cashier_name, customer_name,get_date(), get_time());
 	//print bill
 
 
@@ -198,6 +212,7 @@ void Stock::transaction(const string& cashier_name)
 	transaction << get_date() << endl;
 	transaction << get_time() << endl;
 	transaction << cashier_name << endl;
+	transaction << customer_name << endl;
 
 	for (Stock i : bill_items) {
 		transaction << i;
@@ -217,18 +232,19 @@ void Stock::read_transaction() {
 	for (string i : file_names) {
 		ifstream input;
 		input.open(i);
-		string dt,tm,cname;
+		string dt,tm,cname,custname;
 		vector<Stock> items;
 		Stock t;
 		
 		input >> dt;
 		input >> tm;
 		input >> cname;
+		input >> custname;
 
 		while (input >> t)
 			items.emplace_back(t);
 
-		transaction_bill(items, cname, dt, tm);
+		transaction_bill(items, cname,custname, dt, tm);
 	}
 }
 
