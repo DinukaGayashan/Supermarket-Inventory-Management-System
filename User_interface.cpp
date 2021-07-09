@@ -140,7 +140,6 @@ void display_instructions()
 {
 	cout << "\n\tHelp\n";
 	cout << "---------------------------------------------------------------------------------------------------------------------\n\n";
-	cout << "\t?\tYou must enter the username and password correctly in order to access the system.\n\n";
 	cout << "\t?\tThe floor workers cannot access the staff section. They can only access the stock and supply,\n";
 	cout << "\t\tand increase the number of stock of an existing product in the inventory.\n\n";
 	cout << "\t?\tThe cashiers cannot access the staff section. They can only access the stock and supply\n";
@@ -158,10 +157,10 @@ void display_credits()
 {
 	cout << "\n\tCredits\n";
 	cout << "---------------------------------------------------------------------------------------------------------------------\n\n";
-	cout << "______________________________________________________________________________________\n\n";
-	cout << "\t\tDeveloped by: TEAM CMD\n";
-	cout << "\n\t\t\t\tRANASINGHE R.A.C.M.\n\t\t\t\tKASTHURIARACHCHI K.A.D.G.\n\t\t\t\tWICKRAMASINGHE K.W.M.M.D.\n";
-	cout << "______________________________________________________________________________________\n\n";
+	cout << "\t_________________________________________________________________________________\n\t|\t\t\t\t\t\t\t\t\t\t|\n";
+	cout << "\t|\t\tDeveloped by: Team CMD\t\t\t\t\t\t|\n";
+	cout << "\t|\t\t\t\t\t\t\t\t\t\t|\n\t|\t\t\t\tRANASINGHE R.A.C.M.\t\t\t\t|\n\t|\t\t\t\tKASTHURIARACHCHI K.A.D.G.\t\t\t|\n\t|\t\t\t\tWICKRAMASINGHE K.W.M.M.D.\t\t\t|\n";
+	cout << "\t|_______________________________________________________________________________|\n\n\n";
 	system("pause");
 }
 
@@ -270,6 +269,7 @@ void display_error(string error)
 	else if (error == "SD07")	cerr << "\a\terror SD07: Item do not exist in the stock. Add item before supplying.\n";
 	else if (error == "SD08")	cerr << "\a\terror SD08: Invalid password entered.\n";
 	else if (error == "SD09")	cerr << "\a\terror SD09: Already existing item entered.\n";
+	else if (error == "SD10")	cerr << "\a\terror SD10: Non-existing username entered.\n";
 
 	else if (error == "AM01")	cerr << "\a\terror AM01: You don't have access to this menu.\n";
 }

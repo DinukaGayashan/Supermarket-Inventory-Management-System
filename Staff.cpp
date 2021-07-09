@@ -125,7 +125,7 @@ void Staff::remove_user()
 		for (Staff i : users) {
 			if (i.username != temp_member.username) {
 				flag = true;
-				display_error("SD05"); //error needed
+				display_error("SD10"); 
 				break;
 			}
 		}
