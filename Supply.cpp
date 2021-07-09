@@ -369,9 +369,9 @@ void Supply:: display_supply_table(vector <Supply> supply)
 		cout << "  ";
 
 		if (supply[i].status)
-			cout << "Accepted";
+			cout << "Approved";
 		else
-			cout << "In transit";
+			cout << "Pending";
 
 	}
 	cout << endl;
