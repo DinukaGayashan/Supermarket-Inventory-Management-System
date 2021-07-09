@@ -5,9 +5,9 @@ NOBRAND
 notype
 100
 55
-53.9
+53.35
 1
-2
+3
 ACN03924
 CABBAGE
 nounit
@@ -15,6 +15,6 @@ NOBRAND
 notype
 200
 110
-107.8
+106.7
 1
-2
+3

@@ -129,17 +129,18 @@ int main()
 										getline(cin, name);
 										to_upper(name, 1);
 										vector<Stock> items = Stock::find_item(name, 1);
-
-										if (items.size() == 0) {
+										if (items.size() == 0) 
+										{
 											display_error("SD02");
 										}
-
-										else {
+										else if (items.size() == 1)
+											items[0].show_data();
+										else 
+										{
 											Stock item;
 											Stock::find_name_and_display(item, all_stock, name, 1);
 											item.show_data();
-										}
-										
+										}										
 									}
 									else
 										display_error("AM01");
@@ -246,7 +247,7 @@ int main()
 									if (user_position < 2)
 									{
 										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  Add promotion  > For an item\n\n";
+										cout << "Main menu  >  Stock  >  Add promotion  >  For an item\n\n";
 										Stock::promotion(1);
 									}
 									else
@@ -258,7 +259,7 @@ int main()
 									if (user_position < 2)
 									{
 										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  Add promotion  > For a brand\n\n";
+										cout << "Main menu  >  Stock  >  Add promotion  >  For a brand\n\n";
 										Stock::promotion(2);
 									}
 									else
@@ -270,7 +271,7 @@ int main()
 									if (user_position < 2)
 									{
 										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  Add promotion  > For a category\n\n";
+										cout << "Main menu  >  Stock  >  Add promotion  >  For a category\n\n";
 										Stock::promotion(3);
 									}
 									else
@@ -367,14 +368,53 @@ int main()
 					if (c == '1')
 					{
 						if (user_position < 4)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Supply  >  View supply details\n\n";
-							Supply::display_supply_table(Supply::supply_read_data());
+						{							
+							do
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Supply  >  View supply details\n\n";
+								cout << "Select option\n\n";
+								cout << "\t1. Search by name\n";
+								cout << "\t2. View all supply items\n";
+								cout << "\t3. Go back\n";
+								cout << endl;
+
+								char c1 = _getch();
+
+								if (c1 == '1')
+								{
+									if (user_position < 3)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Supply  >  View supply details  >  Search by name\n\n";
+										//function
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (c1 == '2')
+								{
+									if (user_position < 3)
+									{
+										display_header(username, user_position);
+										cout << "Main menu  >  Supply  >  View supply details  >  View all supply items\n\n";
+										Supply::display_supply_table(Supply::supply_read_data());
+									}
+									else
+										display_error("AM01");
+									system("pause");
+								}
+								else if (c1 == '3')
+									break;
+							}
+							while (1);
 						}
 						else
+						{
 							display_error("AM01");
-						system("pause");
+							system("pause");
+						}
 					}
 					else if (c == '2')
 					{

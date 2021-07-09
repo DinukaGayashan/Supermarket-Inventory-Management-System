@@ -383,7 +383,7 @@ void display_stock_table(vector <Stock>& stock)
 
 		cout << fixed << setprecision(2);
 
-		cout << "            ";
+		cout << "          ";
 		cout << stock[i].get_retail_price();
 		if (stock[i].get_retail_price() < 10)
 			cout << "       ";
@@ -399,7 +399,7 @@ void display_stock_table(vector <Stock>& stock)
 			cout << "  ";
 		else if (stock[i].get_retail_price() < 10000000)
 			cout << " ";
-		cout << "   ";
+		cout << "     ";
 		cout << stock[i].get_discount() << "%";
 		if (stock[i].get_discount() < 10)
 			cout << "       ";

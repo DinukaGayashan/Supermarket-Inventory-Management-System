@@ -4,7 +4,6 @@
 #include "Stock.h"
 #include "Date.h"
 
-
 class Stock;
 class Supply : public Stock
 {
