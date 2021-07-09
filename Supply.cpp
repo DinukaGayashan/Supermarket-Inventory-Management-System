@@ -29,7 +29,7 @@ istream& operator >> (istream& in, Supply& obj)
 
 void Supply::get_data()
 {
-	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	cout << "Press [ESC] after pressing [ENTER] to cancel or press [ENTER] twice to confirm.\n";
 	char c;
 	display_source_type();
 	display_vehicle_types();
@@ -95,7 +95,7 @@ void Supply::get_data()
 	to_upper(reg_number, 1);
 
 	status = 0;
-	cout << "Press 'ENTER to save or Press ESC to cancel\n";
+	cout << "Press [ENTER] to save or press [ESC] to cancel\n";
 	c = _getch();
 	if (c == 27) return;
 	if (c == 13)
@@ -153,7 +153,7 @@ vector<Supply>  Supply::supply_read_data()
 
 void Supply::update_stock()
 {
-	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	cout << "Press [ESC] after pressing [ENTER] to cancel or press [ENTER] twice to confirm.\n";
 	char c;
 
 	vector <Supply> full_supply = supply_read_data();

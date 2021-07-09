@@ -10,7 +10,7 @@ void Stock::show_data()
 	cout<< endl;
 	to_upper(item_name, 0);
 	cout << "Item name\t\t: " << item_name << endl;
-	if (brand_name != "nobrand") 
+	if (brand_name != "NOBRAND") 
 	{
 		to_upper(brand_name, 0);
 		cout << "Brand name\t\t: " << brand_name << endl;
@@ -24,7 +24,7 @@ void Stock::show_data()
 
 void Stock::input_data()
 {
-	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	cout << "Press [ESC] after pressing [ENTER] to cancel or press [ENTER] twice to confirm.\n";
 
 	Stock temp;
 	display_categories();
@@ -88,7 +88,7 @@ void Stock::input_data()
 
 	cout << "Item ID\t\t\t: " << temp.item_id<<endl;
 
-	cout << "Press 'Enter' to save";
+	cout << "Press [ENTER] to save";
 	char c=_getch();
 	if (c == 13)
 		temp.write_data(temp.item_category);
@@ -147,10 +147,9 @@ vector<Stock> Stock::read_data(int file_index)
 
 void Stock::transaction(const string& cashier_name)
 {
-	cout << "Press 'Enter' to continue, Press 'Esc' to cancel\n\n";
+	cout << "Press [ENTER] to continue or press [ESC] to cancel.\n\n";
 	char c;
-
-	
+		
 	vector<Stock> items;
 
 	for (int i = 1; i < 11; i++) {
@@ -159,9 +158,9 @@ void Stock::transaction(const string& cashier_name)
 			items.emplace_back(j);
 	}
 	string customer_name;
-	cout << "Enter customer name\t: ";
+	cout << "Enter customer name: ";
 	getline(cin, customer_name);
-
+	cout << endl;
 	c = _getch();
 	if (c == 27) return;
 
@@ -207,21 +206,22 @@ void Stock::transaction(const string& cashier_name)
 		temp.quantity = quantity;
 
 		cout << endl;
-		cout << "Press 'C' to confirm\n";
-		cout << "Press 'X' to cancel\n";
-		cout << "Press 'F' to finish\n";
+		cout << "Press [ENTER] to confirm\n";
+		cout << "Press [BACKSPACE] to cancel\n";
+		cout << "Press [SPACE] to finish\n";
+		cout << endl;
 
 		char c;
 		c = _getch();
 
-		if (c == 'x'||c=='X') 
+		if (c == 8) 
 			continue;
-		else if (c == 'f' || c == 'F') 
+		else if (c == 32) 
 		{
 			bill_items.push_back(temp);
 			break;
 		}
-		else if (c == 'c' || c == 'C') 
+		else if (c == 13)
 		{
 			bill_items.push_back(temp);
 			continue;
@@ -338,7 +338,7 @@ void Stock::promotion(int promotion_type)
 	//for a brand
 	if (promotion_type == 2) {
 		string brandName;
-		cout << "Press 'Enter' to continue, Press 'Esc' to cancel\n\n";
+		cout << "Press [ENTER] to continue or press [ESC] to cancel.\n";
 		char c;
 		while (true) {
 			cout << "Enter brand name\t: ";
@@ -392,7 +392,7 @@ void Stock::promotion(int promotion_type)
 
 void Stock::find_and_display(Stock& item, vector<Stock>& items, bool id)
 {	
-	cout << "Press 'Enter' to continue, Press 'Esc' to cancel\n\n";
+	cout << "Press [ENTER] to continue or press [ESC] to cancel.\n";
 	char c;
 	while (true) {
 		string itm_nm;

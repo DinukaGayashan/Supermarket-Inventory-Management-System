@@ -1,3 +1,10 @@
 Transactions\\kk2021.7.7.2.54.57.txt
 Transactions\\kk2021.7.7.2.55.39.txt
 Transactions\\DI2021.7.9.1.31.49.txt
+Transactions\\DI2021.7.9.23.58.7.txt
+Transactions\\DI2021.7.10.0.4.6.txt
+Transactions\\DI2021.7.10.0.5.11.txt
+Transactions\\DI2021.7.10.0.6.47.txt
+Transactions\\DI2021.7.10.0.7.33.txt
+Transactions\\DI2021.7.10.0.8.26.txt
+Transactions\\DI2021.7.10.0.11.37.txt

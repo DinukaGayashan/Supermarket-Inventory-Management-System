@@ -45,7 +45,7 @@ vector<Staff> Staff::read_staff_data()
 
 void Staff::add_user()
 {
-	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	cout << "Press [ESC] after pressing [ENTER] to cancel or press [ENTER] twice to confirm.\n";
 	char c;
 
 	display_staff_positions();
@@ -107,7 +107,7 @@ void Staff::add_user()
 
 void Staff::remove_user()
 {
-	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	cout << "Press [ESC] after pressing [ENTER] to cancel or press [ENTER] twice to confirm.\n";
 	char c;
 
 	Staff temp_member;
@@ -135,7 +135,7 @@ void Staff::remove_user()
 		}
 	}
 
-	cout << "Press 'ENTER to save or Press ESC to cancel\n";
+	cout << "Press [ENTER] to save or press [ESC] to cancel.\n";
 	c = _getch();
 	if (c == 27) return;
 	if (c == 13) {
@@ -151,7 +151,7 @@ void Staff::remove_user()
 	}
 
 
-	cout << "Member removed successfully!";
+	//cout << "Member removed successfully!";
 }
 
 void Staff::show_data()

@@ -77,65 +77,6 @@ void display_login_screen(string& username, int& user_position)
 	user_position = pos;
 }
 
-//void display_main_menu(string username, int user_position)
-//{
-//	display_header(username, user_position);
-//
-//	cout << "\nSelect menu item number.\n\n";
-//	cout << "1. Stock\n";
-//	cout << "2. Supply\n";
-//	cout << "3. Staff\n";
-//	cout << "4. Instructions\n";
-//	cout << "5. Credits\n";
-//	cout << "6. Log out\n";
-//
-//	char c = _getch();
-//
-//	if (c == '1') 
-//	{
-//		display_stock_menu(username, user_position);
-//	}
-//	else if (c == '2') 
-//	{
-//		display_supply_menu(username, user_position);
-//	}
-//	else if (c == '3')
-//	{
-//		if (user_position < 2)
-//			display_staff_menu(username, user_position);
-//		else
-//			display_error("AM01");
-//	}
-//	else if (c == '4')
-//	{
-//		display_instructions();
-//	}
-//	else if (c == '5')
-//	{
-//		display_credits();
-//	}
-//	else if (c == '6')
-//	{
-//		return;
-//	}
-//}
-
-//void display_stock_menu(string username, int user_position)
-//{
-//	
-//}
-//
-//void display_supply_menu(string username, int user_position)
-//{
-//	cout << "Access & more\n";
-//	cout << "---------------------------------------\n";
-//}
-//
-//void display_staff_menu(string username, int user_position)
-//{
-//
-//}
-
 void display_instructions()
 {
 	cout << "\n\tHelp\n";
@@ -461,6 +402,10 @@ void transaction_bill(vector <Stock> stock, string cashier, string customer, str
 	int length = 80;
 	double total = 0;
 
+	cout << endl;
+	for (size_t i = 0; i < length; i++)
+		cout << "-";
+	cout << endl;
 	for (size_t i = 0; i < length / 2 - 8; i++)
 		cout << " ";
 	cout << "The Supermarket\n";
