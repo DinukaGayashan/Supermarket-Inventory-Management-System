@@ -29,6 +29,8 @@ istream& operator >> (istream& in, Supply& obj)
 
 void Supply::get_data()
 {
+	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	char c;
 	display_source_type();
 	display_vehicle_types();
 
@@ -36,23 +38,45 @@ void Supply::get_data()
 
 	cout << "Enter item name\t\t: ";
 	getline(cin, supply_item_name);
+	c = _getch();
+	if (c == 27) return;
 	to_upper(supply_item_name, 1);
 
 	supply_quantity = int_check("Enter number of items\t");
 
+	c = _getch();
+	if (c == 27) return;
+
 	cout << "Enter item origin\t: ";
 	getline(cin, origin_name);
+
+	c = _getch();
+	if (c == 27) return;
+
 	to_upper(origin_name, 1);
 
 	source = (supply_type_check() == 1 ? "Local" : "International");
 
+	c = _getch();
+	if (c == 27) return;
+
 	date_of_depature = check_date("Enter depature date");
 
+	c = _getch();
+	if (c == 27) return;
+
 	date_of_arrival = check_date("Enter arival date");
+	c = _getch();
+	if (c == 27) return;
+
 
 	if (source == "Local")
 	{
 		int v_t = vehicle_category_check();
+
+		c = _getch();
+		if (c == 27) return;
+
 		if (v_t == 1)
 			vehicle_type = "Large Truck";
 		else if (v_t == 2)
@@ -65,12 +89,17 @@ void Supply::get_data()
 	
 	cout << "Enter register number\t: ";
 	getline(cin, reg_number);
+
+	c = _getch();
+	if (c == 27) return;
 	to_upper(reg_number, 1);
 
 	status = 0;
-	//ststus?????
-	//cout << "Press Enter to save\n";
-	//get keystroke
+	cout << "Press 'ENTER to save or Press ESC to cancel\n";
+	c = _getch();
+	if (c == 27) return;
+	if (c == 13)
+		supply_write_data();
 
 }
 
@@ -124,6 +153,9 @@ vector<Supply>  Supply::supply_read_data()
 
 void Supply::update_stock()
 {
+	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	char c;
+
 	vector <Supply> full_supply = supply_read_data();
 	vector <Supply> supply;
 	for (int i = 0; i < full_supply.size(); i++)
@@ -141,7 +173,12 @@ void Supply::update_stock()
 	{
 		cout << "Enter supply item\t: ";
 		getline(cin, supply_item);
+
+		c = _getch();
+		if (c == 27) return;
+
 		to_upper(supply_item, 1);
+
 		for (int i = 0; i < supply.size(); i++)
 			if (supply[i].supply_item_name == supply_item)
 			{

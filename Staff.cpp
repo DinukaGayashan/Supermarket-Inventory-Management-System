@@ -45,15 +45,25 @@ vector<Staff> Staff::read_staff_data()
 
 void Staff::add_user()
 {
+	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	char c;
+
 	display_staff_positions();
 	
 	cout << "\nAdd New User\n---------------------------------------\n";
 	
 	full_name = check_name("Enter full name\t");
-	
+	c = _getch();
+	if (c == 27) return;
+
+
 	while (true) {
 		username = check_name("Enter username\t");
 		to_upper(username, 1);
+
+		c = _getch();
+		if (c == 27) return;
+
 		vector<Staff> users = read_staff_data();
 		bool flag = false;
 		for (Staff  i : users) {
@@ -69,10 +79,16 @@ void Staff::add_user()
 		}
 	}
 	position.first = check_position();
+	c = _getch();
+	if (c == 27) return;
+
 	const string positions[4] = { "owner","manager","cashier","floor worker" };
 	position.second = positions[position.first];
 
 	join_date = check_date("Enter join date");
+
+	c = _getch();
+	if (c == 27) return;
 
 	string password1, password2;
 	do
@@ -80,10 +96,62 @@ void Staff::add_user()
 		password1 = enter_password("Enter password\t: ");
 		password2 = enter_password("\nConfirm password: ");
 		cout << endl;
+		c = _getch();
+		if (c == 27) return;
+
 		if (password1 != password2)
 			display_error("IS02");
 	} while (password1 != password2);
 	password = password1;
+}
+
+void Staff::remove_user()
+{
+	cout << "Press 'ESC' after pressing 'ENTER' to cancel. Press 'ENTER' twice to confirm.\n";
+	char c;
+
+	Staff temp_member;
+
+	vector<Staff> users = read_staff_data();
+
+	while (true) {
+		temp_member.username = check_name("Enter username\t");
+		to_upper(temp_member.username, 1);
+
+		c = _getch();
+		if (c == 27) return;
+
+		bool flag = false;
+		for (Staff i : users) {
+			if (i.username != temp_member.username) {
+				flag = true;
+				display_error("SD05"); //error needed
+				break;
+			}
+		}
+
+		if (flag == 0) {
+			break;
+		}
+	}
+
+	cout << "Press 'ENTER to save or Press ESC to cancel\n";
+	c = _getch();
+	if (c == 27) return;
+	if (c == 13) {
+		ofstream write_file;
+		write_file.open("Staff\\staff_data.txt", ios::app);
+		remove("Staff\\staff_data.txt");
+
+		for (Staff i : users) {
+			if (i.username != temp_member.username)
+				i.staff_write_data();
+		}
+
+	}
+
+
+	cout << "Member removed successfully!";
 }
 
 void Staff::show_data()

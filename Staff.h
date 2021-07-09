@@ -33,6 +33,7 @@ public:
 	//delete
 
 	void add_user();
+	static void remove_user();
 	void show_data();
 	void staff_write_data();
 	static vector<Staff> read_staff_data();

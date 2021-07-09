@@ -462,6 +462,7 @@ int main()
 						{
 							display_header(username, user_position);
 							cout << "Main menu  >  Staff  >  Remove staff member\n\n";
+							Staff::remove_user();
 
 						}
 						else
