@@ -288,13 +288,22 @@ void display_stock_table(vector <Stock>& stock)
 			cout << " ";
 		cout << "              ";
 
-		to_upper(stock[i].get_item_brand_name(), 0);
-		cout << stock[i].get_item_brand_name();
+		if (stock[i].get_item_brand_name()=="NOBRAND")
+			cout << "   -   ";
+		else
+		{
+			to_upper(stock[i].get_item_brand_name(), 0);
+			cout << stock[i].get_item_brand_name();
+		}
+
 		for (int j = 0; j < (max_brand_name - stock[i].get_item_brand_name().length()); j++)
 			cout << " ";
 		cout << "              ";
 
-		cout << stock[i].get_item_supply_type();
+		if (stock[i].get_item_supply_type() == "notype")
+			cout << "  -   ";
+		else
+			cout << stock[i].get_item_supply_type();
 		if (stock[i].get_item_supply_type() == "Local")
 			cout << "   ";
 		else if (stock[i].get_item_supply_type() == "notype")
@@ -448,8 +457,13 @@ void transaction_bill(vector <Stock> stock, string cashier, string customer, str
 		for (size_t j = stock[i].get_item_name().length(); j < 18; j++)
 			cout << " ";
 
-		to_upper(stock[i].get_item_brand_name(), 0);
-		cout << stock[i].get_item_brand_name();
+		if (stock[i].get_item_brand_name() == "NOBRAND")
+			cout << "   -   ";
+		else
+		{
+			to_upper(stock[i].get_item_brand_name(), 0);
+			cout << stock[i].get_item_brand_name();
+		}
 		for (size_t j = stock[i].get_item_brand_name().length(); j < 18; j++)
 			cout << " ";
 

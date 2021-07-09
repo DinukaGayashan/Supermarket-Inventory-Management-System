@@ -1,0 +1,14 @@
+2021.7.10
+1.46.9
+DI
+G
+ACN04729
+CUCUMBER
+nounit
+NOBRAND
+notype
+3
+55
+160.05
+1
+3
