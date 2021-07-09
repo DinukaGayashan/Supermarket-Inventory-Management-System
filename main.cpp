@@ -387,7 +387,30 @@ int main()
 									{
 										display_header(username, user_position);
 										cout << "Main menu  >  Supply  >  View supply details  >  Search by name\n\n";
-										//function
+										vector<Supply> all_supply = Supply::supply_read_data();
+										
+										string name;
+										cout << "\nEnter item Name\t\t: ";
+										getline(cin, name);
+										to_upper(name, 1);
+										
+										vector<Supply> items;
+
+										for (auto i : all_supply)
+											if (i.get_supply_item_name() == name)
+												items.push_back(i);
+
+										if (items.size() == 0)
+										{
+											display_error("SD02");
+										}
+										else if (items.size() == 1)
+											items[0].show_data();
+										else
+										{
+											
+											Supply::display_supply_table(items);
+										}
 									}
 									else
 										display_error("AM01");

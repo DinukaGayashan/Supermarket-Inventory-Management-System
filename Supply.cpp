@@ -221,10 +221,10 @@ bool Supply::check_stock_item(string & supply_item_name) const
 	return bool(items.size());
 }
 
-//string Supply:: get_supply_item_name()
-//{
-//	return supply_item_name;
-//}
+string Supply:: get_supply_item_name()
+{
+	return supply_item_name;
+}
 //int Supply::get_supply_quantity()
 //{
 //	return supply_quantity;

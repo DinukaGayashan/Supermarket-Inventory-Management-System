@@ -33,7 +33,7 @@ public:
 
 	bool check_stock_item(string& supply_item_name) const;
 
-	//string get_supply_item_name();
+	string get_supply_item_name();
 	//int get_supply_quantity();
 	//string get_source();
 	//string get_origin_name();
