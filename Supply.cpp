@@ -124,6 +124,7 @@ void Supply::show_data()
 	else
 		cout << "In transit";
 	cout << endl;
+	cout << endl;
 }
 
 void Supply::supply_write_data() 

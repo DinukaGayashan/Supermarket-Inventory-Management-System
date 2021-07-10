@@ -289,7 +289,7 @@ void display_stock_table(vector <Stock>& stock)
 		cout << "              ";
 
 		if (stock[i].get_item_brand_name()=="NOBRAND")
-			cout << "   -   ";
+			cout << "  -    ";
 		else
 		{
 			to_upper(stock[i].get_item_brand_name(), 0);
@@ -458,7 +458,7 @@ void transaction_bill(vector <Stock> stock, string cashier, string customer, str
 			cout << " ";
 
 		if (stock[i].get_item_brand_name() == "NOBRAND")
-			cout << "   -   ";
+			cout << "  -    ";
 		else
 		{
 			to_upper(stock[i].get_item_brand_name(), 0);

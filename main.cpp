@@ -440,7 +440,6 @@ int main()
 							cout << "Main menu  >  Supply  >  Add supply item\n\n";
 							Supply temp;
 							temp.get_data();
-							temp.supply_write_data();
 						}
 						else
 							display_error("AM01");
