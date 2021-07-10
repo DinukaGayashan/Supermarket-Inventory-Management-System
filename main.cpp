@@ -16,7 +16,7 @@ int main()
 {	
 	set_console_position(0, 0);
 	set_console_size(1920, 1080);
-	//set_font_size(24,22);
+	//set_font_size(24,22); not needed
 	
 	string username;
 	int user_position;
@@ -440,6 +440,10 @@ int main()
 							cout << "Main menu  >  Supply  >  Add supply item\n\n";
 							Supply temp;
 							temp.get_data();
+							cout << "\nPress [ENTER] to save or press [ESC] to cancel.\n\n";
+							char c = _getch();
+							if (c == 13)
+								temp.supply_write_data();
 						}
 						else
 							display_error("AM01");

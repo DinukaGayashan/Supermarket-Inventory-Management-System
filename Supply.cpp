@@ -36,8 +36,14 @@ void Supply::get_data()
 
 	cout << "\nAdd New Supply Item\n---------------------------------------\n";
 
+	point:
 	cout << "Enter item name\t\t: ";
 	getline(cin, supply_item_name);
+	if (supply_item_name.length() == 0) {
+		display_error("IS01");
+		goto point;
+	}
+
 	c = _getch();
 	if (c == 27) return;
 	to_upper(supply_item_name, 1);
@@ -95,12 +101,6 @@ void Supply::get_data()
 	to_upper(reg_number, 1);
 
 	status = 0;
-	cout << "Press [ENTER] to save or press [ESC] to cancel\n";
-	c = _getch();
-	if (c == 27) return;
-	if (c == 13)
-		supply_write_data();
-
 }
 
 void Supply::show_data()

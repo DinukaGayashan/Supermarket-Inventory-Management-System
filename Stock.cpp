@@ -85,10 +85,9 @@ void Stock::input_data()
 	if(errorFlag == false)
 		display_error("SD09");
 
-
 	cout << "Item ID\t\t\t: " << temp.item_id<<endl;
 
-	cout << "Press [ENTER] to save";
+	cout << "\nPress [ENTER] to save or press [ESC] to cancel.\n\n";
 	char c=_getch();
 	if (c == 13)
 		temp.write_data(temp.item_category);
@@ -613,10 +612,7 @@ string Stock::generate_item_id(const string& item_name_in, const string& brand_n
 	string id = "";
 
 	size_t number_length = 5;
-	char b = brand_name_in[0];
-	char i = item_name_in[0];
 
-	
 	id += (category_in+64);
 
 	//generating the number

@@ -276,7 +276,7 @@ void display_stock_table(vector <Stock>& stock)
 	{
 		cout << endl;
 
-		cout << "    " << stock[i].get_item_id() << "          ";
+		cout << "    " << stock[i].get_item_id() << "            ";
 
 		display_category(stock[i].get_item_category());
 		cout << "    ";
@@ -450,7 +450,7 @@ void transaction_bill(vector <Stock> stock, string cashier, string customer, str
 	for (int i = 0; i < stock.size(); i++)
 	{
 		cout << endl;
-		cout << stock[i].get_item_id() << "      ";
+		cout << stock[i].get_item_id() << "        ";
 
 		to_upper(stock[i].get_item_name(), 0);
 		cout << stock[i].get_item_name();

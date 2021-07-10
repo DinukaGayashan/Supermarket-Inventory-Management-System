@@ -31,11 +31,9 @@ private:
 public:
 	Stock(string itm_id = "default", string itm_nme = "", string msr_unt = "nounit", string brnd_nme = "nobrand", string spply_type = "notype", int nmbr_itms = 0, double rprc = 0, int dscnt = 0, int itm_ctgry = 0) :
 		item_id(itm_id), item_name(itm_nme), measure_unit(msr_unt), brand_name(brnd_nme), supply_type(spply_type), quantity(nmbr_itms), retail_price(rprc), item_category(itm_ctgry), discount(dscnt), final_price(rprc) {};
-		
-
+	
 	friend ostream& operator << (ostream& out, const Stock& obj);
 	friend istream& operator >> (istream& in, Stock& obj);
-
 
 	void show_data();
 	static void input_data();
@@ -62,14 +60,11 @@ public:
 	int get_discount();
 	int get_item_category();
 
-
 	void set_quantity(int amount);
 	void set_supply_type(int t);
 
 	static void transaction(const string& cashier_name);
 	static void read_transaction();
-
-
 
 };
 
