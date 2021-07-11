@@ -1,14 +1,24 @@
 #include "Supply.h"
 
-ostream& operator<<(ostream& out, const Supply& obj)
+ostream &operator<<(ostream &out, const Supply &obj)
 {
-	out << obj.source << "\n" << obj.vehicle_type << "\n" << obj.reg_number << "\n" << obj.supply_item_name << "\n" << obj.supply_quantity <<  "\n" << obj.origin_name << "\n" << obj.date_of_depature.day << "\n"
-		<< obj.date_of_depature.month << "\n" << obj.date_of_depature.year << "\n" << obj.date_of_arrival.day << "\n"
-		<< obj.date_of_arrival.month << "\n" << obj.date_of_arrival.year << "\n" << obj.status << endl;
+	out << obj.source << "\n"
+		<< obj.vehicle_type << "\n"
+		<< obj.reg_number << "\n"
+		<< obj.supply_item_name << "\n"
+		<< obj.supply_quantity << "\n"
+		<< obj.origin_name << "\n"
+		<< obj.date_of_depature.day << "\n"
+		<< obj.date_of_depature.month << "\n"
+		<< obj.date_of_depature.year << "\n"
+		<< obj.date_of_arrival.day << "\n"
+		<< obj.date_of_arrival.month << "\n"
+		<< obj.date_of_arrival.year << "\n"
+		<< obj.status << endl;
 	return out;
 }
 
-istream& operator >> (istream& in, Supply& obj)
+istream &operator>>(istream &in, Supply &obj)
 {
 	in >> obj.source;
 	in >> obj.vehicle_type;
@@ -36,52 +46,59 @@ void Supply::get_data()
 
 	cout << "\nAdd New Supply Item\n---------------------------------------\n";
 
-	point:
+point:
 	cout << "Enter item name\t\t: ";
 	getline(cin, supply_item_name);
-	if (supply_item_name.length() == 0) {
+	if (supply_item_name.length() == 0)
+	{
 		display_error("IS01");
 		goto point;
 	}
 
 	c = _getch();
-	if (c == 27) return;
+	if (c == 27)
+		return;
 	to_upper(supply_item_name, 1);
 
 	supply_quantity = int_check("Enter number of items\t");
 
 	c = _getch();
-	if (c == 27) return;
+	if (c == 27)
+		return;
 
 	cout << "Enter item origin\t: ";
 	getline(cin, origin_name);
 
 	c = _getch();
-	if (c == 27) return;
+	if (c == 27)
+		return;
 
 	to_upper(origin_name, 1);
 
 	source = (supply_type_check() == 1 ? "Local" : "International");
 
 	c = _getch();
-	if (c == 27) return;
+	if (c == 27)
+		return;
 
 	date_of_depature = check_date("Enter depature date");
 
 	c = _getch();
-	if (c == 27) return;
+	if (c == 27)
+		return;
 
 	date_of_arrival = check_date("Enter arival date");
 	c = _getch();
-	if (c == 27) return;
-
+	if (c == 27)
+		return;
 
 	if (source == "Local")
 	{
 		int v_t = vehicle_category_check();
 
 		c = _getch();
-		if (c == 27) return;
+		if (c == 27)
+			return;
 
 		if (v_t == 1)
 			vehicle_type = "Large Truck";
@@ -92,12 +109,13 @@ void Supply::get_data()
 	}
 	else
 		vehicle_type = "Ship";
-	
+
 	cout << "Enter register number\t: ";
 	getline(cin, reg_number);
 
 	c = _getch();
-	if (c == 27) return;
+	if (c == 27)
+		return;
 	to_upper(reg_number, 1);
 
 	status = 0;
@@ -127,7 +145,7 @@ void Supply::show_data()
 	cout << endl;
 }
 
-void Supply::supply_write_data() 
+void Supply::supply_write_data()
 {
 	ofstream write_file;
 	write_file.open("Supply\\supply_data.txt", ios::app);
@@ -140,7 +158,7 @@ void Supply::supply_write_data()
 	write_file << *this;
 }
 
-vector<Supply>  Supply::supply_read_data()
+vector<Supply> Supply::supply_read_data()
 {
 	vector<Supply> items;
 	ifstream readfile;
@@ -157,14 +175,14 @@ void Supply::update_stock()
 	cout << "Press [ESC] after pressing [ENTER] to cancel or press [ENTER] twice to confirm.\n";
 	char c;
 
-	vector <Supply> full_supply = supply_read_data();
-	vector <Supply> supply;
+	vector<Supply> full_supply = supply_read_data();
+	vector<Supply> supply;
 	for (int i = 0; i < full_supply.size(); i++)
 	{
 		if (full_supply[i].status == 0)
 			supply.push_back(full_supply[i]);
 	}
-	
+
 	display_supply_table(supply);
 	string supply_item;
 
@@ -176,7 +194,8 @@ void Supply::update_stock()
 		getline(cin, supply_item);
 
 		c = _getch();
-		if (c == 27) return;
+		if (c == 27)
+			return;
 
 		to_upper(supply_item, 1);
 
@@ -198,7 +217,7 @@ void Supply::update_stock()
 
 	Stock temp;
 	vector<Stock> itm;
-	
+
 	find_name_and_display(temp, itm, supply_item);
 	temp.set_quantity(q);
 	write_all_data(temp);
@@ -212,54 +231,22 @@ void Supply::update_stock()
 	remove("Supply\\supply_data.txt");
 	for (int j = 0; j < full_supply.size(); j++)
 		full_supply[j].supply_write_data();
-	
+
 	cout << endl;
 }
 
-bool Supply::check_stock_item(string & supply_item_name) const
+bool Supply::check_stock_item(string &supply_item_name) const
 {
 	vector<Stock> items = find_item(supply_item_name, true);
 	return bool(items.size());
 }
 
-string Supply:: get_supply_item_name()
+string Supply::get_supply_item_name()
 {
 	return supply_item_name;
 }
-//int Supply::get_supply_quantity()
-//{
-//	return supply_quantity;
-//}
-//string Supply::get_source()
-//{
-//	return source;
-//}
-//string Supply::get_origin_name()
-//{
-//	return origin_name;
-//}
-//Date Supply::get_date_of_depature()
-//{
-//	return date_of_depature;
-//}
-//Date Supply::get_date_of_arrival()
-//{
-//	return date_of_arrival;
-//}
-//string Supply::get_vehicle_type()
-//{
-//	return vehicle_type;
-//}
-//string Supply::get_reg_number()
-//{
-//	return reg_number;
-//}
-//bool Supply::get_status()
-//{
-//	return status;
-//}
 
-void Supply:: display_supply_table(vector <Supply> supply)
+void Supply::display_supply_table(vector<Supply> supply)
 {
 	size_t max_name = 9, max_origin = 6;
 	size_t size = supply.size();
@@ -293,9 +280,13 @@ void Supply:: display_supply_table(vector <Supply> supply)
 		cout << " ";
 	cout << "|";
 
-	cout << "    " << "Quantity" << "    |";
+	cout << "    "
+		 << "Quantity"
+		 << "    |";
 
-	cout << "      " << "Source" << "       |";
+	cout << "      "
+		 << "Source"
+		 << "       |";
 
 	for (int i = 0; i < (max_origin) / 2; i++)
 		cout << " ";
@@ -304,15 +295,25 @@ void Supply:: display_supply_table(vector <Supply> supply)
 		cout << " ";
 	cout << "|";
 
-	cout << "  " << "Date of Depature" << "  |";
+	cout << "  "
+		 << "Date of Depature"
+		 << "  |";
 
-	cout << "  " << "Date of Arrival" << "  |";
+	cout << "  "
+		 << "Date of Arrival"
+		 << "  |";
 
-	cout << "   " << "Vehicle Type" << "   |";
+	cout << "   "
+		 << "Vehicle Type"
+		 << "   |";
 
-	cout << "  " << "Registration Number" << "  |";
-	
-	cout << "     " << "Status" << "     |\n";
+	cout << "  "
+		 << "Registration Number"
+		 << "  |";
+
+	cout << "     "
+		 << "Status"
+		 << "     |\n";
 
 	for (int i = 0; i < max_name + max_origin + length; i++)
 		cout << "-";
@@ -345,8 +346,8 @@ void Supply:: display_supply_table(vector <Supply> supply)
 		cout << "             ";
 
 		string d1 = "", d2 = "";
-		d1 += to_string(supply[i].date_of_depature.year) + "." + to_string(supply[i].date_of_depature.month) + "." + to_string(supply[i].date_of_depature.day) ;
-		d2 += to_string(supply[i].date_of_arrival.year) + "." + to_string(supply[i].date_of_arrival.month) + "." + to_string(supply[i].date_of_arrival.day) ;
+		d1 += to_string(supply[i].date_of_depature.year) + "." + to_string(supply[i].date_of_depature.month) + "." + to_string(supply[i].date_of_depature.day);
+		d2 += to_string(supply[i].date_of_arrival.year) + "." + to_string(supply[i].date_of_arrival.month) + "." + to_string(supply[i].date_of_arrival.day);
 		cout << d1;
 		for (int j = 0; j < (10 - d1.length()); j++)
 			cout << " ";
@@ -356,7 +357,6 @@ void Supply:: display_supply_table(vector <Supply> supply)
 		for (int j = 0; j < (10 - d2.length()); j++)
 			cout << " ";
 		cout << "        ";
-
 
 		to_upper(supply[i].vehicle_type, 0);
 		cout << supply[i].vehicle_type;
@@ -373,7 +373,6 @@ void Supply:: display_supply_table(vector <Supply> supply)
 			cout << "Approved";
 		else
 			cout << "Pending";
-
 	}
 	cout << endl;
 	for (int i = 0; i < max_name + max_origin + length; i++)

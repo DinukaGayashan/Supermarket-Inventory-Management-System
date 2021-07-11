@@ -12,16 +12,16 @@
 
 using namespace std;
 
-int main() 
-{	
+int main()
+{
 	set_console_position(0, 0);
 	set_console_size(1920, 1080);
-	//set_font_size(24,22); not needed
-	
+	set_font_size(24, 22);
+
 	string username;
 	int user_position;
 	bool logout = 1;
-	
+
 	do
 	{
 		if (logout)
@@ -45,11 +45,11 @@ int main()
 		char a = _getch();
 
 		if (a == '1')
-		{			
+		{
 			if (user_position < 4)
 			{
 				do
-				{	
+				{
 					display_header(username, user_position);
 					cout << "Main menu  >  Stock\n\n";
 					cout << "Select option\n\n";
@@ -65,9 +65,9 @@ int main()
 					char b = _getch();
 
 					if (b == '1')
-					{						
+					{
 						if (user_position < 4)
-						{						
+						{
 							do
 							{
 								display_header(username, user_position);
@@ -83,7 +83,7 @@ int main()
 								char b1 = _getch();
 
 								if (b1 == '1')
-								{									
+								{
 									if (user_position < 4)
 									{
 										display_header(username, user_position);
@@ -91,7 +91,7 @@ int main()
 										vector<Stock> all_stock;
 										for (int ii = 1; ii < 11; ii++)
 										{
-											vector <Stock> temp = Stock::read_data(ii);
+											vector<Stock> temp = Stock::read_data(ii);
 											for (int ij = 0; ij < temp.size(); ij++)
 												all_stock.push_back(temp[ij]);
 										}
@@ -112,7 +112,7 @@ int main()
 									system("pause");
 								}
 								else if (b1 == '2')
-								{									
+								{
 									if (user_position < 4)
 									{
 										display_header(username, user_position);
@@ -120,38 +120,38 @@ int main()
 										vector<Stock> all_stock;
 										for (int ii = 1; ii < 11; ii++)
 										{
-											vector <Stock> temp = Stock::read_data(ii);
+											vector<Stock> temp = Stock::read_data(ii);
 											for (int ij = 0; ij < temp.size(); ij++)
 												all_stock.push_back(temp[ij]);
-										}										
+										}
 										string name;
 										cout << "\nEnter item Name\t\t: ";
 										getline(cin, name);
 										to_upper(name, 1);
 										vector<Stock> items = Stock::find_item(name, 1);
-										if (items.size() == 0) 
+										if (items.size() == 0)
 											display_error("SD02");
 										else if (items.size() == 1)
 											items[0].show_data();
-										else 
+										else
 										{
 											Stock item;
 											Stock::find_name_and_display(item, all_stock, name, 1);
 											item.show_data();
-										}										
+										}
 									}
 									else
 										display_error("AM01");
 									system("pause");
 								}
 								else if (b1 == '3')
-								{									
+								{
 									if (user_position < 4)
 									{
 										display_header(username, user_position);
 										cout << "Main menu  >  Stock  >  View item details  >  Search by item category\n\n";
 										int b1c = category_check();
-										vector <Stock> stock = Stock::read_data(b1c);
+										vector<Stock> stock = Stock::read_data(b1c);
 										display_stock_table(stock);
 									}
 									else
@@ -159,7 +159,7 @@ int main()
 									system("pause");
 								}
 								else if (b1 == '4')
-								{									
+								{
 									if (user_position < 4)
 									{
 										display_header(username, user_position);
@@ -167,7 +167,7 @@ int main()
 										vector<Stock> all_stock;
 										for (int ii = 1; ii < 11; ii++)
 										{
-											vector <Stock> temp = Stock::read_data(ii);
+											vector<Stock> temp = Stock::read_data(ii);
 											for (int ij = 0; ij < temp.size(); ij++)
 												all_stock.push_back(temp[ij]);
 										}
@@ -188,7 +188,7 @@ int main()
 						}
 					}
 					else if (b == '2')
-					{						
+					{
 						if (user_position < 2)
 						{
 							display_header(username, user_position);
@@ -200,7 +200,7 @@ int main()
 						system("pause");
 					}
 					else if (b == '3')
-					{						
+					{
 						if (user_position < 2)
 						{
 							display_header(username, user_position);
@@ -212,9 +212,9 @@ int main()
 						system("pause");
 					}
 					else if (b == '4')
-					{						
+					{
 						if (user_position < 2)
-						{							
+						{
 							display_header(username, user_position);
 							cout << "Main menu  >  Stock  >  Remove item\n\n";
 							Stock::delete_item();
@@ -224,7 +224,7 @@ int main()
 						system("pause");
 					}
 					else if (b == '5')
-					{						
+					{
 						if (user_position < 2)
 						{
 							do
@@ -366,7 +366,7 @@ int main()
 					if (c == '1')
 					{
 						if (user_position < 4)
-						{							
+						{
 							do
 							{
 								display_header(username, user_position);
@@ -386,12 +386,12 @@ int main()
 										display_header(username, user_position);
 										cout << "Main menu  >  Supply  >  View supply details  >  Search by name\n\n";
 										vector<Supply> all_supply = Supply::supply_read_data();
-										
+
 										string name;
 										cout << "\nEnter item Name\t\t: ";
 										getline(cin, name);
 										to_upper(name, 1);
-										
+
 										vector<Supply> items;
 
 										for (auto i : all_supply)
@@ -402,7 +402,7 @@ int main()
 											display_error("SD02");
 										else if (items.size() == 1)
 											items[0].show_data();
-										else										
+										else
 											Supply::display_supply_table(items);
 									}
 									else
@@ -423,8 +423,7 @@ int main()
 								}
 								else if (c1 == '3')
 									break;
-							}
-							while (1);
+							} while (1);
 						}
 						else
 						{
@@ -486,9 +485,9 @@ int main()
 					cout << "\t3. Remove staff member\n";
 					cout << "\t4. Go back to main menu\n";
 					cout << endl;
-	
+
 					char d = _getch();
-	
+
 					if (d == '1')
 					{
 						if (user_position < 2)
@@ -522,7 +521,6 @@ int main()
 							display_header(username, user_position);
 							cout << "Main menu  >  Staff  >  Remove staff member\n\n";
 							Staff::remove_user();
-
 						}
 						else
 							display_error("AM01");

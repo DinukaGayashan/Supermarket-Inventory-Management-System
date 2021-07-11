@@ -17,7 +17,7 @@ void display_header(string user, int user_position)
 	cout << "Time: " << get_time() << endl;
 	if (user.length() > 0)
 	{
-		cout << "Logged in as " << user<<", ";
+		cout << "Logged in as " << user << ", ";
 		if (user_position == 0)
 			cout << "Owner";
 		else if (user_position == 1)
@@ -33,16 +33,16 @@ void display_header(string user, int user_position)
 	cout << "\n\n";
 }
 
-void display_login_screen(string& username, int& user_position)
+void display_login_screen(string &username, int &user_position)
 {
 	display_header("", NULL);
 	cout << "\nPlease login to enter inventory system.\n\n";
 
-	string in_username,in_password,password;
+	string in_username, in_password, password;
 	bool condition = 0;
 	int pos = NULL;
 
-	vector <Staff> users = Staff::read_staff_data();
+	vector<Staff> users = Staff::read_staff_data();
 
 	do
 	{
@@ -63,7 +63,7 @@ void display_login_screen(string& username, int& user_position)
 	condition = 0;
 	do
 	{
-		in_password=enter_password("Password : ");
+		in_password = enter_password("Password : ");
 		if (in_password == password)
 			condition = 1;
 		if (condition == 0)
@@ -110,27 +110,38 @@ void display_category(int n)
 	switch (n)
 	{
 	case 1:
-		cout << "Produce            \t"; break;
+		cout << "Produce            \t";
+		break;
 	case 2:
-		cout << "Meat & Seafood     \t"; break;
+		cout << "Meat & Seafood     \t";
+		break;
 	case 3:
-		cout << "Grains             \t"; break;
+		cout << "Grains             \t";
+		break;
 	case 4:
-		cout << "Bakery products    \t"; break;
+		cout << "Bakery products    \t";
+		break;
 	case 5:
-		cout << "Frozen foods       \t"; break;
+		cout << "Frozen foods       \t";
+		break;
 	case 6:
-		cout << "Dairy products     \t"; break;
+		cout << "Dairy products     \t";
+		break;
 	case 7:
-		cout << "Snacks & Sweets    \t"; break;
+		cout << "Snacks & Sweets    \t";
+		break;
 	case 8:
-		cout << "Beverages          \t"; break;
+		cout << "Beverages          \t";
+		break;
 	case 9:
-		cout << "Health & Beauty    \t"; break;
+		cout << "Health & Beauty    \t";
+		break;
 	case 10:
-		cout << "Condiments & Spices\t"; break;
+		cout << "Condiments & Spices\t";
+		break;
 	default:
-		cout << "no catagory defined\t"; break;
+		cout << "no catagory defined\t";
+		break;
 	}
 }
 
@@ -186,36 +197,61 @@ void display_vehicle_types()
 
 void display_error(string error)
 {
-	if (error == "II01")		cerr << "\a\terror II01: Input must be a counting number.\n";
-	else if (error == "II02")	cerr << "\a\terror II02: Input must be larger than zero.\n";
-	else if (error == "II03")	cerr << "\a\terror II03: Input value limit (xe10) exceeded.\n";
-	else if (error == "II04")	cerr << "\a\terror II04: Input must be in the range of 1 to 10.\n";
-	else if (error == "II05")	cerr << "\a\terror II05: Input must be either 1 or 2.\n";
-	else if (error == "II06")	cerr << "\a\terror II06: Input must be in the range of 1 to 3.\n";
-	else if (error == "II07")	cerr << "\a\terror II07: Input must be in the range of 0 to 100.\n";
-	else if (error == "ID01")	cerr << "\a\terror ID01: Input must be a value with two decimal points.\n";
-	else if (error == "ID02")	cerr << "\a\terror ID02: Input must be larger than zero.\n";
-	else if (error == "ID03")	cerr << "\a\terror ID03: Input value limit (xe10) exceeded.\n";
-	else if (error == "IB01")	cerr << "\a\terror IB01: Input must be either 1 or 0.\n";
-	else if (error == "IS01")	cerr << "\a\terror IS01: Input must be a phrase with letters.\n";
-	else if (error == "IS02")	cerr << "\a\terror IS02: Input passwords are not matching.\n";
-	else if (error == "IA01")	cerr << "\a\terror IA01: Input must be a valid date.\n";
+	if (error == "II01")
+		cerr << "\a\terror II01: Input must be a counting number.\n";
+	else if (error == "II02")
+		cerr << "\a\terror II02: Input must be larger than zero.\n";
+	else if (error == "II03")
+		cerr << "\a\terror II03: Input value limit (xe10) exceeded.\n";
+	else if (error == "II04")
+		cerr << "\a\terror II04: Input must be in the range of 1 to 10.\n";
+	else if (error == "II05")
+		cerr << "\a\terror II05: Input must be either 1 or 2.\n";
+	else if (error == "II06")
+		cerr << "\a\terror II06: Input must be in the range of 1 to 3.\n";
+	else if (error == "II07")
+		cerr << "\a\terror II07: Input must be in the range of 0 to 100.\n";
+	else if (error == "ID01")
+		cerr << "\a\terror ID01: Input must be a value with two decimal points.\n";
+	else if (error == "ID02")
+		cerr << "\a\terror ID02: Input must be larger than zero.\n";
+	else if (error == "ID03")
+		cerr << "\a\terror ID03: Input value limit (xe10) exceeded.\n";
+	else if (error == "IB01")
+		cerr << "\a\terror IB01: Input must be either 1 or 0.\n";
+	else if (error == "IS01")
+		cerr << "\a\terror IS01: Input must be a phrase with letters.\n";
+	else if (error == "IS02")
+		cerr << "\a\terror IS02: Input passwords are not matching.\n";
+	else if (error == "IA01")
+		cerr << "\a\terror IA01: Input must be a valid date.\n";
 
-	else if (error == "SD01")	cerr << "\a\terror SD01: Invalid item ID entered.\n";
-	else if (error == "SD02")	cerr << "\a\terror SD02: Non-existing item name entered.\n";
-	else if (error == "SD03")	cerr << "\a\terror SD03: Non-existing brand name entered.\n";
-	else if (error == "SD04")	cerr << "\a\terror SD04: Item quantity exceeded. No enough items.\n";
-	else if (error == "SD05")	cerr << "\a\terror SD05: Already existing username entered.\n";
-	else if (error == "SD06")	cerr << "\a\terror SD06: Non-existing username entered.\n";
-	else if (error == "SD07")	cerr << "\a\terror SD07: Item do not exist in the stock. Add item before supplying.\n";
-	else if (error == "SD08")	cerr << "\a\terror SD08: Invalid password entered.\n";
-	else if (error == "SD09")	cerr << "\a\terror SD09: Already existing item entered.\n";
-	else if (error == "SD10")	cerr << "\a\terror SD10: Non-existing username entered.\n";
+	else if (error == "SD01")
+		cerr << "\a\terror SD01: Invalid item ID entered.\n";
+	else if (error == "SD02")
+		cerr << "\a\terror SD02: Non-existing item name entered.\n";
+	else if (error == "SD03")
+		cerr << "\a\terror SD03: Non-existing brand name entered.\n";
+	else if (error == "SD04")
+		cerr << "\a\terror SD04: Item quantity exceeded. No enough items.\n";
+	else if (error == "SD05")
+		cerr << "\a\terror SD05: Already existing username entered.\n";
+	else if (error == "SD06")
+		cerr << "\a\terror SD06: Non-existing username entered.\n";
+	else if (error == "SD07")
+		cerr << "\a\terror SD07: Item do not exist in the stock. Add item before supplying.\n";
+	else if (error == "SD08")
+		cerr << "\a\terror SD08: Invalid password entered.\n";
+	else if (error == "SD09")
+		cerr << "\a\terror SD09: Already existing item entered.\n";
+	else if (error == "SD10")
+		cerr << "\a\terror SD10: Non-existing username entered.\n";
 
-	else if (error == "AM01")	cerr << "\a\terror AM01: You don't have access to this menu.\n";
+	else if (error == "AM01")
+		cerr << "\a\terror AM01: You don't have access to this menu.\n";
 }
 
-void display_stock_table(vector <Stock>& stock)
+void display_stock_table(vector<Stock> &stock)
 {
 	size_t max_name = 9, max_brand_name = 10;
 	size_t size = stock.size();
@@ -235,37 +271,53 @@ void display_stock_table(vector <Stock>& stock)
 	}
 
 	cout << "\n";
-	for (int i = 0; i < (max_name + max_brand_name + length-16) / 2; i++)
+	for (int i = 0; i < (max_name + max_brand_name + length - 16) / 2; i++)
 		cout << " ";
 	cout << "Stock Table\n";
 
 	for (int i = 0; i < max_name + max_brand_name + length; i++)
 		cout << "-";
 
-	cout << "\n|    " << "Item ID" << "    |";
+	cout << "\n|    "
+		 << "Item ID"
+		 << "    |";
 
-	cout << "       " << "Item Catagory" << "       |";
+	cout << "       "
+		 << "Item Catagory"
+		 << "       |";
 
-	for (int i = 0; i < (max_name ) / 2; i++)
+	for (int i = 0; i < (max_name) / 2; i++)
 		cout << " ";
 	cout << "  Item Name  ";
-	for (int i = 0; i < (max_name ) / 2; i++)
+	for (int i = 0; i < (max_name) / 2; i++)
 		cout << " ";
 	cout << "|";
 
-	for (int i = 0; i < (max_brand_name ) / 2; i++)
+	for (int i = 0; i < (max_brand_name) / 2; i++)
 		cout << " ";
 	cout << "  Brand Name  ";
-	for (int i = 0; i < (max_brand_name ) / 2; i++)
+	for (int i = 0; i < (max_brand_name) / 2; i++)
 		cout << " ";
 	cout << "|";
 
-	cout << "    " << "Supply Type" << "    |";
-	cout << "     " << "Quantity" << "     |";
-	cout << " " << " Retail Price " << " |";
-	cout << " " << "Discount" << " |";
-	cout << " " << " Final Price " << " |";
-	cout << "     " << "Stock Value" << "     |";
+	cout << "    "
+		 << "Supply Type"
+		 << "    |";
+	cout << "     "
+		 << "Quantity"
+		 << "     |";
+	cout << " "
+		 << " Retail Price "
+		 << " |";
+	cout << " "
+		 << "Discount"
+		 << " |";
+	cout << " "
+		 << " Final Price "
+		 << " |";
+	cout << "     "
+		 << "Stock Value"
+		 << "     |";
 
 	cout << endl;
 
@@ -282,13 +334,13 @@ void display_stock_table(vector <Stock>& stock)
 		cout << "    ";
 
 		to_upper(stock[i].get_item_name(), 0);
-		
+
 		cout << stock[i].get_item_name();
 		for (int j = 0; j < (max_name - stock[i].get_item_name().length()); j++)
 			cout << " ";
 		cout << "              ";
 
-		if (stock[i].get_item_brand_name()=="NOBRAND")
+		if (stock[i].get_item_brand_name() == "NOBRAND")
 			cout << "  -    ";
 		else
 		{
@@ -309,13 +361,13 @@ void display_stock_table(vector <Stock>& stock)
 		else if (stock[i].get_item_supply_type() == "notype")
 			cout << "  ";
 		cout << "           ";
-		
+
 		if (stock[i].get_item_category() == 1 || stock[i].get_item_category() == 2 || stock[i].get_item_category() == 3)
-			cout  << stock[i].get_quantity() << " kg";
+			cout << stock[i].get_quantity() << " kg";
 		else
 			cout << stock[i].get_quantity() << "   ";
-			
-		if (stock[i].get_quantity() < 10)		
+
+		if (stock[i].get_quantity() < 10)
 			cout << "       ";
 		else if (stock[i].get_quantity() < 100)
 			cout << "      ";
@@ -328,7 +380,7 @@ void display_stock_table(vector <Stock>& stock)
 		else if (stock[i].get_quantity() < 1000000)
 			cout << "  ";
 		else if (stock[i].get_quantity() < 10000000)
-			cout << " ";		
+			cout << " ";
 
 		cout << fixed << setprecision(2);
 
@@ -365,7 +417,7 @@ void display_stock_table(vector <Stock>& stock)
 		else if (stock[i].get_discount() < 10000000)
 			cout << " ";
 		cout << "   ";
-		cout << stock[i].get_final_price() ;
+		cout << stock[i].get_final_price();
 		if (stock[i].get_final_price() < 10)
 			cout << "       ";
 		else if (stock[i].get_final_price() < 100)
@@ -403,9 +455,7 @@ void display_stock_table(vector <Stock>& stock)
 	cout << endl;
 }
 
-
-
-void transaction_bill(vector <Stock> stock, string cashier, string customer, string date, string time)
+void transaction_bill(vector<Stock> stock, string cashier, string customer, string date, string time)
 {
 	int length = 81;
 	double total = 0;
@@ -420,14 +470,14 @@ void transaction_bill(vector <Stock> stock, string cashier, string customer, str
 
 	for (size_t i = 0; i < length; i++)
 		cout << "-";
-	
+
 	cout << endl;
 	to_upper(cashier, 0);
 	cout << "Cashier: " << cashier;
 	for (size_t i = cashier.length(); i < length - 25; i++)
 		cout << " ";
-	cout << "Date: "<<date;
-	
+	cout << "Date: " << date;
+
 	cout << endl;
 	to_upper(customer, 0);
 	cout << "Customer: " << customer;
@@ -470,7 +520,7 @@ void transaction_bill(vector <Stock> stock, string cashier, string customer, str
 
 		cout << " * " << stock[i].get_quantity();
 
-		cout << "\t         " << stock[i].get_final_price()* stock[i].get_quantity();
+		cout << "\t         " << stock[i].get_final_price() * stock[i].get_quantity();
 
 		total = total + stock[i].get_final_price() * stock[i].get_quantity();
 	}
@@ -491,12 +541,13 @@ void transaction_bill(vector <Stock> stock, string cashier, string customer, str
 	cout << "\n\n";
 }
 
-void to_upper(string& input, bool to_upper)
+void to_upper(string &input, bool to_upper)
 {
 	if (to_upper == 1)
 	{
 		size_t len = input.size();
-		for (size_t i = 0; i < len; i++) {
+		for (size_t i = 0; i < len; i++)
+		{
 			if (input[i] == ' ')
 				input[i] = '_';
 			else if (input[i] >= 'a' && input[i] <= 'z')
@@ -508,16 +559,17 @@ void to_upper(string& input, bool to_upper)
 		size_t len = input.size();
 		if (input[0] == '_')
 			input[0] = ' ';
-		for (size_t i = 1; i < len; i++) {
+		for (size_t i = 1; i < len; i++)
+		{
 			if (input[i] == '_')
 				input[i] = ' ';
-			else if (input[i] >= 'A' && input[i] <='Z')
+			else if (input[i] >= 'A' && input[i] <= 'Z')
 				input[i] = input[i] + 32;
 		}
 	}
 }
 
-string enter_password(const string& prompt)
+string enter_password(const string &prompt)
 {
 	string result;
 
@@ -591,4 +643,3 @@ string get_time()
 	localtime_s(&dt, &now);
 	return to_string(dt.tm_hour) + "." + to_string(dt.tm_min) + "." + to_string(dt.tm_sec);
 }
-

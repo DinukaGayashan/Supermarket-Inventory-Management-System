@@ -7,8 +7,6 @@
 #include "User_interface.h"
 #include "Date.h"
 
-
-
 using namespace std;
 
 int int_check(const string str);
@@ -27,7 +25,5 @@ string check_name(const string input_str);
 bool is_date(const Date date);
 Date check_date(const string input_str);
 int discount_check();
-
-
 
 #endif
