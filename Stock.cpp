@@ -62,7 +62,11 @@ void Stock::input_data()
 		if (press == 27) return;
 	}
 
-	temp.quantity = double_check("Enter quantity\t\t");
+	if(temp.item_category == 1 || temp.item_category == 2 || temp.item_category == 3)
+		temp.quantity = double_check("Enter quantity\t\t");
+	else
+		temp.quantity = int_check("Enter quantity\t\t");
+
 	press = _getch();
 	if (press == 27) return;
 	temp.retail_price = double_check("Enter the retail price\t");
@@ -189,7 +193,11 @@ void Stock::transaction(const string& cashier_name)
 		}
 		int quantity = 0;
 		while (true) {
-			quantity = int_check("Enter quantity\t");
+			//quantity = double_check("Enter quantity\t");
+			if (temp.item_category == 1 || temp.item_category == 2 || temp.item_category == 3)
+				temp.quantity = double_check("Enter quantity\t");
+			else
+				temp.quantity = int_check("Enter quantity\t");
 
 			c = _getch();
 			if (c == 27) return;
