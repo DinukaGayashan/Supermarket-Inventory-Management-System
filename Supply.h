@@ -10,13 +10,13 @@ class Supply : public Stock
 private:
 	string supply_item_name;
 	int supply_quantity;
-	string source;		//local or international
-	string origin_name; //farm or factory
+	string source;		
+	string origin_name; 
 	Date date_of_depature;
 	Date date_of_arrival;
-	string vehicle_type; //small van, medium, large or ship
+	string vehicle_type; 
 	string reg_number;
-	bool status; //false until accepted
+	bool status; 
 
 public:
 	void get_data();
@@ -38,4 +38,4 @@ public:
 	static void display_supply_table(vector<Supply> supply);
 };
 
-#endif // !SUPPLY_H
+#endif 

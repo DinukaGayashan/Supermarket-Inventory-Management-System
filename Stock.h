@@ -49,7 +49,7 @@ public:
 	static void write_all_data(const Stock& temp);
 	string generate_item_id(const string& item_name_in, const string& brand_name_in, const int& category_in);
 
-	//access data
+
 	string get_item_id();
 	string& get_item_name();
 	string& get_item_brand_name();

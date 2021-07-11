@@ -212,7 +212,7 @@ void Stock::transaction(const string &cashier_name)
 		int quantity = 0;
 		while (true)
 		{
-			//quantity = double_check("Enter quantity\t");
+			
 			if (temp.item_category == 1 || temp.item_category == 2 || temp.item_category == 3)
 				temp.quantity = double_check("Enter quantity\t");
 			else
@@ -337,7 +337,7 @@ void Stock::promotion(int promotion_type)
 	vector<Stock> items;
 	vector<Stock> dis;
 
-	//for an item
+	
 	if (promotion_type == 1)
 	{
 		Stock temp;
@@ -363,7 +363,6 @@ void Stock::promotion(int promotion_type)
 		display_stock_table(dis);
 	}
 
-	//for a brand
 	if (promotion_type == 2)
 	{
 		string brandName;
@@ -656,7 +655,6 @@ string Stock::generate_item_id(const string &item_name_in, const string &brand_n
 
 	id += (category_in + 64);
 
-	//generating the number
 	int sum = 0;
 	int index = 1;
 	for (char i : brand_name_in)

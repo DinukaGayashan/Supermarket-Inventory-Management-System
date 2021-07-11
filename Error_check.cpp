@@ -80,7 +80,7 @@ double double_check(const string str)
 			{
 				if (input[i] == '.' && i < str_length - 3)
 				{
-					display_error("ID01"); //check
+					display_error("ID01");
 					flag = true;
 				}
 			}
@@ -205,7 +205,6 @@ bool is_date(const Date date)
 	if (!(month % 2 == 1 || month == 8) && day > 30)
 		return false;
 
-	//leap years were not concerned
 	if (month == 2 && day > 29)
 		return false;
 

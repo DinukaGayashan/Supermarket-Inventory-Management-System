@@ -10,10 +10,9 @@
 #include <stdexcept>
 #include "Staff.h"
 #include "Stock.h"
-//#include "Supply.h"
+
 
 class Stock;
-//class Supply;
 class Staff;
 
 using namespace std;

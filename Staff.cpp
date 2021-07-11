@@ -151,7 +151,7 @@ void Staff::remove_user()
 	}
 
 
-	//cout << "Member removed successfully!";
+	
 }
 
 void Staff::show_data()
@@ -162,8 +162,8 @@ void Staff::show_data()
 	cout << "Full Name\t: " << full_name  << endl;
 	to_upper(position.second, 0);
 	cout << "Position\t: " << position.second <<  endl;
-	//need to add support
-	//cout << "Joined Date\t: " << join_date << endl;
+	
+	
 }
 
 string Staff::get_username()
@@ -175,21 +175,12 @@ string Staff::get_password()
 {
 	return password;
 }
-//
-//string Staff::get_full_name()
-//{
-//	return full_name;
-//}
-//
+
 pair<int, string> Staff::get_position()
 {
 	return position;
 }
-//
-//Date Staff::get_join_date()
-//{
-//	return join_date;
-//}
+
 
 void Staff:: display_staff_table(vector <Staff> staff)
 {
