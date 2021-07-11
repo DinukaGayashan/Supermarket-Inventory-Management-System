@@ -64,7 +64,7 @@ bool is_double(const string str)
 	return true;
 }
 
-double rupees_check(const string str)
+double double_check(const string str)
 {
 	double value(0);
 	string input;

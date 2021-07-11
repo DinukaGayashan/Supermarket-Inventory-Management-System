@@ -311,29 +311,28 @@ void display_stock_table(vector <Stock>& stock)
 		cout << "           ";
 		
 		if (stock[i].get_item_category() == 1 || stock[i].get_item_category() == 2 || stock[i].get_item_category() == 3)
-			cout << fixed << setprecision(3)  << stock[i].get_quantity() / 1000.0 << " kg";
+			cout  << stock[i].get_quantity() << " kg";
 		else
-		{
-			cout << fixed << setprecision(0) << stock[i].get_quantity();
-			if (stock[i].get_quantity() < 10)
-				cout << "       ";
-			else if (stock[i].get_quantity() < 100)
-				cout << "      ";
-			else if (stock[i].get_quantity() < 1000)
-				cout << "     ";
-			else if (stock[i].get_quantity() < 10000)
-				cout << "    ";
-			else if (stock[i].get_quantity() < 100000)
-				cout << "   ";
-			else if (stock[i].get_quantity() < 1000000)
-				cout << "  ";
-			else if (stock[i].get_quantity() < 10000000)
-				cout << " ";
-		}
+			cout << stock[i].get_quantity() << "   ";
+			
+		if (stock[i].get_quantity() < 10)		
+			cout << "       ";
+		else if (stock[i].get_quantity() < 100)
+			cout << "      ";
+		else if (stock[i].get_quantity() < 1000)
+			cout << "     ";
+		else if (stock[i].get_quantity() < 10000)
+			cout << "    ";
+		else if (stock[i].get_quantity() < 100000)
+			cout << "   ";
+		else if (stock[i].get_quantity() < 1000000)
+			cout << "  ";
+		else if (stock[i].get_quantity() < 10000000)
+			cout << " ";		
 
 		cout << fixed << setprecision(2);
 
-		cout << "          ";
+		cout << "       ";
 		cout << stock[i].get_retail_price();
 		if (stock[i].get_retail_price() < 10)
 			cout << "       ";
@@ -408,7 +407,7 @@ void display_stock_table(vector <Stock>& stock)
 
 void transaction_bill(vector <Stock> stock, string cashier, string customer, string date, string time)
 {
-	int length = 80;
+	int length = 81;
 	double total = 0;
 
 	cout << endl;

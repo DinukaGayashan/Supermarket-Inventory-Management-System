@@ -62,10 +62,10 @@ void Stock::input_data()
 		if (press == 27) return;
 	}
 
-	temp.quantity = int_check("Enter number of items\t");
+	temp.quantity = double_check("Enter quantity\t\t");
 	press = _getch();
 	if (press == 27) return;
-	temp.retail_price = rupees_check("Enter the retail price\t");
+	temp.retail_price = double_check("Enter the retail price\t");
 	press = _getch();
 	if (press == 27) return;
 	temp.discount = discount_check();
@@ -550,7 +550,7 @@ void Stock::edit_item()
 	}
 
 	temp.quantity = int_check("Enter number of items\t");
-	temp.retail_price = rupees_check("Enter the retail price\t");
+	temp.retail_price = double_check("Enter the retail price\t");
 	temp.discount = int_check("Enter the discount percentage");
 	temp.final_price = temp.retail_price * (1 - (temp.discount / 100.0));
 
