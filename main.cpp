@@ -433,7 +433,7 @@ int main()
 					}
 					else if (c == '2')
 					{
-						if (user_position < 4)
+						if (user_position < 2)
 						{
 							display_header(username, user_position);
 							cout << "Main menu  >  Supply  >  Add supply item\n\n";
@@ -450,7 +450,7 @@ int main()
 					}
 					else if (c == '3')
 					{
-						if (user_position < 4)
+						if (user_position < 2 || user_position == 4)
 						{
 							display_header(username, user_position);
 							cout << "Main menu  >  Supply  >  Update stock\n\n";
