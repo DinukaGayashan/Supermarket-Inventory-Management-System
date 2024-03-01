@@ -1,3 +1,3 @@
-.PHONY: run
-run:
+.PHONY: compile
+compile:
 	g++ --std=c++11 *.cpp -o run
