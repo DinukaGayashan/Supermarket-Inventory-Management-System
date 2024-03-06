@@ -109,6 +109,391 @@ void add_supply_item()
 		temp.supply_write_data();
 }
 
+void display_stock_menu(int user_position, string username)
+{
+	if (user_position < 4)
+	{
+		do
+		{
+			display_header(username, user_position);
+			cout << "Main menu  >  Stock\n\n";
+			display_stock();
+
+			char b = _getch();
+
+			if (b == '1')
+			{
+				if (user_position < 4)
+				{
+					do
+					{
+						display_header(username, user_position);
+						cout << "Main menu  >  Stock  >  View item details\n\n";
+						display_view_item_details();
+						char b1 = _getch();
+
+						if (b1 == '1')
+						{
+							if (user_position < 4)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  View item details  >  Search by item ID\n\n";
+								search_stock_item_by_id();
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b1 == '2')
+						{
+							if (user_position < 4)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  View item details  >  Search by item name\n\n";
+								search_stock_item_by_name();
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b1 == '3')
+						{
+							if (user_position < 4)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  View item details  >  Search by item category\n\n";
+								search_stock_item_by_category();
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b1 == '4')
+						{
+							if (user_position < 4)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  View item details  >  View all stock items\n\n";
+								view_all_stock_items();
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b1 == '5')
+							break;
+					} while (1);
+				}
+				else
+				{
+					display_error("AM01");
+					system("pause");
+				}
+			}
+			else if (b == '2')
+			{
+				if (user_position < 2)
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Stock  >  Add item\n\n";
+					Stock::input_data();
+				}
+				else
+					display_error("AM01");
+				system("pause");
+			}
+			else if (b == '3')
+			{
+				if (user_position < 2)
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Stock  >  Edit item\n\n";
+					Stock::edit_item();
+				}
+				else
+					display_error("AM01");
+				system("pause");
+			}
+			else if (b == '4')
+			{
+				if (user_position < 2)
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Stock  >  Remove item\n\n";
+					Stock::delete_item();
+				}
+				else
+					display_error("AM01");
+				system("pause");
+			}
+			else if (b == '5')
+			{
+				if (user_position < 2)
+				{
+					do
+					{
+						display_header(username, user_position);
+						cout << "Main menu  >  Stock  >  Add promotion\n\n";
+						display_add_promotion();
+						char b5 = _getch();
+
+						if (b5 == '1')
+						{
+							if (user_position < 2)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  Add promotion  >  For an item\n\n";
+								Stock::promotion(1);
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b5 == '2')
+						{
+							if (user_position < 2)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  Add promotion  >  For a brand\n\n";
+								Stock::promotion(2);
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b5 == '3')
+						{
+							if (user_position < 2)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  Add promotion  >  For a category\n\n";
+								Stock::promotion(3);
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b5 == '4')
+							break;
+					} while (1);
+				}
+				else
+				{
+					display_error("AM01");
+					system("pause");
+				}
+			}
+			else if (b == '6')
+			{
+				if (user_position < 3)
+				{
+					do
+					{
+						display_header(username, user_position);
+						cout << "Main menu  >  Stock  >  Transaction\n\n";
+						display_transaction();
+						char b6 = _getch();
+
+						if (b6 == '1')
+						{
+							if (user_position < 3)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  Transaction  > New transaction\n\n";
+								Stock::transaction(username);
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b6 == '2')
+						{
+							if (user_position < 3)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Stock  >  Add promotion  > Transaction log\n\n";
+								Stock::read_transaction();
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (b6 == '3')
+							break;
+					} while (1);
+				}
+				else
+				{
+					display_error("AM01");
+					system("pause");
+				}
+			}
+			else if (b == '7')
+				break;
+		} while (1);
+	}
+	else
+	{
+		display_error("AM01");
+		system("pause");
+	}
+}
+
+void display_supply_menu(int user_position, string username)
+{
+	if (user_position < 4)
+	{
+		do
+		{
+			display_header(username, user_position);
+			cout << "Main menu  >  Supply\n\n";
+			display_supply();
+			char c = _getch();
+
+			if (c == '1')
+			{
+				if (user_position < 4)
+				{
+					do
+					{
+						display_header(username, user_position);
+						cout << "Main menu  >  Supply  >  View supply details\n\n";
+						display_view_supply_details();
+						char c1 = _getch();
+
+						if (c1 == '1')
+						{
+							if (user_position < 3)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Supply  >  View supply details  >  Search by name\n\n";
+								search_supply_item_by_name();
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (c1 == '2')
+						{
+							if (user_position < 3)
+							{
+								display_header(username, user_position);
+								cout << "Main menu  >  Supply  >  View supply details  >  View all supply items\n\n";
+								Supply::display_supply_table(Supply::supply_read_data());
+							}
+							else
+								display_error("AM01");
+							system("pause");
+						}
+						else if (c1 == '3')
+							break;
+					} while (1);
+				}
+				else
+				{
+					display_error("AM01");
+					system("pause");
+				}
+			}
+			else if (c == '2')
+			{
+				if (user_position < 2)
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Supply  >  Add supply item\n\n";
+					add_supply_item();
+				}
+				else
+					display_error("AM01");
+				system("pause");
+			}
+			else if (c == '3')
+			{
+				if (user_position < 2 || user_position == 4)
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Supply  >  Update stock\n\n";
+					Supply temp;
+					temp.update_stock();
+				}
+				else
+					display_error("AM01");
+				system("pause");
+			}
+			else if (c == '4')
+				break;
+		} while (1);
+	}
+	else
+	{
+		display_error("AM01");
+		system("pause");
+	}
+}
+
+void display_staff_menu(int user_position, string username)
+{
+	if (user_position < 2)
+	{
+		do
+		{
+			display_header(username, user_position);
+			cout << "Main menu  >  Staff\n\n";
+			display_staff();
+
+			char d = _getch();
+
+			if (d == '1')
+			{
+				if (user_position < 2)
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Staff  >  View staff details\n\n";
+					Staff::display_staff_table(Staff::read_staff_data());
+				}
+				else
+					display_error("AM01");
+				system("pause");
+			}
+			else if (d == '2')
+			{
+				if (user_position < 1)
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Staff  >  Add staff member\n\n";
+					Staff temp;
+					temp.add_user();
+					temp.staff_write_data();
+				}
+				else
+					display_error("AM01");
+				system("pause");
+			}
+			else if (d == '3')
+			{
+				if (user_position < 1)
+				{
+					display_header(username, user_position);
+					cout << "Main menu  >  Staff  >  Remove staff member\n\n";
+					Staff::remove_user();
+				}
+				else
+					display_error("AM01");
+				system("pause");
+			}
+			else if (d == '4')
+				break;
+		} while (1);
+	}
+	else
+	{
+		display_error("AM01");
+		system("pause");
+	}
+}
+
+void display_staff_menu(int user_position, string username) {}
+
 int main()
 {
 	set_console_position(0, 0);
@@ -134,385 +519,11 @@ int main()
 		char a = _getch();
 
 		if (a == '1')
-		{
-			if (user_position < 4)
-			{
-				do
-				{
-					display_header(username, user_position);
-					cout << "Main menu  >  Stock\n\n";
-					display_stock();
-
-					char b = _getch();
-
-					if (b == '1')
-					{
-						if (user_position < 4)
-						{
-							do
-							{
-								display_header(username, user_position);
-								cout << "Main menu  >  Stock  >  View item details\n\n";
-								display_view_item_details();
-								char b1 = _getch();
-
-								if (b1 == '1')
-								{
-									if (user_position < 4)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  View item details  >  Search by item ID\n\n";
-										search_stock_item_by_id();
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b1 == '2')
-								{
-									if (user_position < 4)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  View item details  >  Search by item name\n\n";
-										search_stock_item_by_name();
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b1 == '3')
-								{
-									if (user_position < 4)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  View item details  >  Search by item category\n\n";
-										search_stock_item_by_category();
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b1 == '4')
-								{
-									if (user_position < 4)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  View item details  >  View all stock items\n\n";
-										view_all_stock_items();
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b1 == '5')
-									break;
-							} while (1);
-						}
-						else
-						{
-							display_error("AM01");
-							system("pause");
-						}
-					}
-					else if (b == '2')
-					{
-						if (user_position < 2)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Stock  >  Add item\n\n";
-							Stock::input_data();
-						}
-						else
-							display_error("AM01");
-						system("pause");
-					}
-					else if (b == '3')
-					{
-						if (user_position < 2)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Stock  >  Edit item\n\n";
-							Stock::edit_item();
-						}
-						else
-							display_error("AM01");
-						system("pause");
-					}
-					else if (b == '4')
-					{
-						if (user_position < 2)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Stock  >  Remove item\n\n";
-							Stock::delete_item();
-						}
-						else
-							display_error("AM01");
-						system("pause");
-					}
-					else if (b == '5')
-					{
-						if (user_position < 2)
-						{
-							do
-							{
-								display_header(username, user_position);
-								cout << "Main menu  >  Stock  >  Add promotion\n\n";
-								display_add_promotion();
-								char b5 = _getch();
-
-								if (b5 == '1')
-								{
-									if (user_position < 2)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  Add promotion  >  For an item\n\n";
-										Stock::promotion(1);
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b5 == '2')
-								{
-									if (user_position < 2)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  Add promotion  >  For a brand\n\n";
-										Stock::promotion(2);
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b5 == '3')
-								{
-									if (user_position < 2)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  Add promotion  >  For a category\n\n";
-										Stock::promotion(3);
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b5 == '4')
-									break;
-							} while (1);
-						}
-						else
-						{
-							display_error("AM01");
-							system("pause");
-						}
-					}
-					else if (b == '6')
-					{
-						if (user_position < 3)
-						{
-							do
-							{
-								display_header(username, user_position);
-								cout << "Main menu  >  Stock  >  Transaction\n\n";
-								display_transaction();
-								char b6 = _getch();
-
-								if (b6 == '1')
-								{
-									if (user_position < 3)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  Transaction  > New transaction\n\n";
-										Stock::transaction(username);
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b6 == '2')
-								{
-									if (user_position < 3)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Stock  >  Add promotion  > Transaction log\n\n";
-										Stock::read_transaction();
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (b6 == '3')
-									break;
-							} while (1);
-						}
-						else
-						{
-							display_error("AM01");
-							system("pause");
-						}
-					}
-					else if (b == '7')
-						break;
-				} while (1);
-			}
-			else
-			{
-				display_error("AM01");
-				system("pause");
-			}
-		}
+			display_stock_menu(user_position, username);
 		else if (a == '2')
-		{
-			if (user_position < 4)
-			{
-				do
-				{
-					display_header(username, user_position);
-					cout << "Main menu  >  Supply\n\n";
-					display_supply();
-					char c = _getch();
-
-					if (c == '1')
-					{
-						if (user_position < 4)
-						{
-							do
-							{
-								display_header(username, user_position);
-								cout << "Main menu  >  Supply  >  View supply details\n\n";
-								display_view_supply_details();
-								char c1 = _getch();
-
-								if (c1 == '1')
-								{
-									if (user_position < 3)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Supply  >  View supply details  >  Search by name\n\n";
-										search_supply_item_by_name();
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (c1 == '2')
-								{
-									if (user_position < 3)
-									{
-										display_header(username, user_position);
-										cout << "Main menu  >  Supply  >  View supply details  >  View all supply items\n\n";
-										Supply::display_supply_table(Supply::supply_read_data());
-									}
-									else
-										display_error("AM01");
-									system("pause");
-								}
-								else if (c1 == '3')
-									break;
-							} while (1);
-						}
-						else
-						{
-							display_error("AM01");
-							system("pause");
-						}
-					}
-					else if (c == '2')
-					{
-						if (user_position < 2)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Supply  >  Add supply item\n\n";
-							add_supply_item();
-						}
-						else
-							display_error("AM01");
-						system("pause");
-					}
-					else if (c == '3')
-					{
-						if (user_position < 2 || user_position == 4)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Supply  >  Update stock\n\n";
-							Supply temp;
-							temp.update_stock();
-						}
-						else
-							display_error("AM01");
-						system("pause");
-					}
-					else if (c == '4')
-						break;
-				} while (1);
-			}
-			else
-			{
-				display_error("AM01");
-				system("pause");
-			}
-		}
+			display_supply_menu(user_position, username);
 		else if (a == '3')
-		{
-			if (user_position < 2)
-			{
-				do
-				{
-					display_header(username, user_position);
-					cout << "Main menu  >  Staff\n\n";
-					display_staff();
-
-					char d = _getch();
-
-					if (d == '1')
-					{
-						if (user_position < 2)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Staff  >  View staff details\n\n";
-							Staff::display_staff_table(Staff::read_staff_data());
-						}
-						else
-							display_error("AM01");
-						system("pause");
-					}
-					else if (d == '2')
-					{
-						if (user_position < 1)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Staff  >  Add staff member\n\n";
-							Staff temp;
-							temp.add_user();
-							temp.staff_write_data();
-						}
-						else
-							display_error("AM01");
-						system("pause");
-					}
-					else if (d == '3')
-					{
-						if (user_position < 1)
-						{
-							display_header(username, user_position);
-							cout << "Main menu  >  Staff  >  Remove staff member\n\n";
-							Staff::remove_user();
-						}
-						else
-							display_error("AM01");
-						system("pause");
-					}
-					else if (d == '4')
-						break;
-				} while (1);
-			}
-			else
-			{
-				display_error("AM01");
-				system("pause");
-			}
-		}
+			display_staff_menu(user_position, username);
 		else if (a == '4')
 		{
 			display_header(username, user_position);
