@@ -492,8 +492,6 @@ void display_staff_menu(int user_position, string username)
 	}
 }
 
-void display_staff_menu(int user_position, string username) {}
-
 int main()
 {
 	set_console_position(0, 0);
