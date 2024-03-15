@@ -11,7 +11,6 @@
 #include "Staff.h"
 #include "Stock.h"
 
-
 class Stock;
 class Staff;
 
@@ -19,6 +18,15 @@ using namespace std;
 
 void display_header(string user, int user_position);
 void display_login_screen(string &username, int &user_position);
+
+void display_main_menu();
+void display_stock();
+void display_view_item_details();
+void display_add_promotion();
+void display_transaction();
+void display_supply();
+void display_view_supply_details();
+void display_staff();
 void display_instructions();
 void display_credits();
 

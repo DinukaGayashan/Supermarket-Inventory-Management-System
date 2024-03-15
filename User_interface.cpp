@@ -77,6 +77,91 @@ void display_login_screen(string &username, int &user_position)
 	user_position = pos;
 }
 
+void display_main_menu()
+{
+	cout << "Select option number\n\n";
+	cout << "\t1. Stock\n";
+	cout << "\t2. Supply\n";
+	cout << "\t3. Staff\n";
+	cout << "\t4. Help\n";
+	cout << "\t5. Credits\n";
+	cout << "\t6. Log out\n";
+	cout << "\t7. Exit\n";
+	cout << endl;
+}
+
+void display_stock()
+{
+	cout << "Select option\n\n";
+	cout << "\t1. View item details\n";
+	cout << "\t2. Add item\n";
+	cout << "\t3. Edit item\n";
+	cout << "\t4. Remove item\n";
+	cout << "\t5. Add promotion\n";
+	cout << "\t6. Transaction\n";
+	cout << "\t7. Go back to main menu\n";
+	cout << endl;
+}
+
+void display_view_item_details()
+{
+	cout << "Select option\n\n";
+	cout << "\t1. Search by item ID\n";
+	cout << "\t2. Search by item name\n";
+	cout << "\t3. Search by item category\n";
+	cout << "\t4. View all stock items\n";
+	cout << "\t5. Go back\n";
+	cout << endl;
+}
+
+void display_add_promotion()
+{
+	cout << "Select option\n\n";
+	cout << "\t1. For an item\n";
+	cout << "\t2. For a brand\n";
+	cout << "\t3. For a category\n";
+	cout << "\t4. Go back\n";
+	cout << endl;
+}
+
+void display_transaction()
+{
+	cout << "Select option\n\n";
+	cout << "\t1. New transaction\n";
+	cout << "\t2. Transaction log\n";
+	cout << "\t3. Go back\n";
+	cout << endl;
+}
+
+void display_supply()
+{
+	cout << "Select option\n\n";
+	cout << "\t1. View supply details\n";
+	cout << "\t2. Add supply item\n";
+	cout << "\t3. Update stock\n";
+	cout << "\t4. Go back to main menu\n";
+	cout << endl;
+}
+
+void display_view_supply_details()
+{
+	cout << "Select option\n\n";
+	cout << "\t1. Search by name\n";
+	cout << "\t2. View all supply items\n";
+	cout << "\t3. Go back\n";
+	cout << endl;
+}
+
+void display_staff()
+{
+	cout << "Select option\n\n";
+	cout << "\t1. View staff details\n";
+	cout << "\t2. Add staff member\n";
+	cout << "\t3. Remove staff member\n";
+	cout << "\t4. Go back to main menu\n";
+	cout << endl;
+}
+
 void display_instructions()
 {
 	cout << "\n\tHelp\n";
